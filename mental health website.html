@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wavelength — Teen Mental Health</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --sage: #7aab8a;
+    --sage-light: #b8d4c0;
+    --sage-pale: #e8f2ec;
+    --blush: #e8a89c;
+    --blush-light: #f5d5cf;
+    --blush-pale: #fdf0ee;
+    --sky: #7ab3d4;
+    --sky-light: #b8d8ea;
+    --sky-pale: #eaf4f9;
+    --amber: #d4a46a;
+    --amber-pale: #fdf5e8;
+    --lavender: #9a8ec0;
+    --lavender-pale: #f0eef8;
+    --text: #2c3e35;
+    --text-muted: #6b7f74;
+    --bg: #fafcfb;
+    --white: #ffffff;
+    --radius: 20px;
+    --radius-sm: 12px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1rem 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(250,252,251,0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(122,171,138,0.15);
+  }
+  .nav-logo {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--sage);
+    letter-spacing: -0.02em;
+  }
+  .nav-logo span { color: var(--blush); }
+  .nav-links {
+    display: flex; gap: 1.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--sage); }
+  .nav-crisis {
+    background: var(--blush);
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: background 0.2s, transform 0.1s;
+  }
+  .nav-crisis:hover { background: #d4897a; transform: scale(1.02); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 6rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.35;
+    pointer-events: none;
+  }
+  .blob-1 { width: 500px; height: 500px; background: var(--sage-light); top: -100px; right: -100px; }
+  .blob-2 { width: 350px; height: 350px; background: var(--blush-light); bottom: 50px; left: -80px; }
+  .blob-3 { width: 280px; height: 280px; background: var(--sky-light); top: 40%; right: 15%; }
+
+  .hero-inner {
+    max-width: 1100px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+    position: relative; z-index: 1;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--sage-pale);
+    color: var(--sage);
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--sage-light);
+  }
+  .hero-dot { width: 7px; height: 7px; background: var(--sage); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.5rem, 5vw, 3.8rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+  h1 em { font-style: italic; color: var(--sage); }
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--sage);
+    color: white;
+    padding: 0.85rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: background 0.2s, transform 0.1s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: #6a9a7a; transform: translateY(-2px); }
+  .btn-ghost {
+    color: var(--text);
+    padding: 0.85rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 0.95rem;
+    border: 1.5px solid rgba(44,62,53,0.2);
+    transition: border-color 0.2s, transform 0.1s;
+    display: inline-block;
+  }
+  .btn-ghost:hover { border-color: var(--sage); color: var(--sage); transform: translateY(-2px); }
+
+  .hero-visual {
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+  .mood-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    border: 1px solid rgba(122,171,138,0.15);
+    box-shadow: 0 4px 24px rgba(44,62,53,0.06);
+  }
+  .mood-header {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .mood-row {
+    display: flex; gap: 0.6rem; flex-wrap: wrap;
+  }
+  .mood-pill {
+    padding: 0.45rem 1rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: transform 0.15s;
+    border: 1.5px solid transparent;
+  }
+  .mood-pill:hover { transform: scale(1.05); }
+  .mood-pill.sage { background: var(--sage-pale); color: var(--sage); border-color: var(--sage-light); }
+  .mood-pill.blush { background: var(--blush-pale); color: #c0736a; border-color: var(--blush-light); }
+  .mood-pill.sky { background: var(--sky-pale); color: #4a8fb0; border-color: var(--sky-light); }
+  .mood-pill.amber { background: var(--amber-pale); color: #a07840; border-color: #e8cfa0; }
+  .mood-pill.lavender { background: var(--lavender-pale); color: #6a5fa0; border-color: #ccc7e4; }
+  .quote-card {
+    background: var(--sage);
+    border-radius: var(--radius);
+    padding: 1.5rem 2rem;
+    color: white;
+  }
+  .quote-text {
+    font-family: 'Fraunces', serif;
+    font-size: 1.05rem;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 0.8rem;
+  }
+  .quote-attr { font-size: 0.8rem; opacity: 0.8; }
+
+  /* SECTION WRAPPER */
+  section { padding: 5rem 2rem; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-tag {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 400;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+  }
+  h2 em { font-style: italic; color: var(--sage); }
+  .section-lead {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    max-width: 520px;
+    line-height: 1.8;
+  }
+
+  /* FEELINGS SECTION */
+  .feelings-section { background: var(--white); }
+  .feelings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.2rem;
+    margin-top: 3rem;
+  }
+  .feeling-card {
+    border-radius: var(--radius);
+    padding: 1.8rem;
+    transition: transform 0.2s;
+    cursor: default;
+  }
+  .feeling-card:hover { transform: translateY(-4px); }
+  .feeling-card.anxiety { background: var(--lavender-pale); border: 1px solid #ccc7e4; }
+  .feeling-card.sadness { background: var(--sky-pale); border: 1px solid var(--sky-light); }
+  .feeling-card.stress { background: var(--amber-pale); border: 1px solid #e8cfa0; }
+  .feeling-card.anger { background: var(--blush-pale); border: 1px solid var(--blush-light); }
+  .feeling-card.loneliness { background: var(--sage-pale); border: 1px solid var(--sage-light); }
+  .feeling-card.overwhelm { background: #fdf5f8; border: 1px solid #f0c8d8; }
+  .feeling-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .feeling-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 0.6rem;
+  }
+  .feeling-card.anxiety h3 { color: #5a4fa0; }
+  .feeling-card.sadness h3 { color: #2a7090; }
+  .feeling-card.stress h3 { color: #8a6030; }
+  .feeling-card.anger h3 { color: #b05848; }
+  .feeling-card.loneliness h3 { color: #4a7a5a; }
+  .feeling-card.overwhelm h3 { color: #a04870; }
+  .feeling-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* TOOLS SECTION */
+  .tools-section { background: var(--sage-pale); }
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem;
+    margin-top: 3rem;
+  }
+  .tool-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 1.8rem;
+    border: 1px solid rgba(122,171,138,0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .tool-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(122,171,138,0.15); }
+  .tool-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+  }
+  .tool-icon.breathing { background: var(--sky-pale); }
+  .tool-icon.journal { background: var(--blush-pale); }
+  .tool-icon.grounding { background: var(--sage-pale); }
+  .tool-icon.affirmation { background: var(--lavender-pale); }
+  .tool-icon.jar { background: var(--amber-pale); }
+  .tool-icon.pmr { background: #fdf5f8; }
+  .tool-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+  }
+  .tool-card p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+  }
+  .tool-link {
+    font-size: 0.85rem;
+    color: var(--sage);
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    transition: gap 0.2s;
+  }
+  .tool-link:hover { gap: 0.6rem; }
+
+  /* INTERACTIVE BREATHING */
+  .breathing-section {
+    background: linear-gradient(135deg, #2c3e35 0%, #1a2d24 100%);
+    color: white;
+  }
+  .breathing-inner {
+    max-width: 700px; margin: 0 auto; text-align: center;
+  }
+  .breathing-inner .section-tag { color: var(--sage-light); }
+  .breathing-inner h2 { color: white; }
+  .breathing-inner h2 em { color: var(--sage-light); }
+  .breathing-inner .section-lead { color: rgba(255,255,255,0.65); max-width: 100%; margin: 0 auto 3rem; }
+  .breath-circle-wrap {
+    display: flex; justify-content: center; margin: 2rem 0;
+  }
+  .breath-circle {
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: rgba(122,171,138,0.2);
+    border: 2px solid rgba(122,171,138,0.4);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+  }
+  .breath-ring {
+    position: absolute;
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    border: 2px solid rgba(122,171,138,0.2);
+    animation: none;
+  }
+  .breath-label {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: white;
+    text-align: center;
+    pointer-events: none;
+  }
+  .breath-sub { font-size: 0.75rem; opacity: 0.7; margin-top: 0.3rem; }
+  .breathing-steps {
+    display: flex; justify-content: center; gap: 2rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+  }
+  .bstep {
+    text-align: center;
+  }
+  .bstep-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    color: var(--sage-light);
+    display: block;
+    line-height: 1;
+  }
+  .bstep-label { font-size: 0.8rem; opacity: 0.65; margin-top: 0.3rem; }
+  #breathBtn {
+    background: var(--sage);
+    color: white;
+    border: none;
+    padding: 0.85rem 2.5rem;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-family: 'DM Sans', sans-serif;
+    margin-top: 1rem;
+  }
+  #breathBtn:hover { background: #6a9a7a; }
+  #breathStatus {
+    font-size: 0.9rem;
+    opacity: 0.65;
+    margin-top: 1rem;
+    min-height: 1.5rem;
+  }
+
+  /* INTERACTIVE GROUNDING 5-4-3-2-1 */
+  .grounding-section { background: var(--blush-pale); }
+  .grounding-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 2.5rem;
+    align-items: start;
+    margin-top: 2rem;
+  }
+  .grounding-steps {
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+  .g-step {
+    display: flex; gap: 1.2rem; align-items: center;
+    padding: 1.2rem;
+    background: white;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(232,168,156,0.3);
+    transition: all 0.3s ease;
+  }
+  .g-step.completed {
+    background: rgba(122,171,138,0.1);
+    border-color: var(--sage-light);
+    opacity: 0.85;
+  }
+  .g-checkbox {
+    width: 22px; height: 22px;
+    cursor: pointer;
+    accent-color: var(--sage);
+  }
+  .g-num {
+    width: 36px; height: 36px; min-width: 36px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+  .g-num.n5 { background: var(--blush-pale); color: #b05848; border: 1.5px solid var(--blush-light); }
+  .g-num.n4 { background: var(--sage-pale); color: var(--sage); border: 1.5px solid var(--sage-light); }
+  .g-num.n3 { background: var(--sky-pale); color: #4a8fb0; border: 1.5px solid var(--sky-light); }
+  .g-num.n2 { background: var(--amber-pale); color: #8a6030; border: 1.5px solid #e8cfa0; }
+  .g-num.n1 { background: var(--lavender-pale); color: #6a5fa0; border: 1.5px solid #ccc7e4; }
+  
+  .g-content { flex: 1; }
+  .g-content h4 { font-weight: 500; font-size: 0.95rem; margin-bottom: 0.2rem; }
+  .g-content p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+  .g-input {
+    width: 100%;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    border: 1px solid rgba(44,62,53,0.15);
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .g-input:focus { border-color: var(--sage); }
+  .g-step.completed .g-input {
+    text-decoration: line-through;
+    background: rgba(255,255,255,0.5);
+    color: var(--text-muted);
+  }
+
+  .grounding-callout {
+    background: var(--blush);
+    color: white;
+    border-radius: var(--radius);
+    padding: 2.5rem;
+    text-align: center;
+    position: sticky; top: 100px;
+    transition: background-color 0.4s;
+  }
+  .grounding-callout.all-done {
+    background: var(--sage);
+  }
+  .grounding-callout .big-num {
+    font-family: 'Fraunces', serif;
+    font-size: 4rem;
+    font-weight: 300;
+    line-height: 1.1;
+    opacity: 0.9;
+    display: block;
+  }
+  .grounding-callout p {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    line-height: 1.7;
+    margin-top: 1rem;
+  }
+
+  /* NEW ACTIVITY 1: GRATITUDE JAR */
+  .jar-section { background: var(--white); }
+  .jar-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-top: 2rem;
+  }
+  .jar-form {
+    background: var(--amber-pale);
+    padding: 2rem;
+    border-radius: var(--radius);
+    border: 1px solid #e8cfa0;
+  }
+  .jar-input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    border: 1.5px solid rgba(138,96,48,0.2);
+    border-radius: var(--radius-sm);
+    margin-bottom: 1rem;
+    resize: none;
+    outline: none;
+  }
+  .jar-input:focus { border-color: var(--amber); }
+  .jar-btn {
+    background: var(--amber);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: background 0.2s;
+  }
+  .jar-btn:hover { background: #b88a50; }
+  
+  .jar-visual-container {
+    display: flex; justify-content: center;
+  }
+  .glass-jar {
+    width: 240px; height: 320px;
+    border: 4px solid var(--text-muted);
+    border-radius: 30px 30px 60px 60px;
+    position: relative;
+    background: rgba(255,255,255,0.6);
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.05), 0 10px 30px rgba(0,0,0,0.05);
+    display: flex; flex-wrap: wrap; align-content: flex-end;
+    padding: 1.5rem; gap: 0.5rem;
+    overflow: hidden;
+  }
+  .glass-jar::before {
+    content: '';
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    width: 120px; height: 16px;
+    background: var(--text-muted);
+    border-radius: 6px;
+  }
+  .jar-note {
+    background: #fff5cc;
+    border: 1px solid #ffe680;
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 8px;
+    animation: dropIn 0.4s ease-out forwards;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+    color: #735300;
+  }
+  @keyframes dropIn {
+    0% { transform: translateY(-150px) scale(0.5); opacity: 0; }
+    100% { transform: translateY(0) scale(1); opacity: 1; }
+  }
+  .jar-placeholder {
+    position: absolute; top: 45%; left: 5%; right: 5%;
+    text-align: center; font-style: italic; font-size: 0.85rem;
+    color: var(--text-muted); pointer-events: none;
+  }
+
+  /* NEW ACTIVITY 2: PROGRESSIVE MUSCLE RELAXATION */
+  .pmr-section { background: var(--sky-pale); }
+  .pmr-container {
+    max-width: 750px; margin: 2rem auto 0;
+    background: white;
+    border-radius: var(--radius);
+    padding: 2.5rem;
+    border: 1px solid var(--sky-light);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+    text-align: center;
+  }
+  .pmr-window {
+    min-height: 160px;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    margin-bottom: 2rem;
+  }
+  #pmrMuscle {
+    font-family: 'Fraunces', serif;
+    font-size: 1.6rem;
+    color: #2a7090;
+    margin-bottom: 0.5rem;
+  }
+  #pmrInstruction {
+    font-size: 1.05rem;
+    color: var(--text);
+    max-width: 550px;
+    margin-bottom: 1rem;
+  }
+  .pmr-pulse-box {
+    height: 30px; display: flex; align-items: center; justify-content: center;
+  }
+  .pmr-indicator {
+    padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.05em; display: none;
+  }
+  .pmr-indicator.tense { background: #fdf0ee; color: #b05848; animation: tensionPulse 1s infinite alternate; }
+  .pmr-indicator.release { background: var(--sage-pale); color: var(--sage); }
+  @keyframes tensionPulse { 0% { opacity: 0.6; } 100% { opacity: 1; } }
+  
+  .pmr-progress-bar {
+    width: 100%; height: 6px; background: #eaf4f9; border-radius: 3px; overflow: hidden; margin-bottom: 1.5rem;
+  }
+  #pmrProgressFill {
+    width: 0%; height: 100%; background: var(--sky); transition: width 0.3s ease;
+  }
+  .pmr-controls button {
+    background: var(--sky); color: white; border: none; padding: 0.8rem 2rem;
+    border-radius: 50px; font-size: 0.95rem; font-weight: 500; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; transition: background 0.2s;
+  }
+  .pmr-controls button:hover { background: #5a9cb8; }
+
+  /* AFFIRMATIONS */
+  .affirmations-section { background: var(--white); }
+  .affirmations-inner { text-align: center; max-width: 700px; margin: 0 auto; }
+  .affirmations-inner .section-lead { margin: 0 auto 3rem; }
+  .affirmation-display {
+    background: var(--lavender-pale);
+    border: 1px solid #ccc7e4;
+    border-radius: var(--radius);
+    padding: 3rem 2rem;
+    margin: 2rem 0;
+    min-height: 140px;
+    display: flex; align-items: center; justify-content: center;
+    transition: opacity 0.3s;
+  }
+  #affirmText {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    font-weight: 300;
+    font-style: italic;
+    color: #4a3d80;
+    line-height: 1.5;
+  }
+  #newAffirmBtn {
+    background: #9a8ec0;
+    color: white;
+    border: none;
+    padding: 0.85rem 2rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  #newAffirmBtn:hover { background: #7a6ea0; }
+
+  /* MOOD TRACKER INTERACTIVE */
+  .mood-section { background: var(--sage-pale); }
+  .mood-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+    margin-top: 2rem;
+  }
+  .mood-tracker-widget {
+    background: white;
+    border-radius: var(--radius);
+    padding: 2rem;
+    border: 1px solid rgba(122,171,138,0.2);
+  }
+  .mood-tracker-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1.2rem;
+  }
+  .mood-options {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+  }
+  .mood-btn {
+    aspect-ratio: 1;
+    border-radius: 12px;
+    border: 1.5px solid transparent;
+    background: var(--sage-pale);
+    cursor: pointer;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 0.2rem;
+    transition: transform 0.15s, border-color 0.15s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .mood-btn:hover { transform: scale(1.08); }
+  .mood-btn.selected { border-color: var(--sage); background: white; box-shadow: 0 2px 12px rgba(122,171,138,0.2); }
+  .mood-btn .emoji { font-size: 1.5rem; }
+  .mood-btn .label { font-size: 0.6rem; color: var(--text-muted); font-weight: 500; letter-spacing: 0.02em; }
+  .mood-note {
+    width: 100%;
+    border: 1.5px solid rgba(122,171,138,0.25);
+    border-radius: var(--radius-sm);
+    padding: 0.8rem 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text);
+    resize: none;
+    height: 80px;
+    transition: border-color 0.2s;
+    margin-bottom: 1rem;
+    background: var(--bg);
+  }
+  .mood-note:focus { outline: none; border-color: var(--sage); background: white; }
+  .mood-note::placeholder { color: var(--text-muted); }
+  .save-mood-btn {
+    width: 100%;
+    background: var(--sage);
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .save-mood-btn:hover { background: #6a9a7a; }
+  #moodMessage {
+    font-size: 0.85rem;
+    color: var(--sage);
+    text-align: center;
+    margin-top: 0.8rem;
+    min-height: 1.2rem;
+    font-weight: 500;
+  }
+  .mood-history {
+    display: flex; flex-direction: column; gap: 0.8rem;
+    max-height: 300px; overflow-y: auto;
+  }
+  .mood-entry {
+    display: flex; align-items: center; gap: 1rem;
+    background: white;
+    border-radius: var(--radius-sm);
+    padding: 0.8rem 1.2rem;
+    border: 1px solid rgba(122,171,138,0.15);
+    font-size: 0.88rem;
+  }
+  .mood-entry .time { font-size: 0.75rem; color: var(--text-muted); min-width: 60px; }
+  .mood-empty {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-style: italic;
+    padding: 2rem;
+    text-align: center;
+    background: white;
+    border-radius: var(--radius-sm);
+    border: 1px dashed rgba(122,171,138,0.3);
+  }
+
+  /* JOURNAL */
+  .journal-section { background: var(--white); }
+  .journal-inner { max-width: 750px; margin: 0 auto; }
+  .prompt-display {
+    background: var(--sage-pale);
+    border: 1px solid var(--sage-light);
+    border-radius: var(--radius);
+    padding: 2rem;
+    margin: 2rem 0;
+  }
+  .prompt-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 0.8rem;
+  }
+  #promptText {
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.6;
+  }
+  #journalTextarea {
+    width: 100%;
+    border: 1.5px solid rgba(122,171,138,0.25);
+    border-radius: var(--radius-sm);
+    padding: 1.2rem 1.4rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text);
+    resize: vertical;
+    min-height: 150px;
+    background: var(--bg);
+    transition: border-color 0.2s;
+    line-height: 1.7;
+  }
+  #journalTextarea:focus { outline: none; border-color: var(--sage); background: white; }
+  .journal-actions { display: flex; gap: 1rem; margin-top: 1rem; }
+  .journal-btn {
+    padding: 0.7rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+    border: none;
+  }
+  .journal-btn.primary { background: var(--sage); color: white; }
+  .journal-btn.primary:hover { background: #6a9a7a; }
+  .journal-btn.secondary { background: var(--sage-pale); color: var(--sage); border: 1.5px solid var(--sage-light); }
+  .journal-btn.secondary:hover { background: var(--sage); color: white; }
+
+  /* EXPANDED CRISIS RESOURCES (10 LINKS) */
+  .crisis-section {
+    background: #1a2d24;
+    color: white;
+  }
+  .crisis-inner { max-width: 1100px; margin: 0 auto; }
+  .crisis-inner .section-tag { color: var(--blush-light); }
+  .crisis-inner h2 { color: white; margin-bottom: 0.8rem; }
+  .crisis-inner h2 em { color: var(--blush); }
+  .crisis-inner .section-lead { color: rgba(255,255,255,0.65); max-width: 600px; }
+  .crisis-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.2rem;
+    margin-top: 2.5rem;
+  }
+  .crisis-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--radius);
+    padding: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .crisis-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+  .crisis-card-top { margin-bottom: 1.5rem; }
+  .crisis-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    color: var(--blush-light);
+  }
+  .crisis-card p { font-size: 0.88rem; opacity: 0.65; line-height: 1.6; margin-bottom: 1rem; }
+  .crisis-contact {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: white;
+    text-decoration: none;
+    margin-top: auto;
+    word-break: break-all;
+  }
+  .crisis-badge {
+    display: inline-block;
+    background: var(--blush);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 50px;
+    margin-bottom: 0.8rem;
+  }
+  .crisis-note {
+    margin-top: 2.5rem;
+    padding: 1.5rem 2rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius-sm);
+    font-size: 0.88rem;
+    opacity: 0.7;
+    line-height: 1.8;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--text);
+    color: rgba(255,255,255,0.65);
+    padding: 3rem 2rem;
+    text-align: center;
+    font-size: 0.88rem;
+    line-height: 1.8;
+  }
+  footer a { color: var(--sage-light); text-decoration: none; }
+  .footer-logo {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: white;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .footer-logo span { color: var(--blush-light); }
+
+  @media (max-width: 768px) {
+    .hero-inner, .grounding-grid, .mood-inner, .jar-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .nav-links { display: none; }
+    .hero { padding-top: 5rem; }
+    .breathing-steps { gap: 1rem; }
+    .grounding-callout { position: static; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Wave<span>length</span></div>
+  <ul class="nav-links">
+    <li><a href="#feelings">How I Feel</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#grounding">Grounding</a></li>
+    <li><a href="#gratitudejar">Gratitude Jar</a></li>
+    <li><a href="#pmr">Muscle Relief</a></li>
+    <li><a href="#crisis">Get Help</a></li>
+  </ul>
+  <a href="#crisis" class="nav-crisis">Need Help Now?</a>
+</nav>
+
+<section class="hero">
+  <div class="blob-1 hero-blob"></div>
+  <div class="blob-2 hero-blob"></div>
+  <div class="blob-3 hero-blob"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">
+        <div class="hero-dot"></div>
+        You are not alone
+      </div>
+      <h1>Your feelings<br><em>are valid.</em><br>We're here.</h1>
+      <p class="hero-sub">A safe space for teens to understand emotions, practice self-care, and find support — whenever you need it.</p>
+      <div class="hero-actions">
+        <a href="#tools" class="btn-primary">Explore Tools</a>
+        <a href="#crisis" class="btn-ghost">Get Help Now</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="mood-card">
+        <div class="mood-header">How are you feeling right now?</div>
+        <div class="mood-row">
+          <div class="mood-pill sage" onclick="document.getElementById('moodtracker').scrollIntoView();">😌 Calm</div>
+          <div class="mood-pill blush" onclick="document.getElementById('moodtracker').scrollIntoView();">😟 Worried</div>
+          <div class="mood-pill sky" onclick="document.getElementById('moodtracker').scrollIntoView();">😢 Sad</div>
+          <div class="mood-pill amber" onclick="document.getElementById('moodtracker').scrollIntoView();">😤 Stressed</div>
+          <div class="mood-pill lavender" onclick="document.getElementById('moodtracker').scrollIntoView();">😶 Numb</div>
+          <div class="mood-pill blush" onclick="document.getElementById('moodtracker').scrollIntoView();">😡 Angry</div>
+        </div>
+      </div>
+      <div class="quote-card">
+        <div class="quote-text">"It's okay to not be okay. What matters is that you reach out."</div>
+        <div class="quote-attr">— A reminder for hard days</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="feelings-section" id="feelings">
+  <div class="section-inner">
+    <span class="section-tag">Understanding emotions</span>
+    <h2>What are you<br><em>going through?</em></h2>
+    <p class="section-lead">Every feeling has a name, and every feeling makes sense. Here's what might be happening — and what can help.</p>
+    <div class="feelings-grid">
+      <div class="feeling-card anxiety">
+        <span class="feeling-icon">💭</span>
+        <h3>Anxiety</h3>
+        <p>That constant worry, racing thoughts, or tight chest — anxiety is your nervous system working overtime. It's incredibly common in teens, and there are real tools to manage it.</p>
+      </div>
+      <div class="feeling-card sadness">
+        <span class="feeling-icon">🌧️</span>
+        <h3>Sadness & Depression</h3>
+        <p>Feeling empty, low, or like nothing matters can be signs of depression. You're not broken — your brain chemistry needs support, just like a body needs treatment when it's sick.</p>
+      </div>
+      <div class="feeling-card stress">
+        <span class="feeling-icon">📚</span>
+        <h3>Stress & Burnout</h3>
+        <p>School, expectations, social pressure — it's a lot. Chronic stress is real and it affects your sleep, concentration, and mood. You deserve breaks, and asking for help is smart.</p>
+      </div>
+      <div class="feeling-card anger">
+        <span class="feeling-icon">🔥</span>
+        <h3>Anger</h3>
+        <p>Anger is a signal, not a flaw. Often it's covering hurt, fear, or frustration. Learning to understand and channel your anger — rather than suppress it — is a real strength.</p>
+      </div>
+      <div class="feeling-card loneliness">
+        <span class="feeling-icon">🌿</span>
+        <h3>Loneliness</h3>
+        <p>You can feel alone in a crowded room. Social media makes it worse by making everyone else's life look perfect. You're not the only one who feels disconnected — truly.</p>
+      </div>
+      <div class="feeling-card overwhelm">
+        <span class="feeling-icon">🌊</span>
+        <h3>Overwhelm</h3>
+        <p>When everything feels like too much at once, your brain goes into survival mode. Learning to pause, breathe, and take things one step at a time is a skill that can be practised.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tools-section" id="tools">
+  <div class="section-inner">
+    <span class="section-tag">Interactive Coping Toolbox</span>
+    <h2>Mental fitness <em>strategies</em></h2>
+    <p class="section-lead">Choose a self-care tool below to help actively process anxiety, stress, or sensory clutter right now.</p>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-icon breathing">🧘‍♂️</div>
+        <h3>Box Breathing</h3>
+        <p>Reset racing thoughts and dial down physical panic using a synchronized pacing rhythm.</p>
+        <a href="#tools-breathing" class="tool-link">Breath work →</a>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon grounding">🖐️</div>
+        <h3>5-4-3-2-1 Sensory Checklist</h3>
+        <p>An interactive sensory exploration to break free from loop-thinking patterns.</p>
+        <a href="#grounding" class="tool-link">Ground yourself →</a>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon jar">✨</div>
+        <h3>Gratitude Jar</h3>
+        <p>Drop positive moments into a secure glass tracker to retrain your lens of perspective.</p>
+        <a href="#gratitudejar" class="tool-link">Open Jar →</a>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon pmr">💪</div>
+        <h3>Progressive Muscle Release</h3>
+        <p>Systematically unclamp tension points across your shoulders, jaw, and limbs.</p>
+        <a href="#pmr" class="tool-link">Release tension →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="breathing-section" id="tools-breathing">
+  <div class="section-inner">
+    <div class="breathing-inner">
+      <span class="section-tag">Calm your nervous system</span>
+      <h2>Box <em>breathing</em></h2>
+      <p class="section-lead">This technique is used by athletes, surgeons, and even special forces to calm anxiety in seconds. Try it right now.</p>
+      <div class="breathing-steps">
+        <div class="bstep">
+          <span class="bstep-num">4</span>
+          <div class="bstep-label">Inhale</div>
+        </div>
+        <div class="bstep">
+          <span class="bstep-num">4</span>
+          <div class="bstep-label">Hold</div>
+        </div>
+        <div class="bstep">
+          <span class="bstep-num">4</span>
+          <div class="bstep-label">Exhale</div>
+        </div>
+        <div class="bstep">
+          <span class="bstep-num">4</span>
+          <div class="bstep-label">Hold</div>
+        </div>
+      </div>
+      <div class="breath-circle-wrap">
+        <div class="breath-circle" id="breathCircle">
+          <div class="breath-ring" id="breathRing"></div>
+          <div class="breath-label">
+            <div id="breathWord">ready</div>
+            <div class="breath-sub" id="breathCount">tap to begin</div>
+          </div>
+        </div>
+      </div>
+      <button id="breathBtn" onclick="toggleBreathing()">Start breathing</button>
+      <p id="breathStatus"></p>
+    </div>
+  </div>
+</section>
+
+<section class="grounding-section" id="grounding">
+  <div class="section-inner">
+    <span class="section-tag">Anxiety grounding technique</span>
+    <h2>The 5-4-3-2-1<br><em>method</em></h2>
+    <p class="section-lead">When anxiety spikes, bring yourself back to the present. Type out your responses and check them off as you find them.</p>
+    <div class="grounding-grid">
+      <div class="grounding-steps">
+        <div class="g-step" id="gstep-5">
+          <input type="checkbox" class="g-checkbox" id="chk-5" onchange="updateGroundingProgress(5)">
+          <div class="g-num n5">5</div>
+          <div class="g-content">
+            <h4>Things you can see</h4>
+            <p>Look around and notice five distinct physical items. Pay attention to light or shadows.</p>
+            <input type="text" class="g-input" placeholder="Type what you see...">
+          </div>
+        </div>
+        <div class="g-step" id="gstep-4">
+          <input type="checkbox" class="g-checkbox" id="chk-4" onchange="updateGroundingProgress(4)">
+          <div class="g-num n4">4</div>
+          <div class="g-content">
+            <h4>Things you can touch</h4>
+            <p>Acknowledge four textures surrounding you (clothing, a phone screen, cold metal, wood).</p>
+            <input type="text" class="g-input" placeholder="Type textures you feel...">
+          </div>
+        </div>
+        <div class="g-step" id="gstep-3">
+          <input type="checkbox" class="g-checkbox" id="chk-3" onchange="updateGroundingProgress(3)">
+          <div class="g-num n3">3</div>
+          <div class="g-content">
+            <h4>Things you can hear</h4>
+            <p>Listen intently for three ambient noises (clock ticking, traffic far away, wind whistling).</p>
+            <input type="text" class="g-input" placeholder="Type sounds you hear...">
+          </div>
+        </div>
+        <div class="g-step" id="gstep-2">
+          <input type="checkbox" class="g-checkbox" id="chk-2" onchange="updateGroundingProgress(2)">
+          <div class="g-num n2">2</div>
+          <div class="g-content">
+            <h4>Things you can smell</h4>
+            <p>Identify two smells. If there are none near, imagine your favorite crisp morning air or soap scent.</p>
+            <input type="text" class="g-input" placeholder="Type scents you detect...">
+          </div>
+        </div>
+        <div class="g-step" id="gstep-1">
+          <input type="checkbox" class="g-checkbox" id="chk-1" onchange="updateGroundingProgress(1)">
+          <div class="g-num n1">1</div>
+          <div class="g-content">
+            <h4>Thing you can taste</h4>
+            <p>Focus on one flavor remaining on your tongue, or step away for a slow sip of cold water.</p>
+            <input type="text" class="g-input" placeholder="Type taste or internal mouth sensation...">
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="grounding-callout" id="groundingCalloutBox">
+          <span class="big-num" id="groundingCounter">0 / 5</span>
+          <p id="groundingCalloutText">Checking off these boxes systematically activates the analytical prefrontal cortex of your brain, signaling your primitive amygdala to down-regulate its fight-or-flight distress code.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="jar-section" id="gratitudejar">
+  <div class="section-inner">
+    <span class="section-tag">Shift Your Neural Pathways</span>
+    <h2>Your digital <em>gratitude jar</em></h2>
+    <p class="section-lead">When things feel dark, tracking microscopic wins can help reset your perspective. Type a quick positive element from today to lock it into your personal glass storage.</p>
+    <div class="jar-grid">
+      <div class="jar-form">
+        <label style="font-weight: 500; font-size: 0.95rem; display: block; margin-bottom: 0.5rem;">What is one tiny highlight from your day?</label>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">It doesn't have to be massive. A reliable bus arriving on time, a funny meme, or a hot tea counts.</p>
+        <textarea id="jarInputText" class="jar-input" rows="3" placeholder="I am grateful for..."></textarea>
+        <button class="jar-btn" onclick="addGratitudeItem()">Drop Item Into Jar ✨</button>
+      </div>
+      <div class="jar-visual-container">
+        <div class="glass-jar" id="glassJarContainer">
+          <div class="jar-placeholder" id="jarEmptyText">Your jar is currently waiting for positive insights...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pmr-section" id="pmr">
+  <div class="section-inner">
+    <span class="section-tag">Decompress your skeletal system</span>
+    <h2>Progressive muscle <em>relaxation</em></h2>
+    <p class="section-lead">Stress builds up silently inside physical muscle tissue. Follow this interactive prompt matrix to safely lock and release built-up structural strain.</p>
+    <div class="pmr-container">
+      <div class="pmr-progress-bar">
+        <div id="pmrProgressFill"></div>
+      </div>
+      <div class="pmr-window">
+        <h3 id="pmrMuscle">Ready to release physical stress?</h3>
+        <p id="pmrInstruction">We will step through 5 core clusters. Find a stable seat or lay down flat before starting.</p>
+        <div class="pmr-pulse-box">
+          <span class="pmr-indicator" id="pmrBadge"></span>
+        </div>
+      </div>
+      <div class="pmr-controls">
+        <button id="pmrActionBtn" onclick="advancePMRModule()">Begin Guided System</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="affirmations-section" id="affirmations">
+  <div class="section-inner">
+    <div class="affirmations-inner">
+      <span class="section-tag">Daily reminders</span>
+      <h2>You need to<br><em>hear this</em></h2>
+      <p class="section-lead">Sometimes we need reminding of what's true when our inner voice is cruel. Tap for a new affirmation whenever you need one.</p>
+      <div class="affirmation-display">
+        <p id="affirmText">You are not a burden. You are a person who is struggling, and that is allowed.</p>
+      </div>
+      <button id="newAffirmBtn" onclick="newAffirmation()">Give me another ↺</button>
+    </div>
+  </div>
+</section>
+
+<section class="mood-section" id="moodtracker">
+  <div class="section-inner">
+    <span class="section-tag">Check in with yourself</span>
+    <h2>Track your <em>mood</em></h2>
+    <p class="section-lead">Noticing patterns in how you feel is the first step to understanding your mental health. Use this daily check-in.</p>
+    <div class="mood-inner">
+      <div class="mood-tracker-widget">
+        <p class="mood-tracker-label">How are you feeling right now?</p>
+        <div class="mood-options">
+          <button class="mood-btn" onclick="selectMood(this, '😄', 'Great')"><span class="emoji">😄</span><span class="label">Great</span></button>
+          <button class="mood-btn" onclick="selectMood(this, '🙂', 'Good')"><span class="emoji">🙂</span><span class="label">Good</span></button>
+          <button class="mood-btn" onclick="selectMood(this, '😐', 'Okay')"><span class="emoji">😐</span><span class="label">Okay</span></button>
+          <button class="mood-btn" onclick="selectMood(this, '😟', 'Low')"><span class="emoji">😟</span><span class="label">Low</span></button>
+          <button class="mood-btn" onclick="selectMood(this, '😔', 'Bad')"><span class="emoji">😔</span><span class="label">Bad</span></button>
+        </div>
+        <textarea id="moodNote" class="mood-note" placeholder="Add a note about how you're feeling... (optional)"></textarea>
+        <button class="save-mood-btn" onclick="saveMood()">Save check-in</button>
+        <p id="moodMessage"></p>
+      </div>
+      <div>
+        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1rem;">Recent check-ins</p>
+        <div class="mood-history" id="moodHistory">
+          <div class="mood-empty">Your mood history will appear here as you track your feelings.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="journal-section" id="journal">
+  <div class="section-inner">
+    <div class="journal-inner">
+      <span class="section-tag">Reflective writing</span>
+      <h2>Your private <em>journal</em></h2>
+      <p class="section-lead">Writing helps you process feelings and gain perspective. Use these prompts to get started — no grammar, no judgment.</p>
+      <div class="prompt-display">
+        <div class="prompt-label">Today's prompt</div>
+        <p id="promptText">What's one thing that's been weighing on your mind lately? What would it feel like to let that go?</p>
+      </div>
+      <textarea id="journalTextarea" placeholder="Start writing here — this is just for you..."></textarea>
+      <div class="journal-actions">
+        <button class="journal-btn primary" onclick="clearJournal()">Clear &amp; start fresh</button>
+        <button class="journal-btn secondary" onclick="newPrompt()">New prompt</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="crisis-section" id="crisis">
+  <div class="section-inner">
+    <div class="crisis-inner">
+      <span class="section-tag">You don't have to face this alone</span>
+      <h2>Get real<br><em>support now</em></h2>
+      <p class="section-lead">If you're in crisis, struggling heavily, or simply need an objective ear, reach out to these active, vetted, confidential support systems.</p>
+      <div class="crisis-cards">
+        <div class="crisis-card">
+          <div class="crisis-card-top">
+            <span class="crisis-badge">24/7 • Free</span>
+            <h3>Lifeline Australia</h3>
+            <p>Invaluable support, crisis mental health intervention, and suicide precaution routing channels.</p>
+          </div>
+          <a href="tel:131114" class="crisis-contact">📞 13 11 14</a>
+        </div>
+        <div class="crisis-card">
+          <div class="crisis-card-top">
+            <span class="crisis-badge">Youth • Free</span>
+            <h3>Kids Helpline</h3>
+            <p>Dedicated clinical triage for adolescents up to 25. Call, webchat, or email configuration options.</p>
+          </div>
+          <a href="tel:1800551800" class="crisis-contact">📞 1800 55 1800</a>
+        </div>
+        <div class="crisis-card">
+          <div class="crisis-card-top">
+            <span class="crisis-badge">24/7 • Text</span>
+            <h3>Crisis Text Line</h3>
+            <p>Prefer silent crisis communication? Instantly access automated and trained text managers.</p>
+          </div>
+          <span class="crisis-contact">💬 Text HOME to 741741</span>
+        </div>
+        <div class="crisis-card">
+          <div class="crisis-card-top">
+            <span class="crisis-badge">Online • Youth</span>
+            <h3>headspace</h3>
+            <p>National Youth Mental Health hubs for clinical drop-ins, remote therapy counseling, and tools.</p>
+          </div>
+          <a href="https://headspace.org.au" target="_blank" class="crisis-contact">🌐 headspace.org.au</a>
+        </div>
+        <div class="crisis-card">
+          <div class="crisis-card-top">
+            <span class="crisis-badge">24/7 • Youth</span>
+            <h3>ReachOut Australia</h3>
+            <p>Safe digital landscape containing targeted discussion forums, peer connections, and tool arrays.</p>
+          </div>
+          <a href="https://au.reachout.com" target="_blank" class="crisis-contact">🌐 au.reachout.com</a>
+        </div>
+        <div class="crisis-card">
+          <div class="crisis-card-top">
+            <span class="crisis-badge">Indigenous</span>
+            <h3>13YARN Support</h3>
+            <p>First nationwide crisis intervention channel managed directly by Aboriginal & Torres Strait Islander teams.</p>
+          </div>
+          <a href="tel:139276" class="crisis-contact">📞 13 92 76</a>
+        </div>
+        <div class="crisis-card">
+          <div class="crisis-card-top">
+            <span class="crisis-badge">LGBTQIA+ Peer</span>
+            <h3>QLife Australia</h3>
+            <p>Confidential community support frameworks and advice for queer, trans, or fluid teens across Australia.</p>
+          </div>
+          <a href="tel:1800184527" class="crisis-contact">📞 1800 184 527</a>
+        </div>
+        <div class="crisis-card">
+          <div class="crisis-card-top">
+            <span class="crisis-badge">Body Image</span>
+            <h3>Butterfly Foundation</h3>
+            <p>Specialist support counselors treating structural eating disorders and severe body dysmorphia anxieties.</p>
+          </div>
+          <a href="tel:1800334673" class="crisis-contact">📞 1800 33 4673</a>
+        </div>
+        <div class="crisis-card">
+          <div class="crisis-card-top">
+            <span class="crisis-badge">24/7 • Chat</span>
+            <h3>Beyond Blue</h3>
+            <p>High-tier diagnostic counseling frameworks specialized in chronic anxiety and mood disorder help lines.</p>
+          </div>
+          <a href="tel:1300224636" class="crisis-contact">📞 1300 22 4636</a>
+        </div>
+        <div class="crisis-card">
+          <div class="crisis-card-top">
+            <span class="crisis-badge">Immediate Danger</span>
+            <h3>Emergency Services (000)</h3>
+            <p>If you or an associate are in acute danger or require lightning dispatch, call immediately.</p>
+          </div>
+          <a href="tel:000" class="crisis-contact">📞 000 (Australia)</a>
+        </div>
+      </div>
+      <div class="crisis-note">
+        <strong>Important:</strong> This website provides self-help tools and general information only — it is not a substitute for professional medical or mental health support. If you're experiencing an acute mental health emergency, please contact a professional immediately. You matter.
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-logo">Wave<span>length</span></span>
+  <p>A mental health resource for teens. Built with care.</p>
+  <p style="margin-top:0.5rem">
+    <a href="#feelings">How I Feel</a> &nbsp;·&nbsp;
+    <a href="#tools">Breathing</a> &nbsp;·&nbsp;
+    <a href="#grounding">Grounding</a> &nbsp;·&nbsp;
+    <a href="#gratitudejar">Gratitude</a> &nbsp;·&nbsp;
+    <a href="#pmr">Muscle Scans</a> &nbsp;·&nbsp;
+    <a href="#journal">Journal</a> &nbsp;·&nbsp;
+    <a href="#crisis">Get Help</a>
+  </p>
+  <p style="margin-top:1.5rem; font-size:0.8rem; opacity:0.5">If you're in crisis, please call Lifeline: 13 11 14 or Kids Helpline: 1800 55 1800</p>
+</footer>
+
+<script>
+// ─── BREATHING EXERCISE ───
+let breathingActive = false;
+let breathTimer = null;
+let breathPhase = 0;
+let breathCount = 0;
+const phases = [
+  { label: 'inhale', word: 'breathe in', duration: 4000, scale: 1.4 },
+  { label: 'hold', word: 'hold', duration: 4000, scale: 1.4 },
+  { label: 'exhale', word: 'breathe out', duration: 4000, scale: 1.0 },
+  { label: 'hold', word: 'hold', duration: 4000, scale: 1.0 }
+];
+let countInterval = null;
+let phaseSecondsLeft = 4;
+
+function toggleBreathing() {
+  if (breathingActive) {
+    breathingActive = false;
+    clearTimeout(breathTimer);
+    clearInterval(countInterval);
+    document.getElementById('breathWord').textContent = 'ready';
+    document.getElementById('breathCount').textContent = 'tap to begin';
+    document.getElementById('breathBtn').textContent = 'Start breathing';
+    document.getElementById('breathStatus').textContent = '';
+    const c = document.getElementById('breathCircle');
+    c.style.transform = 'scale(1)';
+    c.style.transition = 'transform 0.5s ease';
+    breathPhase = 0;
+    breathCount = 0;
+  } else {
+    breathingActive = true;
+    document.getElementById('breathBtn').textContent = 'Stop';
+    runBreathPhase();
+  }
+}
+
+function runBreathPhase() {
+  if (!breathingActive) return;
+  const p = phases[breathPhase];
+  const c = document.getElementById('breathCircle');
+  document.getElementById('breathWord').textContent = p.word;
+  c.style.transition = `transform ${p.duration}ms ease-in-out`;
+  c.style.transform = `scale(${p.scale})`;
+  phaseSecondsLeft = p.duration / 1000;
+  document.getElementById('breathCount').textContent = phaseSecondsLeft;
+  clearInterval(countInterval);
+  countInterval = setInterval(() => {
+    phaseSecondsLeft--;
+    if (phaseSecondsLeft > 0) {
+      document.getElementById('breathCount').textContent = phaseSecondsLeft;
+    }
+  }, 1000);
+  if (breathPhase === 3) breathCount++;
+  if (breathCount > 0) {
+    document.getElementById('breathStatus').textContent = `Round ${breathCount} complete — well done 💚`;
+  }
+  breathTimer = setTimeout(() => {
+    breathPhase = (breathPhase + 1) % 4;
+    runBreathPhase();
+  }, p.duration);
+}
+
+// ─── INTERACTIVE GROUNDING CONTROLLER ───
+function updateGroundingProgress() {
+  let checkedCount = 0;
+  for (let i = 1; i <= 5; i++) {
+    const chk = document.getElementById(`chk-${i}`);
+    const row = document.getElementById(`gstep-${i}`);
+    if (chk && chk.checked) {
+      checkedCount++;
+      row.classList.add('completed');
+    } else if (row) {
+      row.classList.remove('completed');
+    }
+  }
+
+  const counterDisplay = document.getElementById('groundingCounter');
+  const calloutBox = document.getElementById('groundingCalloutBox');
+  const calloutText = document.getElementById('groundingCalloutText');
+
+  counterDisplay.textContent = `${checkedCount} / 5`;
+
+  if (checkedCount === 5) {
+    calloutBox.classList.add('all-done');
+    counterDisplay.textContent = "✨ 5 · 4 · 3 · 2 · 1 ✨";
+    calloutText.textContent = "Incredible job. Your focus has successfully pivoted away from abstract, hypothetical future anxieties and re-anchored back into the biological present room. Take a deep, natural breath.";
+  } else {
+    calloutBox.classList.remove('all-done');
+    calloutText.textContent = "Checking off these boxes systematically activates the analytical prefrontal cortex of your brain, signaling your primitive amygdala to down-regulate its fight-or-flight distress code.";
+  }
+}
+
+// ─── ACTIVITY 1: GRATITUDE JAR ARCHITECTURE ───
+function addGratitudeItem() {
+  const inputElement = document.getElementById('jarInputText');
+  const txt = inputElement.value.trim();
+  if (!txt) return;
+
+  const jar = document.getElementById('glassJarContainer');
+  const placeholder = document.getElementById('jarEmptyText');
+  
+  if (placeholder) {
+    placeholder.style.display = 'none';
+  }
+
+  // Create physical visual node inside jar matrix
+  const noteNode = document.createElement('div');
+  noteNode.className = 'jar-note';
+  noteNode.textContent = txt;
+  
+  // Random color variant generation
+  const colorPalettes = [
+    { bg: '#fff5cc', border: '#ffe680', text: '#735300' },
+    { bg: '#e8f2ec', border: '#b8d4c0', text: '#2c3e35' },
+    { bg: '#eaf4f9', border: '#b8d8ea', text: '#2a7090' },
+    { bg: '#fdf0ee', border: '#f5d5cf', text: '#b05848' },
+    { bg: '#f0eef8', border: '#ccc7e4', text: '#5a4fa0' }
+  ];
+  const choice = colorPalettes[Math.floor(Math.random() * colorPalettes.length)];
+  noteNode.style.backgroundColor = choice.bg;
+  noteNode.style.borderColor = choice.border;
+  noteNode.style.color = choice.text;
+
+  jar.appendChild(noteNode);
+  inputElement.value = '';
+}
+
+// ─── ACTIVITY 2: PMR CORE SCHEDULER ───
+let pmrIndex = -1;
+let pmrInterval = null;
+const pmrStages = [
+  { muscle: "Step 1: Fists & Lower Arms", tension: "Clench both fists tightly. Squeeze your forearms into hard rock structures. Notice the raw strain.", duration: 5 },
+  { muscle: "Step 2: Shoulders & Neck", tension: "Shrug your shoulders sky-high, trying to touch your earlobes. Clamp your neck muscles inward.", duration: 5 },
+  { muscle: "Step 3: Jaw & Face Matrix", tension: "Clench your teeth together, squeeze your eyes shut tight, and wrinkle your forehead up hard.", duration: 5 },
+  { muscle: "Step 4: Chest & Stomach Core", tension: "Take a huge breath, expand your lungs fully, tight-lock your core abs down like a shield.", duration: 5 },
+  { muscle: "Step 5: Feet & Calves", tension: "Curl your toes hard down towards the soles of your feet, flexing your calf muscles like springs.", duration: 5 }
+];
+
+function advancePMRModule() {
+  clearInterval(pmrInterval);
+  const mTitle = document.getElementById('pmrMuscle');
+  const mDesc = document.getElementById('pmrInstruction');
+  const badge = document.getElementById('pmrBadge');
+  const bar = document.getElementById('pmrProgressFill');
+  const btn = document.getElementById('pmrActionBtn');
+
+  pmrIndex++;
+  if (pmrIndex >= pmrStages.length) {
+    // Reset state configuration
+    mTitle.textContent = "Session Complete 🌊";
+    mDesc.textContent = "Your entire muscular footprint has been cycled through localized stress dumps. Your structural body is now naturally heavy, soft, and relaxed.";
+    badge.style.display = 'none';
+    bar.style.width = '100%';
+    btn.textContent = "Restart PMR Cycle";
+    pmrIndex = -1;
+    return;
+  }
+
+  const current = pmrStages[pmrIndex];
+  bar.style.width = `${((pmrIndex) / pmrStages.length) * 100}%`;
+  mTitle.textContent = current.muscle;
+  mDesc.textContent = current.tension;
+  
+  badge.textContent = "Tense & Hold";
+  badge.className = "pmr-indicator tense";
+  badge.style.display = "inline-block";
+  btn.style.pointerEvents = "none";
+  btn.style.opacity = "0.5";
+
+  let timeRemaining = current.duration;
+  btn.textContent = `Hold for ${timeRemaining}s`;
+
+  pmrInterval = setInterval(() => {
+    timeRemaining--;
+    if (timeRemaining > 0) {
+      btn.textContent = `Hold for ${timeRemaining}s`;
+    } else {
+      clearInterval(pmrInterval);
+      // Change state matrix to release
+      badge.textContent = "RELEASE & UNCLAMP";
+      badge.className = "pmr-indicator release";
+      mDesc.textContent = "Drop the muscles instantly! Let them melt like butter. Notice the warm, tingling rushing sensation of fresh oxygen flooding back into the tissue.";
+      btn.style.pointerEvents = "auto";
+      btn.style.opacity = "1";
+      
+      if (pmrIndex === pmrStages.length - 1) {
+        btn.textContent = "Finish Routine";
+      } else {
+        btn.textContent = "Move to Next Step →";
+      }
+    }
+  }, 1000);
+}
+
+// ─── AFFIRMATIONS ───
+const affirmations = [
+  "You are not a burden. You are a person who is struggling, and that is allowed.",
+  "Healing isn't linear. Some days are harder than others, and that doesn't mean you're failing.",
+  "You don't have to have it all figured out. No one your age does, despite what it looks like.",
+  "The way you feel right now is not the way you will feel forever.",
+  "Asking for help is one of the bravest things a person can do.",
+  "You are more than your grades, your social media, or what anyone thinks of you.",
+  "It's okay to take up space. Your needs and feelings deserve to be heard.",
+  "You have survived every hard day you've ever had. That's 100% of them.",
+  "Being kind to yourself is not weakness — it's the foundation of everything else.",
+  "Your worth is not determined by your productivity, your appearance, or your achievements."
+];
+let lastAffirm = 0;
+function newAffirmation() {
+  let idx;
+  do { idx = Math.floor(Math.random() * affirmations.length); } while (idx === lastAffirm);
+  lastAffirm = idx;
+  const el = document.getElementById('affirmText');
+  el.style.opacity = '0';
+  setTimeout(() => {
+    el.textContent = affirmations[idx];
+    el.style.opacity = '1';
+  }, 200);
+}
+document.getElementById('affirmText').style.transition = 'opacity 0.3s';
+
+// ─── MOOD TRACKER ───
+let selectedMoodEmoji = null;
+let selectedMoodLabel = null;
+const moodHistory = [];
+
+function selectMood(el, emoji, label) {
+  document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedMoodEmoji = emoji;
+  selectedMoodLabel = label;
+}
+
+function saveMood() {
+  if (!selectedMoodEmoji) {
+    document.getElementById('moodMessage').textContent = 'Please select how you\'re feeling first.';
+    return;
+  }
+  const note = document.getElementById('moodNote').value.trim();
+  const now = new Date();
+  const timeStr = now.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+  moodHistory.unshift({ emoji: selectedMoodEmoji, label: selectedMoodLabel, note, time: timeStr });
+  renderMoodHistory();
+  document.getElementById('moodNote').value = '';
+  document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('selected'));
+  const msgs = ['Check-in saved 💚', 'Noted — thank you for checking in 🌿', 'Saved! Remember, all feelings are valid 🙂'];
+  document.getElementById('moodMessage').textContent = msgs[Math.floor(Math.random()*msgs.length)];
+  selectedMoodEmoji = null;
+  selectedMoodLabel = null;
+  setTimeout(() => document.getElementById('moodMessage').textContent = '', 3000);
+}
+
+function renderMoodHistory() {
+  const el = document.getElementById('moodHistory');
+  if (moodHistory.length === 0) {
+    el.innerHTML = '<div class="mood-empty">Your mood history will appear here as you track your feelings.</div>';
+    return;
+  }
+  el.innerHTML = moodHistory.slice(0, 6).map(e =>
+    `<div class="mood-entry">
+      <span class="time">${e.time}</span>
+      <span style="font-size:1.2rem">${e.emoji}</span>
+      <span style="font-weight:500;font-size:0.88rem">${e.label}</span>
+      ${e.note ? `<span style="color:var(--text-muted);font-size:0.82rem;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${e.note}</span>` : ''}
+    </div>`
+  ).join('');
+}
+
+// ─── JOURNAL ───
+const journalPrompts = [
+  "What's one thing that's been weighing on your mind lately? What would it feel like to let that go?",
+  "Describe a moment this week when you felt genuinely okay. What was happening?",
+  "What would you say to a friend who was feeling exactly the way you feel right now?",
+  "What are three things that you're grateful for today — no matter how small?",
+  "Is there something you've been avoiding thinking about? What's one small step you could take?"
+];
+let lastPrompt = 0;
+function newPrompt() {
+  let idx;
+  do { idx = Math.floor(Math.random() * journalPrompts.length); } while (idx === lastPrompt);
+  lastPrompt = idx;
+  document.getElementById('promptText').textContent = journalPrompts[idx];
+}
+function clearJournal() {
+  if (document.getElementById('journalTextarea').value && !confirm('Clear your journal entry?')) return;
+  document.getElementById('journalTextarea').value = '';
+  newPrompt();
+}
+</script>
+</body>
+</html>
