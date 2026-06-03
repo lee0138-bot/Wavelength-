@@ -350,7 +350,13 @@
   .breathing-inner .section-tag { color: var(--sage-light); }
   .breathing-inner h2 { color: white; }
   .breathing-inner h2 em { color: var(--sage-light); }
-  .breathing-inner .section-lead { color: rgba(255,255,255,0.65); max-width: 100%; margin: 0 auto 3rem; }
+  .breathing-inner .section-lead { color: rgba(255,255,255,0.65); max-width: 100%; margin: 0 auto 2rem; }
+  
+  .sound-toggle-wrap {
+    display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 1.5rem;
+  }
+  .sound-toggle-wrap label { font-size: 0.88rem; color: rgba(255,255,255,0.7); cursor: pointer; user-select: none; }
+  
   .breath-circle-wrap {
     display: flex; justify-content: center; margin: 2rem 0;
   }
@@ -369,7 +375,7 @@
     width: 100%; height: 100%;
     border-radius: 50%;
     border: 2px solid rgba(122,171,138,0.2);
-    animation: none;
+    transform: scale(1);
   }
   .breath-label {
     font-family: 'Fraunces', serif;
@@ -378,6 +384,7 @@
     color: white;
     text-align: center;
     pointer-events: none;
+    z-index: 2;
   }
   .breath-sub { font-size: 0.75rem; opacity: 0.7; margin-top: 0.3rem; }
   .breathing-steps {
@@ -386,7 +393,7 @@
     flex-wrap: wrap;
   }
   .bstep {
-    text-align: center;
+    text-align: center; padding: 0.4rem 1rem; border-radius: 8px; border: 1px solid transparent; transition: all 0.3s;
   }
   .bstep-num {
     font-family: 'Fraunces', serif;
@@ -396,6 +403,7 @@
     line-height: 1;
   }
   .bstep-label { font-size: 0.8rem; opacity: 0.65; margin-top: 0.3rem; }
+  
   #breathBtn {
     background: var(--sage);
     color: white;
@@ -407,13 +415,16 @@
     cursor: pointer;
     transition: background 0.2s;
     font-family: 'DM Sans', sans-serif;
-    margin-top: 1rem;
   }
   #breathBtn:hover { background: #6a9a7a; }
+  
+  .breathing-inner .btn-reset { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.3); }
+  .breathing-inner .btn-reset:hover { border-color: var(--blush); color: white; background: var(--blush); }
+
   #breathStatus {
     font-size: 0.9rem;
     opacity: 0.65;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     min-height: 1.5rem;
   }
 
@@ -638,7 +649,7 @@
   #pmrProgressFill {
     width: 0%; height: 100%; background: var(--sky); transition: width 0.3s ease;
   }
-  .pmr-controls computationally {
+  .pmr-controls button {
     background: var(--sky); color: white; border: none; padding: 0.8rem 2rem;
     border-radius: 50px; font-size: 0.95rem; font-weight: 500; cursor: pointer;
     font-family: 'DM Sans', sans-serif; transition: background 0.2s;
@@ -772,7 +783,7 @@
     border: 1px solid rgba(122,171,138,0.15);
     font-size: 0.88rem;
   }
-  .mood-entry .time { font-size: 0.75rem; color: var(--text-muted); min-width: 60px; }
+  .mood-entry .time { font-size: 0.75rem; color: var(--text-muted); min-width: 75px; }
   .mood-empty {
     font-size: 0.9rem;
     color: var(--text-muted);
@@ -825,7 +836,7 @@
     line-height: 1.7;
   }
   #journalTextarea:focus { outline: none; border-color: var(--sage); background: white; }
-  .journal-actions { display: flex; gap: 1rem; margin-top: 1rem; }
+  .journal-actions { display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
   .journal-btn {
     padding: 0.7rem 1.5rem;
     border-radius: 50px;
@@ -842,15 +853,13 @@
   .journal-btn.secondary:hover { background: var(--sage); color: white; }
 
   /* EXPANDED CRISIS RESOURCES (10 LINKS) */
-  .crisis-section {
-    background: #1a2d24;
-    color: white;
-  }
+  .crisis-section { background: #1a2d24; color: white; }
   .crisis-inner { max-width: 1100px; margin: 0 auto; }
   .crisis-inner .section-tag { color: var(--blush-light); }
   .crisis-inner h2 { color: white; margin-bottom: 0.8rem; }
   .crisis-inner h2 em { color: var(--blush); }
   .crisis-inner .section-lead { color: rgba(255,255,255,0.65); max-width: 600px; }
+  
   .crisis-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -877,54 +886,39 @@
     color: var(--blush-light);
   }
   .crisis-card p { font-size: 0.88rem; opacity: 0.65; line-height: 1.6; margin-bottom: 1rem; }
-  .crisis-contact {
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: white;
-    text-decoration: none;
-    margin-top: auto;
-    word-break: break-all;
-  }
+  .crisis-contact { font-size: 1.1rem; font-weight: 500; color: white; text-decoration: none; margin-top: auto; word-break: break-all; }
+  .crisis-contact:hover { text-decoration: underline; color: var(--blush-light); }
   .crisis-badge {
-    display: inline-block;
-    background: var(--blush);
-    color: white;
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    padding: 0.2rem 0.6rem;
-    border-radius: 50px;
-    margin-bottom: 0.8rem;
+    display: inline-block; background: var(--blush); color: white; font-size: 0.7rem;
+    font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 50px; margin-bottom: 0.8rem;
   }
-  .crisis-note {
-    margin-top: 2.5rem;
-    padding: 1.5rem 2rem;
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: var(--radius-sm);
+  .crisis-note { margin-top: 2.5rem; padding: 1.5rem 2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-sm); font-size: 0.88rem; opacity: 0.7; line-height: 1.8; }
+
+  /* GENERAL RESET STYLING */
+  .btn-reset {
+    background: transparent;
+    color: var(--text-muted);
+    border: 1.5px solid rgba(44,62,53,0.15);
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
     font-size: 0.88rem;
-    opacity: 0.7;
-    line-height: 1.8;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .btn-reset:hover {
+    border-color: #b05848;
+    color: #b05848;
+    background: #fdf0ee;
   }
 
   /* FOOTER */
   footer {
-    background: var(--text);
-    color: rgba(255,255,255,0.65);
-    padding: 3rem 2rem;
-    text-align: center;
-    font-size: 0.88rem;
-    line-height: 1.8;
+    background: var(--text); color: rgba(255,255,255,0.65); padding: 3rem 2rem; text-align: center; font-size: 0.88rem; line-height: 1.8;
   }
   footer a { color: var(--sage-light); text-decoration: none; }
-  .footer-logo {
-    font-family: 'Fraunces', serif;
-    font-size: 1.5rem;
-    font-weight: 400;
-    color: white;
-    margin-bottom: 1rem;
-    display: block;
-  }
+  .footer-logo { font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 400; color: white; margin-bottom: 1rem; display: block; }
   .footer-logo span { color: var(--blush-light); }
 
   @media (max-width: 768px) {
@@ -938,770 +932,974 @@
 </head>
 <body>
 
-<nav>
-  <div class="nav-logo">Wave<span>length</span></div>
-  <ul class="nav-links">
-    <li><a href="#feelings">How I Feel</a></li>
-    <li><a href="#tools">Tools</a></li>
-    <li><a href="#grounding">Grounding</a></li>
-    <li><a href="#gratitudejar">Gratitude Jar</a></li>
-    <li><a href="#pmr">Muscle Relief</a></li>
-    <li><a href="#crisis">Get Help</a></li>
-  </ul>
-  <a href="#crisis" class="nav-crisis">Need Help Now?</a>
-</nav>
+  <nav>
+    <div class="nav-logo">Wave<span>length</span></div>
+    <ul class="nav-links">
+      <li><a href="#feelings">How I Feel</a></li>
+      <li><a href="#tools">Tools</a></li>
+      <li><a href="#grounding">Grounding</a></li>
+      <li><a href="#gratitudejar">Gratitude Jar</a></li>
+      <li><a href="#pmr">Muscle Relief</a></li>
+      <li><a href="#crisis">Get Help</a></li>
+    </ul>
+    <a href="#crisis" class="nav-crisis">Need Help Now?</a>
+  </nav>
 
-<section class="hero">
-  <div class="blob-1 hero-blob"></div>
-  <div class="blob-2 hero-blob"></div>
-  <div class="blob-3 hero-blob"></div>
-  <div class="hero-inner">
-    <div>
-      <div class="hero-tag">
-        <div class="hero-dot"></div>
-        You are not alone
-      </div>
-      <h1>Your feelings<br><em>are valid.</em><br>We're here.</h1>
-      <p class="hero-sub">A safe space for teens to understand emotions, practice self-care, and find support — whenever you need it.</p>
-      <div class="hero-actions">
-        <a href="#tools" class="btn-primary">Explore Tools</a>
-        <a href="#crisis" class="btn-ghost">Get Help Now</a>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <div class="mood-card">
-        <div class="mood-header">How are you feeling right now?</div>
-        <div class="mood-row">
-          <div class="mood-pill sage" onclick="document.getElementById('moodtracker').scrollIntoView();">😌 Calm</div>
-          <div class="mood-pill blush" onclick="document.getElementById('moodtracker').scrollIntoView();">😟 Worried</div>
-          <div class="mood-pill sky" onclick="document.getElementById('moodtracker').scrollIntoView();">😢 Sad</div>
-          <div class="mood-pill amber" onclick="document.getElementById('moodtracker').scrollIntoView();">😤 Stressed</div>
-          <div class="mood-pill lavender" onclick="document.getElementById('moodtracker').scrollIntoView();">😶 Numb</div>
-          <div class="mood-pill blush" onclick="document.getElementById('moodtracker').scrollIntoView();">😡 Angry</div>
+  <section class="hero">
+    <div class="blob-1 hero-blob"></div>
+    <div class="blob-2 hero-blob"></div>
+    <div class="blob-3 hero-blob"></div>
+    <div class="hero-inner">
+      <div>
+        <div class="hero-tag">
+          <div class="hero-dot"></div> You are not alone
+        </div>
+        <h1>Your feelings<br><em>are valid.</em><br>We're here.</h1>
+        <p class="hero-sub">A safe space for teens to understand emotions, practice self-care, and find support — whenever you need it.</p>
+        <div class="hero-actions">
+          <a href="#tools" class="btn-primary">Explore Tools</a>
+          <a href="#crisis" class="btn-ghost">Get Help Now</a>
         </div>
       </div>
-      <div class="quote-card">
-        <div class="quote-text">"It's okay to not be okay. What matters is that you reach out."</div>
-        <div class="quote-attr">— A reminder for hard days</div>
+      <div class="hero-visual">
+        <div class="mood-card">
+          <div class="mood-header">How are you feeling right now?</div>
+          <div class="mood-row">
+            <div class="mood-pill sage" onclick="document.getElementById('moodtracker').scrollIntoView({behavior: 'smooth'});">😌 Calm</div>
+            <div class="mood-pill blush" onclick="document.getElementById('moodtracker').scrollIntoView({behavior: 'smooth'});">😟 Worried</div>
+            <div class="mood-pill sky" onclick="document.getElementById('moodtracker').scrollIntoView({behavior: 'smooth'});">😢 Sad</div>
+            <div class="mood-pill amber" onclick="document.getElementById('moodtracker').scrollIntoView({behavior: 'smooth'});">😤 Stressed</div>
+            <div class="mood-pill lavender" onclick="document.getElementById('moodtracker').scrollIntoView({behavior: 'smooth'});">😶 Numb</div>
+            <div class="mood-pill blush" onclick="document.getElementById('moodtracker').scrollIntoView({behavior: 'smooth'});">😡 Angry</div>
+          </div>
+        </div>
+        <div class="quote-card">
+          <div class="quote-text">"It's okay to not be okay. What matters is that you reach out."</div>
+          <div class="quote-attr">— A reminder for hard days</div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="feelings-section" id="feelings">
-  <div class="section-inner">
-    <span class="section-tag">Understanding emotions</span>
-    <h2>What are you<br><em>going through?</em></h2>
-    <p class="section-lead">Every feeling has a name, and every feeling makes sense. Here's what might be happening — and what can help.</p>
-    <div class="feelings-grid">
-      <div class="feeling-card anxiety">
-        <span class="feeling-icon">💭</span>
-        <h3>Anxiety</h3>
-        <p>That constant worry, racing thoughts, or tight chest — anxiety is your nervous system working overtime. It's incredibly common in teens, and there are real tools to manage it.</p>
-      </div>
-      <div class="feeling-card sadness">
-        <span class="feeling-icon">🌧️</span>
-        <h3>Sadness & Depression</h3>
-        <p>Feeling empty, low, or like nothing matters can be signs of depression. You're not broken — your brain chemistry needs support, just like a body needs treatment when it's sick.</p>
-      </div>
-      <div class="feeling-card stress">
-        <span class="feeling-icon">📚</span>
-        <h3>Stress & Burnout</h3>
-        <p>School, expectations, social pressure — it's a lot. Chronic stress is real and it affects your sleep, concentration, and mood. You deserve breaks, and asking for help is smart.</p>
-      </div>
-      <div class="feeling-card anger">
-        <span class="feeling-icon">🔥</span>
-        <h3>Anger</h3>
-        <p>Anger is a signal, not a flaw. Often it's covering hurt, fear, or frustration. Learning to understand and channel your anger — rather than suppress it — is a real strength.</p>
-      </div>
-      <div class="feeling-card loneliness">
-        <span class="feeling-icon">🌿</span>
-        <h3>Loneliness</h3>
-        <p>You can feel alone in a crowded room. Social media makes it worse by making everyone else's life look perfect. You're not the only one who feels disconnected — truly.</p>
-      </div>
-      <div class="feeling-card overwhelm">
-        <span class="feeling-icon">🌊</span>
-        <h3>Overwhelm</h3>
-        <p>When everything feels like too much at once, your brain goes into survival mode. Learning to pause, breathe, and take things one step at a time is a skill that can be practised.</p>
+  <section class="feelings-section" id="feelings">
+    <div class="section-inner">
+      <span class="section-tag">Emotions Decoded</span>
+      <h2>Understanding what you're <em>going through</em></h2>
+      <p class="section-lead">Name what you're feeling to help take away its power. Here's a quick guide to common emotions.</p>
+      
+      <div class="feelings-grid">
+        <div class="feeling-card anxiety">
+          <span class="feeling-icon">🔮</span>
+          <h3>Anxiety</h3>
+          <p>A racing heart, looping "what-ifs," or a tight feeling in your chest. It's your brain trying too hard to protect you from future threats.</p>
+        </div>
+        <div class="feeling-card sadness">
+          <span class="feeling-icon">🌧️</span>
+          <h3>Sadness</h3>
+          <p>A heavy, low-energy sensation. It can make you want to pull away or cry. It's a natural signal that you are processing a hurt or a loss.</p>
+        </div>
+        <div class="feeling-card stress">
+          <span class="feeling-icon">⚡</span>
+          <h3>Stress</h3>
+          <p>Feeling physically pressured, overwhelmed by demands, or scattered. It happens when challenges feel larger than our current energy levels.</p>
+        </div>
+        <div class="feeling-card anger">
+          <span class="feeling-icon">🔥</span>
+          <h3>Anger</h3>
+          <p>A hot explosion of energy, clenching fists, or frustration. Often acts like a shield protecting softer, hidden feelings like hurt or unfairness.</p>
+        </div>
+        <div class="feeling-card loneliness">
+          <span class="feeling-icon">🪐</span>
+          <h3>Loneliness</h3>
+          <p>An empty or hollow ache that tells you you are disconnected or unseen. It's a natural signal driving us toward meaningful human connection.</p>
+        </div>
+        <div class="feeling-card overwhelm">
+          <span class="feeling-icon">🌊</span>
+          <h3>Overwhelm</h3>
+          <p>A flooding sensation where everything hits at once, making it impossible to focus. It means your sensory or cognitive cup is completely full.</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="tools-section" id="tools">
-  <div class="section-inner">
-    <span class="section-tag">Interactive Coping Toolbox</span>
-    <h2>Mental fitness <em>strategies</em></h2>
-    <p class="section-lead">Choose a self-care tool below to help actively process anxiety, stress, or sensory clutter right now.</p>
-    <div class="tools-grid">
-      <div class="tool-card">
-        <div class="tool-icon breathing">🧘‍♂️</div>
-        <h3>Box Breathing</h3>
-        <p>Reset racing thoughts and dial down physical panic using a synchronized pacing rhythm.</p>
-        <a href="#tools-breathing" class="tool-link">Breath work →</a>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon grounding">🖐️</div>
-        <h3>5-4-3-2-1 Sensory Checklist</h3>
-        <p>An interactive sensory exploration to break free from loop-thinking patterns.</p>
-        <a href="#grounding" class="tool-link">Ground yourself →</a>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon jar">✨</div>
-        <h3>Gratitude Jar</h3>
-        <p>Drop positive moments into a secure glass tracker to retrain your lens of perspective.</p>
-        <a href="#gratitudejar" class="tool-link">Open Jar →</a>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon pmr">💪</div>
-        <h3>Progressive Muscle Release</h3>
-        <p>Systematically unclamp tension points across your shoulders, jaw, and limbs.</p>
-        <a href="#pmr" class="tool-link">Release tension →</a>
+  <section class="tools-section" id="tools">
+    <div class="section-inner">
+      <span class="section-tag">Interactive Exercises</span>
+      <h2>Your personal <em>mental health toolkit</em></h2>
+      <p class="section-lead">Bite-sized, research-backed exercises designed to anchor you back to the present moment when waves hit.</p>
+      
+      <div class="tools-grid">
+        <div class="tool-card">
+          <div class="tool-icon breathing">🌬️</div>
+          <h3>Breathing Pacer</h3>
+          <p>Calm your nervous system instantly using structured deep breathing cycles.</p>
+          <a href="#breathing" class="tool-link">Start breathing →</a>
+        </div>
+        <div class="tool-card">
+          <div class="tool-icon grounding">🧭</div>
+          <h3>5-4-3-2-1 Method</h3>
+          <p>Anchor your awareness back to reality using your sensory environment.</p>
+          <a href="#grounding" class="tool-link">Get grounded →</a>
+        </div>
+        <div class="tool-card">
+          <div class="tool-icon jar">🏺</div>
+          <h3>Gratitude Jar</h3>
+          <p>Collect and visualize the small, bright dots of good in your daily life.</p>
+          <a href="#gratitudejar" class="tool-link">Fill your jar →</a>
+        </div>
+        <div class="tool-card">
+          <div class="tool-icon pmr">🧘</div>
+          <h3>Muscle Relief (PMR)</h3>
+          <p>Systematically release accumulated physical stress and tension from your muscles.</p>
+          <a href="#pmr" class="tool-link">Release tension →</a>
+        </div>
+        <div class="tool-card">
+          <div class="tool-icon affirmation">✨</div>
+          <h3>Affirmations</h3>
+          <p>Rewire looping negative self-talk into supportive, gentle observations.</p>
+          <a href="#affirmations" class="tool-link">Read words →</a>
+        </div>
+        <div class="tool-card">
+          <div class="tool-icon journal">📝</div>
+          <h3>Mood & Journal</h3>
+          <p>Track patterns in your mood over time and write freely with mindful prompts.</p>
+          <a href="#moodtracker" class="tool-link">Log entry →</a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="breathing-section" id="tools-breathing">
-  <div class="section-inner">
+  <section class="breathing-section" id="breathing">
     <div class="breathing-inner">
-      <span class="section-tag">Calm your nervous system</span>
-      <h2>Box <em>breathing</em></h2>
-      <p class="section-lead">This technique is used by athletes, surgeons, and even special forces to calm anxiety in seconds. Try it right now.</p>
-      <div class="breathing-steps">
-        <div class="bstep">
-          <span class="bstep-num">4</span>
-          <div class="bstep-label">Inhale</div>
-        </div>
-        <div class="bstep">
-          <span class="bstep-num">4</span>
-          <div class="bstep-label">Hold</div>
-        </div>
-        <div class="bstep">
-          <span class="bstep-num">4</span>
-          <div class="bstep-label">Exhale</div>
-        </div>
-        <div class="bstep">
-          <span class="bstep-num">4</span>
-          <div class="bstep-label">Hold</div>
-        </div>
+      <span class="section-tag">Regulate Your Nervous System</span>
+      <h2>Box Breathing <em>Pacer</em></h2>
+      <p class="section-lead">Follow the pacer to balance oxygen levels, slow your heart rate, and turn off your fight-or-flight circuits.</p>
+      
+      <div class="sound-toggle-wrap">
+        <input type="checkbox" id="breathingSoundToggle" checked>
+        <label for="breathingSoundToggle">Enable Dynamic Audio Pacer tones</label>
       </div>
+
       <div class="breath-circle-wrap">
         <div class="breath-circle" id="breathCircle">
           <div class="breath-ring" id="breathRing"></div>
           <div class="breath-label">
-            <div id="breathWord">ready</div>
-            <div class="breath-sub" id="breathCount">tap to begin</div>
+            <div id="breathTxt">Click Start</div>
+            <div class="breath-sub" id="breathTimer">4s</div>
           </div>
         </div>
       </div>
-      <button id="breathBtn" onclick="toggleBreathing()">Start breathing</button>
-      <p id="breathStatus"></p>
+      
+      <div class="breathing-steps">
+        <div class="bstep" id="bstepIn"><span class="bstep-num">4s</span><span class="bstep-label">Inhale</span></div>
+        <div class="bstep" id="bstepHold1"><span class="bstep-num">4s</span><span class="bstep-label">Hold</span></div>
+        <div class="bstep" id="bstepOut"><span class="bstep-num">4s</span><span class="bstep-label">Exhale</span></div>
+        <div class="bstep" id="bstepHold2"><span class="bstep-num">4s</span><span class="bstep-label">Hold</span></div>
+      </div>
+      
+      <div style="display: flex; gap: 1rem; justify-content: center; align-items: center;">
+        <button id="breathBtn">Start Exercise</button>
+        <button class="btn-reset" id="breathResetBtn">Reset</button>
+      </div>
+      <div id="breathStatus">Ready to begin your deep breaths.</div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="grounding-section" id="grounding">
-  <div class="section-inner">
-    <span class="section-tag">Anxiety grounding technique</span>
-    <h2>The 5-4-3-2-1<br><em>method</em></h2>
-    <p class="section-lead">When anxiety spikes, bring yourself back to the present. Type out your responses and check them off as you find them.</p>
-    <div class="grounding-grid">
-      <div class="grounding-steps">
-        <div class="g-step" id="gstep-5">
-          <input type="checkbox" class="g-checkbox" id="chk-5" onchange="updateGroundingProgress(5)">
-          <div class="g-num n5">5</div>
-          <div class="g-content">
-            <h4>Things you can see</h4>
-            <p>Look around and notice five distinct physical items. Pay attention to light or shadows.</p>
-            <input type="text" class="g-input" placeholder="Type what you see...">
+  <section class="grounding-section" id="grounding">
+    <div class="section-inner">
+      <span class="section-tag">Anxiety Circuit-Breaker</span>
+      <h2>The 5-4-3-2-1 <em>Grounding Technique</em></h2>
+      <p class="section-lead">When thoughts spin, re-engage your physical senses to find stability in the absolute present room.</p>
+      
+      <div class="grounding-grid">
+        <div class="grounding-steps">
+          <div class="g-step" id="gStep5">
+            <input type="checkbox" class="g-checkbox" onchange="toggleGStep(5)">
+            <div class="g-num n5">5</div>
+            <div class="g-content">
+              <h4>Things you can SEE around you</h4>
+              <p>Look around and notice small details: a shadow, a plant pattern, a reflection.</p>
+              <input type="text" class="g-input" placeholder="Type what you see here...">
+            </div>
+          </div>
+          <div class="g-step" id="gStep4">
+            <input type="checkbox" class="g-checkbox" onchange="toggleGStep(4)">
+            <div class="g-num n4">4</div>
+            <div class="g-content">
+              <h4>Things you can FEEL physically</h4>
+              <p>Notice physical anchors: fabric textures, cold air, your back against the chair.</p>
+              <input type="text" class="g-input" placeholder="Type what you feel here...">
+            </div>
+          </div>
+          <div class="g-step" id="gStep3">
+            <input type="checkbox" class="g-checkbox" onchange="toggleGStep(3)">
+            <div class="g-num n3">3</div>
+            <div class="g-content">
+              <h4>Things you can HEAR clearly</h4>
+              <p>Listen past your internal noise: a distant car hum, clock tick, wind blowing.</p>
+              <input type="text" class="g-input" placeholder="Type what you hear here...">
+            </div>
+          </div>
+          <div class="g-step" id="gStep2">
+            <input type="checkbox" class="g-checkbox" onchange="toggleGStep(2)">
+            <div class="g-num n2">2</div>
+            <div class="g-content">
+              <h4>Things you can SMELL right now</h4>
+              <p>Inhale slowly: notice clothing soap, wood furniture, or just the ambient clean air.</p>
+              <input type="text" class="g-input" placeholder="Type what you smell here...">
+            </div>
+          </div>
+          <div class="g-step" id="gStep1">
+            <input type="checkbox" class="g-checkbox" onchange="toggleGStep(1)">
+            <div class="g-num n1">1</div>
+            <div class="g-content">
+              <h4>Thing you can TASTE or say out loud</h4>
+              <p>Notice the state of your palette, or say a simple, real fact: "I am safe right now."</p>
+              <input type="text" class="g-input" placeholder="Type what you taste or say here...">
+            </div>
           </div>
         </div>
-        <div class="g-step" id="gstep-4">
-          <input type="checkbox" class="g-checkbox" id="chk-4" onchange="updateGroundingProgress(4)">
-          <div class="g-num n4">4</div>
-          <div class="g-content">
-            <h4>Things you can touch</h4>
-            <p>Acknowledge four textures surrounding you (clothing, a phone screen, cold metal, wood).</p>
-            <input type="text" class="g-input" placeholder="Type textures you feel...">
-          </div>
-        </div>
-        <div class="g-step" id="gstep-3">
-          <input type="checkbox" class="g-checkbox" id="chk-3" onchange="updateGroundingProgress(3)">
-          <div class="g-num n3">3</div>
-          <div class="g-content">
-            <h4>Things you can hear</h4>
-            <p>Listen intently for three ambient noises (clock ticking, traffic far away, wind whistling).</p>
-            <input type="text" class="g-input" placeholder="Type sounds you hear...">
-          </div>
-        </div>
-        <div class="g-step" id="gstep-2">
-          <input type="checkbox" class="g-checkbox" id="chk-2" onchange="updateGroundingProgress(2)">
-          <div class="g-num n2">2</div>
-          <div class="g-content">
-            <h4>Things you can smell</h4>
-            <p>Identify two smells. If there are none near, imagine your favorite crisp morning air or soap scent.</p>
-            <input type="text" class="g-input" placeholder="Type scents you detect...">
-          </div>
-        </div>
-        <div class="g-step" id="gstep-1">
-          <input type="checkbox" class="g-checkbox" id="chk-1" onchange="updateGroundingProgress(1)">
-          <div class="g-num n1">1</div>
-          <div class="g-content">
-            <h4>Thing you can taste</h4>
-            <p>Focus on one flavor remaining on your tongue, or step away for a slow sip of cold water.</p>
-            <input type="text" class="g-input" placeholder="Type taste or internal mouth sensation...">
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="grounding-callout" id="groundingCalloutBox">
-          <span class="big-num" id="groundingCounter">0 / 5</span>
-          <p id="groundingCalloutText">Checking off these boxes systematically activates the analytical prefrontal cortex of your brain, signaling your primitive amygdala to down-regulate its fight-or-flight distress code.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="jar-section" id="gratitudejar">
-  <div class="section-inner">
-    <span class="section-tag">Shift Your Neural Pathways</span>
-    <h2>Your digital <em>gratitude jar</em></h2>
-    <p class="section-lead">When things feel dark, tracking microscopic wins can help reset your perspective. Type a quick positive element from today to lock it into your personal glass storage.</p>
-    <div class="jar-grid">
-      <div class="jar-form">
-        <label style="font-weight: 500; font-size: 0.95rem; display: block; margin-bottom: 0.5rem;">What is one tiny highlight from your day?</label>
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">It doesn't have to be massive. A reliable bus arriving on time, a funny meme, or a hot tea counts.</p>
-        <textarea id="jarInputText" class="jar-input" rows="3" placeholder="I am grateful for..."></textarea>
-        <button class="jar-btn" onclick="addGratitudeItem()">Drop Item Into Jar ✨</button>
-      </div>
-      <div class="jar-visual-container">
-        <div class="glass-jar" id="glassJarContainer">
-          <div class="jar-placeholder" id="jarEmptyText">Your jar is currently waiting for positive insights...</div>
+        
+        <div class="grounding-callout" id="gCallout">
+          <span class="big-num" id="gProgressCount">5</span>
+          <p id="gCalloutText">Steps remaining to establish presence. Focus on your surroundings one step at a time.</p>
+          <button class="btn-reset" id="groundingResetBtn" style="margin-top: 1.5rem; background: white; color: var(--text); border:none;">Reset Exercise</button>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="pmr-section" id="pmr">
-  <div class="section-inner">
-    <span class="section-tag">Decompress your skeletal system</span>
-    <h2>Progressive muscle <em>relaxation</em></h2>
-    <p class="section-lead">Stress builds up silently inside physical muscle tissue. Follow this interactive prompt matrix to safely lock and release built-up structural strain.</p>
-    <div class="pmr-container">
-      <div class="pmr-progress-bar">
-        <div id="pmrProgressFill"></div>
-      </div>
-      <div class="pmr-window">
-        <h3 id="pmrMuscle">Ready to release physical stress?</h3>
-        <p id="pmrInstruction">We will step through 5 core clusters. Find a stable seat or lay down flat before starting.</p>
-        <div class="pmr-pulse-box">
-          <span class="pmr-indicator" id="pmrBadge"></span>
+  <section class="jar-section" id="gratitudejar">
+    <div class="section-inner">
+      <span class="section-tag">Visualizing Positivity</span>
+      <h2>The Digital <em>Gratitude Jar</em></h2>
+      <p class="section-lead">Logging tiny, minor wins or soft moments trains your mind to scan for helpful assets instead of just tracking threats.</p>
+      
+      <div class="jar-grid">
+        <div class="jar-form">
+          <label style="font-weight: 500; font-size: 0.95rem; display: block; margin-bottom: 0.5rem; color: #735300;">What is one tiny thing you're glad happened today?</label>
+          <textarea class="jar-input" id="jarInput" rows="3" placeholder="Examples: A warm cup of milk, a funny message, catchy background music..."></textarea>
+          <div style="display: flex; gap: 1rem; align-items: center;">
+            <button class="jar-btn" onclick="addGratitudeNote()">Drop into Jar</button>
+            <button class="btn-reset" onclick="resetGratitudeJar()">Empty Jar</button>
+          </div>
+        </div>
+        
+        <div class="jar-visual-container">
+          <div class="glass-jar" id="glassJar">
+            <div class="jar-placeholder" id="jarPlaceholder">Your jar is empty.<br>Drop reflections inside to build visual warmth.</div>
+          </div>
         </div>
       </div>
-      <div class="pmr-controls">
-        <button id="pmrActionBtn" onclick="advancePMRModule()">Begin Guided System</button>
+    </div>
+  </section>
+
+  <section class="pmr-section" id="pmr">
+    <div class="section-inner">
+      <div class="pmr-container">
+        <span class="section-tag">Somatic Body Calm</span>
+        <h2>Progressive Muscle <em>Relaxation</em></h2>
+        <p class="section-lead" style="margin-bottom: 1.5rem;">Stress forms actual tension armor on your muscles. By purposefully clenching and then dropping that tension completely, you shock your body into full recovery.</p>
+        
+        <div class="pmr-window">
+          <div id="pmrMuscle">Ready to Begin</div>
+          <div id="pmrInstruction">Click Start to walk through a quick, full head-to-toe somatic physical relief cycle.</div>
+          <div class="pmr-pulse-box">
+            <div class="pmr-indicator tense" id="pmrIndicatorTense">TENSE MUSCLE NOW</div>
+            <div class="pmr-indicator release" id="pmrIndicatorRelease">LET GO COMPLETELY</div>
+          </div>
+        </div>
+        
+        <div class="pmr-progress-bar">
+          <div id="pmrProgressFill"></div>
+        </div>
+        
+        <div class="pmr-controls" style="display: flex; gap: 1rem; justify-content: center; align-items: center;">
+          <button id="pmrBtn" onclick="togglePMR()">Start PMR Guide</button>
+          <button class="btn-reset" onclick="resetPMR()">Reset Guide</button>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="affirmations-section" id="affirmations">
-  <div class="section-inner">
+  <section class="affirmations-section" id="affirmations">
     <div class="affirmations-inner">
-      <span class="section-tag">Daily reminders</span>
-      <h2>You need to<br><em>hear this</em></h2>
-      <p class="section-lead">Sometimes we need reminding of what's true when our inner voice is cruel. Tap for a new affirmation whenever you need one.</p>
+      <span class="section-tag">Cognitive Reframing</span>
+      <h2>Gentle <em>Reminders</em></h2>
+      <p class="section-lead">Kind validation structures your brain needs to read when inner self-criticism loops too hard.</p>
+      
       <div class="affirmation-display">
-        <p id="affirmText">You are not a burden. You are a person who is struggling, and that is allowed.</p>
+        <div id="affirmText">"You don't have to carry it all perfectly. Doing your best looks entirely different every day, and that is completely enough."</div>
       </div>
-      <button id="newAffirmBtn" onclick="newAffirmation()">Give me another ↺</button>
+      
+      <button id="newAffirmBtn" onclick="generateAffirmation()">Show Another Reminder</button>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="mood-section" id="moodtracker">
-  <div class="section-inner">
-    <span class="section-tag">Check in with yourself</span>
-    <h2>Track your <em>mood</em></h2>
-    <p class="section-lead">Noticing patterns in how you feel is the first step to understanding your mental health. Use this daily check-in.</p>
-    <div class="mood-inner">
-      <div class="mood-tracker-widget">
-        <p class="mood-tracker-label">How are you feeling right now?</p>
-        <div class="mood-options">
-          <button class="mood-btn" onclick="selectMood(this, '😄', 'Great')"><span class="emoji">😄</span><span class="label">Great</span></button>
-          <button class="mood-btn" onclick="selectMood(this, '🙂', 'Good')"><span class="emoji">🙂</span><span class="label">Good</span></button>
-          <button class="mood-btn" onclick="selectMood(this, '😐', 'Okay')"><span class="emoji">😐</span><span class="label">Okay</span></button>
-          <button class="mood-btn" onclick="selectMood(this, '😟', 'Low')"><span class="emoji">😟</span><span class="label">Low</span></button>
-          <button class="mood-btn" onclick="selectMood(this, '😔', 'Bad')"><span class="emoji">😔</span><span class="label">Bad</span></button>
+  <section class="mood-section" id="moodtracker">
+    <div class="section-inner">
+      <span class="section-tag">Emotional Awareness</span>
+      <h2>Daily Mood <em>Insights</em></h2>
+      <p class="section-lead">Keep a light check on patterns. Emojis and notes provide objective distance, reminding us that feelings are seasons, not fixed climates.</p>
+      
+      <div class="mood-inner">
+        <div class="mood-tracker-widget">
+          <div class="mood-tracker-label">Select your primary vibe right now:</div>
+          <div class="mood-options">
+            <button class="mood-btn" onclick="selectMood(this, '😌', 'Calm')">
+              <span class="emoji">😌</span>
+              <span class="label">Calm</span>
+            </button>
+            <button class="mood-btn" onclick="selectMood(this, '😟', 'Worried')">
+              <span class="emoji">😟</span>
+              <span class="label">Worried</span>
+            </button>
+            <button class="mood-btn" onclick="selectMood(this, '😢', 'Sad')">
+              <span class="emoji">😢</span>
+              <span class="label">Sad</span>
+            </button>
+            <button class="mood-btn" onclick="selectMood(this, '😤', 'Stressed')">
+              <span class="emoji">😤</span>
+              <span class="label">Stressed</span>
+            </button>
+            <button class="mood-btn" onclick="selectMood(this, '😡', 'Angry')">
+              <span class="emoji">😡</span>
+              <span class="label">Angry</span>
+            </button>
+          </div>
+          
+          <textarea class="mood-note" id="moodNote" placeholder="Any minor context notes? (e.g., poor sleep, heavy homework, split coffee)..."></textarea>
+          
+          <div style="display: flex; gap: 1rem;">
+            <button class="save-mood-btn" onclick="saveMoodEntry()">Log Current Feeling</button>
+            <button class="btn-reset" onclick="clearMoodHistory()">Reset Log</button>
+          </div>
+          <div id="moodMessage"></div>
         </div>
-        <textarea id="moodNote" class="mood-note" placeholder="Add a note about how you're feeling... (optional)"></textarea>
-        <button class="save-mood-btn" onclick="saveMood()">Save check-in</button>
-        <p id="moodMessage"></p>
-      </div>
-      <div>
-        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1rem;">Recent check-ins</p>
-        <div class="mood-history" id="moodHistory">
-          <div class="mood-empty">Your mood history will appear here as you track your feelings.</div>
+        
+        <div>
+          <div class="mood-header" style="margin-bottom: 1rem;">Your Local Feeling Timeline</div>
+          <div id="moodHistoryContainer" class="mood-history">
+            <div class="mood-empty">No mood history logged yet. Your timeline will build here.</div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="journal-section" id="journal">
-  <div class="section-inner">
+  <section class="journal-section" id="journal">
     <div class="journal-inner">
-      <span class="section-tag">Reflective writing</span>
-      <h2>Your private <em>journal</em></h2>
-      <p class="section-lead">Writing helps you process feelings and gain perspective. Use these prompts to get started — no grammar, no judgment.</p>
+      <span class="section-tag">Expressive Writing Space</span>
+      <h2>Mindful <em>Journaling</em></h2>
+      <p class="section-lead">Dump your thoughts without filtering or proofreading. Emptying your cognitive processing storage helps bring profound mental space.</p>
+      
       <div class="prompt-display">
-        <div class="prompt-label">Today's prompt</div>
-        <p id="promptText">What's one thing that's been weighing on your mind lately? What would it feel like to let that go?</p>
+        <div class="prompt-label">Reflection Prompt</div>
+        <div id="promptText">What's one thing that's been weighing on your mind lately? What would it feel like to let that go?</div>
       </div>
-      <textarea id="journalTextarea" placeholder="Start writing here — this is just for you..."></textarea>
+      
+      <textarea id="journalTextarea" placeholder="Write whatever floats up. No metrics, no judgments, just pour out text freely..."></textarea>
+      
       <div class="journal-actions">
-        <button class="journal-btn primary" onclick="clearJournal()">Clear &amp; start fresh</button>
-        <button class="journal-btn secondary" onclick="newPrompt()">New prompt</button>
+        <button class="journal-btn primary" onclick="saveJournalLocal()">Save Journal Entry</button>
+        <button class="journal-btn secondary" onclick="newPrompt()">Get New Prompt</button>
+        <button class="btn-reset" onclick="clearJournal()">Reset Text</button>
       </div>
+      <div id="journalFeedback" style="font-size:0.85rem; margin-top:0.8rem; color:var(--sage); min-height:1.2rem; font-weight:500;"></div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="crisis-section" id="crisis">
-  <div class="section-inner">
+  <section class="crisis-section" id="crisis">
     <div class="crisis-inner">
-      <span class="section-tag">You don't have to face this alone</span>
-      <h2>Get real<br><em>support now</em></h2>
-      <p class="section-lead">If you're in crisis, struggling heavily, or simply need an objective ear, reach out to these active, vetted, confidential support systems.</p>
+      <span class="section-tag">Immediate Support Networks</span>
+      <h2>You never have to navigate <em>alone</em></h2>
+      <p class="section-lead">If you feel completely overwhelmed, unsafe, or simply need an objective, trained human to speak with, reach out to these entirely free, secure, and fully confidential resources 24/7:</p>
+      
       <div class="crisis-cards">
         <div class="crisis-card">
           <div class="crisis-card-top">
-            <span class="crisis-badge">24/7 • Free</span>
-            <h3>Lifeline Australia</h3>
-            <p>Invaluable support, crisis mental health intervention, and suicide precaution routing channels.</p>
+            <span class="crisis-badge">Mental Health Crisis</span>
+            <h3>988 Suicide & Crisis Lifeline</h3>
+            <p>National support network offering entirely free, highly secure, confidential emotional relief chat or call lines.</p>
           </div>
-          <a href="tel:131114" class="crisis-contact">📞 13 11 14</a>
+          <a href="tel:988" class="crisis-contact">Call or Text 988</a>
         </div>
         <div class="crisis-card">
           <div class="crisis-card-top">
-            <span class="crisis-badge">Youth • Free</span>
-            <h3>Kids Helpline</h3>
-            <p>Dedicated clinical triage for adolescents up to 25. Call, webchat, or email configuration options.</p>
+            <span class="crisis-badge">Crisis Text Line</span>
+            <h3>Crisis Text Support</h3>
+            <p>Connect immediately with a live, expert crisis counselor for any heavy mental pressure over instant SMS.</p>
           </div>
-          <a href="tel:1800551800" class="crisis-contact">📞 1800 55 1800</a>
+          <a href="sms:741741?&body=HOME" class="crisis-contact">Text HOME to 741741</a>
         </div>
         <div class="crisis-card">
           <div class="crisis-card-top">
-            <span class="crisis-badge">24/7 • Text</span>
-            <h3>Crisis Text Line</h3>
-            <p>Prefer silent crisis communication? Instantly access automated and trained text managers.</p>
+            <span class="crisis-badge">LGBTQ+ Affirming</span>
+            <h3>The Trevor Project</h3>
+            <p>Safe, supportive, protective counselors specific to answering LGBTQ youth experiencing depression, anxiety, or fear.</p>
           </div>
-          <span class="crisis-contact">💬 Text HOME to 741741</span>
+          <a href="tel:18664887386" class="crisis-contact">Call 1-866-488-7386</a>
         </div>
         <div class="crisis-card">
           <div class="crisis-card-top">
-            <span class="crisis-badge">Online • Youth</span>
-            <h3>headspace</h3>
-            <p>National Youth Mental Health hubs for clinical drop-ins, remote therapy counseling, and tools.</p>
+            <span class="crisis-badge">Teen Peer Support</span>
+            <h3>Teen Line</h3>
+            <p>Talk directly with specialized trained teens who completely empathize and walk through youth problems together.</p>
           </div>
-          <a href="https://headspace.org.au" target="_blank" class="crisis-contact">🌐 headspace.org.au</a>
+          <a href="tel:18008528336" class="crisis-contact">Call 1-800-852-8336</a>
         </div>
         <div class="crisis-card">
           <div class="crisis-card-top">
-            <span class="crisis-badge">24/7 • Youth</span>
-            <h3>ReachOut Australia</h3>
-            <p>Safe digital landscape containing targeted discussion forums, peer connections, and tool arrays.</p>
+            <span class="crisis-badge">Child Advocacy</span>
+            <h3>Childhelp National Helpline</h3>
+            <p>Dedicated completely to child safety and abuse prevention, offering supportive professional intervention advisors.</p>
           </div>
-          <a href="https://au.reachout.com" target="_blank" class="crisis-contact">🌐 au.reachout.com</a>
+          <a href="tel:18004224453" class="crisis-contact">Call or Text 1-800-422-4453</a>
         </div>
         <div class="crisis-card">
           <div class="crisis-card-top">
-            <span class="crisis-badge">Indigenous</span>
-            <h3>13YARN Support</h3>
-            <p>First nationwide crisis intervention channel managed directly by Aboriginal & Torres Strait Islander teams.</p>
+            <span class="crisis-badge">Substance Support</span>
+            <h3>SAMHSA Lifeline</h3>
+            <p>Treatment referral routing information service supporting mental health concerns or substance distress.</p>
           </div>
-          <a href="tel:139276" class="crisis-contact">📞 13 92 76</a>
+          <a href="tel:18006624357" class="crisis-contact">Call 1-800-662-4357</a>
         </div>
         <div class="crisis-card">
           <div class="crisis-card-top">
-            <span class="crisis-badge">LGBTQIA+ Peer</span>
-            <h3>QLife Australia</h3>
-            <p>Confidential community support frameworks and advice for queer, trans, or fluid teens across Australia.</p>
+            <span class="crisis-badge">Domestic Safety</span>
+            <h3>Domestic Violence Helpline</h3>
+            <p>Highly secure routing link ensuring domestic relationship safety planning tools and advocacy validation lines.</p>
           </div>
-          <a href="tel:1800184527" class="crisis-contact">📞 1800 184 527</a>
+          <a href="tel:18007997233" class="crisis-contact">Call 1-800-799-7233</a>
         </div>
         <div class="crisis-card">
           <div class="crisis-card-top">
-            <span class="crisis-badge">Body Image</span>
-            <h3>Butterfly Foundation</h3>
-            <p>Specialist support counselors treating structural eating disorders and severe body dysmorphia anxieties.</p>
+            <span class="crisis-badge">Assault Support</span>
+            <h3>RAINN Network</h3>
+            <p>The largest secure nationwide network addressing physical safety trauma links and direct resource validation lines.</p>
           </div>
-          <a href="tel:1800334673" class="crisis-contact">📞 1800 33 4673</a>
+          <a href="tel:18006564673" class="crisis-contact">Call 1-800-656-4673</a>
         </div>
         <div class="crisis-card">
           <div class="crisis-card-top">
-            <span class="crisis-badge">24/7 • Chat</span>
-            <h3>Beyond Blue</h3>
-            <p>High-tier diagnostic counseling frameworks specialized in chronic anxiety and mood disorder help lines.</p>
+            <span class="crisis-badge">Body Awareness</span>
+            <h3>NEDA Support Network</h3>
+            <p>Resources and direct treatment referral support maps tailored for individuals fighting eating disorder and body image issues.</p>
           </div>
-          <a href="tel:1300224636" class="crisis-contact">📞 1300 22 4636</a>
+          <a href="tel:18009312237" class="crisis-contact">Call 1-800-931-2237</a>
         </div>
         <div class="crisis-card">
           <div class="crisis-card-top">
-            <span class="crisis-badge">Immediate Danger</span>
-            <h3>Emergency Services (000)</h3>
-            <p>If you or an associate are in acute danger or require lightning dispatch, call immediately.</p>
+            <span class="crisis-badge">Global Registry</span>
+            <h3>Befrienders Worldwide</h3>
+            <p>If you live outside the United States, use this network registry tool to find verified local emotional hotlines in your region.</p>
           </div>
-          <a href="tel:000" class="crisis-contact">📞 000 (Australia)</a>
+          <a href="https://www.befrienders.org" target="_blank" class="crisis-contact" style="font-size:0.95rem;">Find International Lifelines →</a>
         </div>
       </div>
+      
       <div class="crisis-note">
-        <strong>Important:</strong> This website provides self-help tools and general information only — it is not a substitute for professional medical or mental health support. If you're experiencing an acute mental health emergency, please contact a professional immediately. You matter.
+        <strong>Important Medical Disclaimer:</strong> Wavelength is an interactive resource toolkit built solely to assist with general wellness pacing. It does not provide medical diagnoses, clinical therapies, or psychiatric treatment. If you are facing an active emergency or life-threatening scenario, please dial your official emergency line (like 911, 999, or 000) immediately.
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer>
-  <span class="footer-logo">Wave<span>length</span></span>
-  <p>A mental health resource for teens. Built with care.</p>
-  <p style="margin-top:0.5rem">
-    <a href="#feelings">How I Feel</a> &nbsp;·&nbsp;
-    <a href="#tools">Breathing</a> &nbsp;·&nbsp;
-    <a href="#grounding">Grounding</a> &nbsp;·&nbsp;
-    <a href="#gratitudejar">Gratitude</a> &nbsp;·&nbsp;
-    <a href="#pmr">Muscle Scans</a> &nbsp;·&nbsp;
-    <a href="#journal">Journal</a> &nbsp;·&nbsp;
-    <a href="#crisis">Get Help</a>
-  </p>
-  <p style="margin-top:1.5rem; font-size:0.8rem; opacity:0.5">If you're in crisis, please call Lifeline: 13 11 14 or Kids Helpline: 1800 55 1800</p>
-</footer>
+  <footer>
+    <span class="footer-logo">Wave<span>length</span></span>
+    <p>© 2026 Wavelength. Built with absolute care for mental balance. To ensure complete privacy, all entered user data remains localized on your current browser storage.</p>
+  </footer>
 
-<script>
-// ─── BREATHING EXERCISE ───
-let breathingActive = false;
-let breathTimer = null;
-let breathPhase = 0;
-let breathCount = 0;
-const phases = [
-  { label: 'inhale', word: 'breathe in', duration: 4000, scale: 1.4 },
-  { label: 'hold', word: 'hold', duration: 4000, scale: 1.4 },
-  { label: 'exhale', word: 'breathe out', duration: 4000, scale: 1.0 },
-  { label: 'hold', word: 'hold', duration: 4000, scale: 1.0 }
-];
-let countInterval = null;
-let phaseSecondsLeft = 4;
+  <script>
+    // ─── LOCAL AMBIENT AUDIO SYNTHESIS (WEB AUDIO API) ───
+    let audioCtx = null;
 
-function toggleBreathing() {
-  if (breathingActive) {
-    breathingActive = false;
-    clearTimeout(breathTimer);
-    clearInterval(countInterval);
-    document.getElementById('breathWord').textContent = 'ready';
-    document.getElementById('breathCount').textContent = 'tap to begin';
-    document.getElementById('breathBtn').textContent = 'Start breathing';
-    document.getElementById('breathStatus').textContent = '';
-    const c = document.getElementById('breathCircle');
-    c.style.transform = 'scale(1)';
-    c.style.transition = 'transform 0.5s ease';
-    breathPhase = 0;
-    breathCount = 0;
-  } else {
-    breathingActive = true;
-    document.getElementById('breathBtn').textContent = 'Stop';
-    runBreathPhase();
-  }
-}
-
-function runBreathPhase() {
-  if (!breathingActive) return;
-  const p = phases[breathPhase];
-  const c = document.getElementById('breathCircle');
-  document.getElementById('breathWord').textContent = p.word;
-  c.style.transition = `transform ${p.duration}ms ease-in-out`;
-  c.style.transform = `scale(${p.scale})`;
-  phaseSecondsLeft = p.duration / 1000;
-  document.getElementById('breathCount').textContent = phaseSecondsLeft;
-  clearInterval(countInterval);
-  countInterval = setInterval(() => {
-    phaseSecondsLeft--;
-    if (phaseSecondsLeft > 0) {
-      document.getElementById('breathCount').textContent = phaseSecondsLeft;
-    }
-  }, 1000);
-  if (breathPhase === 3) breathCount++;
-  if (breathCount > 0) {
-    document.getElementById('breathStatus').textContent = `Round ${breathCount} complete — well done 💚`;
-  }
-  breathTimer = setTimeout(() => {
-    breathPhase = (breathPhase + 1) % 4;
-    runBreathPhase();
-  }, p.duration);
-}
-
-// ─── INTERACTIVE GROUNDING CONTROLLER ───
-function updateGroundingProgress() {
-  let checkedCount = 0;
-  for (let i = 1; i <= 5; i++) {
-    const chk = document.getElementById(`chk-${i}`);
-    const row = document.getElementById(`gstep-${i}`);
-    if (chk && chk.checked) {
-      checkedCount++;
-      row.classList.add('completed');
-    } else if (row) {
-      row.classList.remove('completed');
-    }
-  }
-
-  const counterDisplay = document.getElementById('groundingCounter');
-  const calloutBox = document.getElementById('groundingCalloutBox');
-  const calloutText = document.getElementById('groundingCalloutText');
-
-  counterDisplay.textContent = `${checkedCount} / 5`;
-
-  if (checkedCount === 5) {
-    calloutBox.classList.add('all-done');
-    counterDisplay.textContent = "✨ 5 · 4 · 3 · 2 · 1 ✨";
-    calloutText.textContent = "Incredible job. Your focus has successfully pivoted away from abstract, hypothetical future anxieties and re-anchored back into the biological present room. Take a deep, natural breath.";
-  } else {
-    calloutBox.classList.remove('all-done');
-    calloutText.textContent = "Checking off these boxes systematically activates the analytical prefrontal cortex of your brain, signaling your primitive amygdala to down-regulate its fight-or-flight distress code.";
-  }
-}
-
-// ─── ACTIVITY 1: GRATITUDE JAR ARCHITECTURE ───
-// Array to maintain gratitude entries in memory
-let gratitudeNotes = JSON.parse(localStorage.getItem('wavelength_gratitude')) || [];
-
-function addGratitudeItem() {
-  const inputElement = document.getElementById('jarInputText');
-  const txt = inputElement.value.trim();
-  if (!txt) return;
-
-  // Visual text configs to assign to the note
-  const colorPalettes = [
-    { bg: '#fff5cc', border: '#ffe680', text: '#735300' },
-    { bg: '#e8f2ec', border: '#b8d4c0', text: '#2c3e35' },
-    { bg: '#eaf4f9', border: '#b8d8ea', text: '#2a7090' },
-    { bg: '#fdf0ee', border: '#f5d5cf', text: '#b05848' },
-    { bg: '#f0eef8', border: '#ccc7e4', text: '#5a4fa0' }
-  ];
-  const choice = colorPalettes[Math.floor(Math.random() * colorPalettes.length)];
-
-  // Save entry object to array
-  gratitudeNotes.push({ text: txt, colors: choice });
-  localStorage.setItem('wavelength_gratitude', JSON.stringify(gratitudeNotes));
-
-  createVisualNote(txt, choice);
-  inputElement.value = '';
-}
-
-function createVisualNote(text, colors) {
-  const jar = document.getElementById('glassJarContainer');
-  const placeholder = document.getElementById('jarEmptyText');
-  
-  if (placeholder) {
-    placeholder.style.display = 'none';
-  }
-
-  const noteNode = document.createElement('div');
-  noteNode.className = 'jar-note';
-  noteNode.textContent = text;
-  noteNode.style.backgroundColor = colors.bg;
-  noteNode.style.borderColor = colors.border;
-  noteNode.style.color = colors.text;
-
-  jar.appendChild(noteNode);
-}
-
-function renderSavedGratitude() {
-  if (gratitudeNotes.length > 0) {
-    const placeholder = document.getElementById('jarEmptyText');
-    if (placeholder) placeholder.style.display = 'none';
-    gratitudeNotes.forEach(note => {
-      createVisualNote(note.text, note.colors);
-    });
-  }
-}
-
-// ─── ACTIVITY 2: PMR CORE SCHEDULER ───
-let pmrIndex = -1;
-let pmrInterval = null;
-const pmrStages = [
-  { muscle: "Step 1: Fists & Lower Arms", tension: "Clench both fists tightly. Squeeze your forearms into hard rock structures. Notice the raw strain.", duration: 5 },
-  { muscle: "Step 2: Shoulders & Neck", tension: "Shrug your shoulders sky-high, trying to touch your earlobes. Clamp your neck muscles inward.", duration: 5 },
-  { muscle: "Step 3: Jaw & Face Matrix", tension: "Clench your teeth together, squeeze your eyes shut tight, and wrinkle your forehead up hard.", duration: 5 },
-  { muscle: "Step 4: Chest & Stomach Core", tension: "Take a huge breath, expand your lungs fully, tight-lock your core abs down like a shield.", duration: 5 },
-  { muscle: "Step 5: Feet & Calves", tension: "Curl your toes hard down towards the soles of your feet, flexing your calf muscles like springs.", duration: 5 }
-];
-
-function advancePMRModule() {
-  clearInterval(pmrInterval);
-  const mTitle = document.getElementById('pmrMuscle');
-  const mDesc = document.getElementById('pmrInstruction');
-  const badge = document.getElementById('pmrBadge');
-  const bar = document.getElementById('pmrProgressFill');
-  const btn = document.getElementById('pmrActionBtn');
-
-  pmrIndex++;
-  if (pmrIndex >= pmrStages.length) {
-    // Reset state configuration
-    mTitle.textContent = "Session Complete 🌊";
-    mDesc.textContent = "Your entire muscular footprint has been cycled through localized stress dumps. Your structural body is now naturally heavy, soft, and relaxed.";
-    badge.style.display = 'none';
-    bar.style.width = '100%';
-    btn.textContent = "Restart PMR Cycle";
-    pmrIndex = -1;
-    return;
-  }
-
-  const current = pmrStages[pmrIndex];
-  bar.style.width = `${((pmrIndex) / pmrStages.length) * 100}%`;
-  mTitle.textContent = current.muscle;
-  mDesc.textContent = current.tension;
-  
-  badge.textContent = "Tense & Hold";
-  badge.className = "pmr-indicator tense";
-  badge.style.display = "inline-block";
-  btn.style.pointerEvents = "none";
-  btn.style.opacity = "0.5";
-
-  let timeRemaining = current.duration;
-  btn.textContent = `Hold for ${timeRemaining}s`;
-
-  pmrInterval = setInterval(() => {
-    timeRemaining--;
-    if (timeRemaining > 0) {
-      btn.textContent = `Hold for ${timeRemaining}s`;
-    } else {
-      clearInterval(pmrInterval);
-      // Change state matrix to release
-      badge.textContent = "RELEASE & UNCLAMP";
-      badge.className = "pmr-indicator release";
-      mDesc.textContent = "Drop the muscles instantly! Let them melt like butter. Notice the warm, tingling rushing sensation of fresh oxygen flooding back into the tissue.";
-      btn.style.pointerEvents = "auto";
-      btn.style.opacity = "1";
-      
-      if (pmrIndex === pmrStages.length - 1) {
-        btn.textContent = "Finish Routine";
-      } else {
-        btn.textContent = "Move to Next Step →";
+    function initAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       }
     }
-  }, 1000);
-}
 
-// ─── AFFIRMATIONS ───
-const affirmations = [
-  "You are not a burden. You are a person who is struggling, and that is allowed.",
-  "Healing isn't linear. Some days are harder than others, and that doesn't mean you're failing.",
-  "You don't have to have it all figured out. No one your age does, despite what it looks like.",
-  "The way you feel right now is not the way you will feel forever.",
-  "Asking for help is one of the bravest things a person can do.",
-  "You are more than your grades, your social media, or what anyone thinks of you.",
-  "It's okay to take up space. Your needs and feelings deserve to be heard.",
-  "You have survived every hard day you've ever had. That's 100% of them.",
-  "Being kind to yourself is not weakness — it's the foundation of everything else.",
-  "Your worth is not determined by your productivity, your appearance, or your achievements."
-];
-let lastAffirm = 0;
-function newAffirmation() {
-  let idx;
-  do { idx = Math.floor(Math.random() * affirmations.length); } while (idx === lastAffirm);
-  lastAffirm = idx;
-  const el = document.getElementById('affirmText');
-  el.style.opacity = '0';
-  setTimeout(() => {
-    el.textContent = affirmations[idx];
-    el.style.opacity = '1';
-  }, 200);
-}
-document.getElementById('affirmText').style.transition = 'opacity 0.3s';
+    function playTone(freq, duration, volume = 0.1, type = 'sine') {
+      try {
+        initAudio();
+        const now = audioCtx.currentTime;
+        let osc = audioCtx.createOscillator();
+        let gainNode = audioCtx.createGain();
+        
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, now);
+        
+        gainNode.gain.setValueAtTime(volume, now);
+        gainNode.gain.exponentialRampToValueAtTime(0.001, now + duration);
+        
+        osc.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        
+        osc.start(now);
+        osc.stop(now + duration);
+      } catch (e) { console.log("Audio synthesis blocked or unsupported:", e); }
+    }
 
-// ─── MOOD TRACKER ───
-let selectedMoodEmoji = null;
-let selectedMoodLabel = null;
+    function playSuccessSound() {
+      // Gentle ascending calm interval chime
+      try {
+        initAudio();
+        const now = audioCtx.currentTime;
+        playTone(523.25, 0.25, 0.12, 'sine'); // C5
+        setTimeout(() => playTone(659.25, 0.35, 0.12, 'sine'), 120); // E5
+      } catch(e){}
+    }
 
-// Initialize history from localStorage if it exists, otherwise use empty array
-const moodHistory = JSON.parse(localStorage.getItem('wavelength_moods')) || [];
+    function playResetSound() {
+      // Gentle descending clear tone
+      try {
+        initAudio();
+        playTone(440, 0.2, 0.1, 'sine'); // A4
+        setTimeout(() => playTone(349.23, 0.25, 0.1, 'sine'), 100); // F4
+      } catch(e){}
+    }
 
-function selectMood(el, emoji, label) {
-  document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('selected'));
-  el.classList.add('selected');
-  selectedMoodEmoji = emoji;
-  selectedMoodLabel = label;
-}
 
-function saveMood() {
-  if (!selectedMoodEmoji) {
-    document.getElementById('moodMessage').textContent = 'Please select how you\'re feeling first.';
-    return;
-  }
-  const note = document.getElementById('moodNote').value.trim();
-  const now = new Date();
-  const timeStr = now.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
-  
-  // Add entry to history array
-  moodHistory.unshift({ emoji: selectedMoodEmoji, label: selectedMoodLabel, note, time: timeStr });
-  
-  // Save updated array to localStorage
-  localStorage.setItem('wavelength_moods', JSON.stringify(moodHistory));
-  
-  renderMoodHistory();
-  document.getElementById('moodNote').value = '';
-  document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('selected'));
-  const msgs = ['Check-in saved 💚', 'Noted — thank you for checking in 🌿', 'Saved! Remember, all feelings are valid 🙂'];
-  document.getElementById('moodMessage').textContent = msgs[Math.floor(Math.random()*msgs.length)];
-  selectedMoodEmoji = null;
-  selectedMoodLabel = null;
-  setTimeout(() => document.getElementById('moodMessage').textContent = '', 3000);
-}
+    // ─── BOX BREATHING PACER ───
+    let breathInterval = null;
+    let breathState = 0; // 0=inhale, 1=hold1, 2=exhale, 3=hold2
+    let breathTimeLeft = 4;
+    let breathingActive = false;
 
-function renderMoodHistory() {
-  const el = document.getElementById('moodHistory');
-  if (moodHistory.length === 0) {
-    el.innerHTML = '<div class="mood-empty">Your mood history will appear here as you track your feelings.</div>';
-    return;
-  }
-  el.innerHTML = moodHistory.slice(0, 6).map(e =>
-    `<div class="mood-entry">
-      <span class="time">${e.time}</span>
-      <span style="font-size:1.2rem">${e.emoji}</span>
-      <span style="font-weight:500;font-size:0.88rem">${e.label}</span>
-      ${e.note ? `<span style="color:var(--text-muted);font-size:0.82rem;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${e.note}</span>` : ''}
-    </div>`
-  ).join('');
-}
+    const breathCircle = document.getElementById('breathCircle');
+    const breathRing = document.getElementById('breathRing');
+    const breathTxt = document.getElementById('breathTxt');
+    const breathTimer = document.getElementById('breathTimer');
+    const breathBtn = document.getElementById('breathBtn');
+    const breathStatus = document.getElementById('breathStatus');
 
-// ─── JOURNAL ───
-const journalPrompts = [
-  "What's one thing that's been weighing on your mind lately? What would it feel like to let that go?",
-  "Describe a moment this week when you felt genuinely okay. What was happening?",
-  "What would you say to a friend who was feeling exactly the way you feel right now?",
-  "What are three things that you're grateful for today — no matter how small?",
-  "Is there something you've been avoiding thinking about? What's one small step you could take?"
-];
-let lastPrompt = 0;
-function newPrompt() {
-  let idx;
-  do { idx = Math.floor(Math.random() * journalPrompts.length); } while (idx === lastPrompt);
-  lastPrompt = idx;
-  document.getElementById('promptText').textContent = journalPrompts[idx];
-}
-function clearJournal() {
-  if (document.getElementById('journalTextarea').value && !confirm('Clear your journal entry?')) return;
-  document.getElementById('journalTextarea').value = '';
-  newPrompt();
-}
+    const breathSteps = [
+      { text: 'Inhale', classId: 'bstepIn', ringScale: 'scale(1.4)', desc: 'Fill your lungs slowly with calm, crisp air...', freq: 440 },
+      { text: 'Hold', classId: 'bstepHold1', ringScale: 'scale(1.4)', desc: 'Rest suspended inside the peaceful stillness...', freq: 493.88 },
+      { text: 'Exhale', classId: 'bstepOut', ringScale: 'scale(1.0)', desc: 'Release the breath completely, let tension drift away...', freq: 392.00 },
+      { text: 'Hold', classId: 'bstepHold2', ringScale: 'scale(1.0)', desc: 'Rest empty in clear, neutral grounding...', freq: 349.23 }
+    ];
 
-// ─── ON PAGE LOAD INITIALIZATION ───
-document.addEventListener("DOMContentLoaded", () => {
-  renderMoodHistory();
-  renderSavedGratitude();
-});
-</script>
+    function updateBreathPacer() {
+      breathTimeLeft--;
+      if (breathTimeLeft <= 0) {
+        breathState = (breathState + 1) % 4;
+        breathTimeLeft = 4;
+        
+        const step = breathSteps[breathState];
+        breathTxt.textContent = step.text;
+        breathStatus.textContent = step.desc;
+        
+        document.querySelectorAll('.bstep').forEach(el => {
+          el.style.borderColor = 'transparent';
+          el.style.background = 'transparent';
+        });
+        const activeEl = document.getElementById(step.classId);
+        if (activeEl) {
+          activeEl.style.borderColor = 'var(--sage-light)';
+          activeEl.style.background = 'rgba(122,171,138,0.1)';
+        }
+        
+        breathRing.style.transition = 'all 4s linear';
+        breathRing.style.transform = step.ringScale;
+        
+        if (document.getElementById('breathingSoundToggle').checked) {
+          playTone(step.freq, 0.4, 0.06);
+        }
+      }
+      breathTimer.textContent = breathTimeLeft + 's';
+    }
+
+    breathBtn.addEventListener('click', () => {
+      initAudio();
+      if (breathingActive) {
+        clearInterval(breathInterval);
+        breathingActive = false;
+        breathBtn.textContent = 'Resume Exercise';
+        breathStatus.textContent = 'Pacer paused. Resume whenever your focus is ready.';
+      } else {
+        breathingActive = true;
+        breathBtn.textContent = 'Pause Exercise';
+        
+        const step = breathSteps[breathState];
+        breathTxt.textContent = step.text;
+        breathStatus.textContent = step.desc;
+        breathTimer.textContent = breathTimeLeft + 's';
+        
+        breathRing.style.transition = 'all 4s linear';
+        breathRing.style.transform = step.ringScale;
+        
+        document.getElementById(step.classId).style.borderColor = 'var(--sage-light)';
+        
+        if (document.getElementById('breathingSoundToggle').checked) {
+          playTone(step.freq, 0.4, 0.06);
+        }
+        breathInterval = setInterval(updateBreathPacer, 1000);
+      }
+    });
+
+    document.getElementById('breathResetBtn').addEventListener('click', () => {
+      clearInterval(breathInterval);
+      breathingActive = false;
+      breathState = 0;
+      breathTimeLeft = 4;
+      breathBtn.textContent = 'Start Exercise';
+      breathTxt.textContent = 'Click Start';
+      breathTimer.textContent = '4s';
+      breathStatus.textContent = 'Breathing exercise reset.';
+      breathRing.style.transition = 'all 0.3s ease';
+      breathRing.style.transform = 'scale(1.0)';
+      document.querySelectorAll('.bstep').forEach(el => {
+        el.style.borderColor = 'transparent';
+        el.style.background = 'transparent';
+      });
+      playResetSound();
+    });
+
+
+    // ─── 5-4-3-2-1 GROUNDING TECHNIQUE ───
+    function toggleGStep(stepNum) {
+      const stepEl = document.getElementById('gStep' + stepNum);
+      const checkbox = stepEl.querySelector('.g-checkbox');
+      
+      if (checkbox.checked) {
+        stepEl.classList.add('completed');
+        playTone(350 + (stepNum * 45), 0.2, 0.05);
+      } else {
+        stepEl.classList.remove('completed');
+      }
+      
+      const unchecked = document.querySelectorAll('.g-checkbox:not(:checked)').length;
+      const progressCount = document.getElementById('gProgressCount');
+      const calloutText = document.getElementById('gCalloutText');
+      const callout = document.getElementById('gCallout');
+      
+      progressCount.textContent = unchecked;
+      
+      if (unchecked === 0) {
+        callout.classList.add('all-done');
+        progressCount.textContent = '✨';
+        calloutText.textContent = 'Beautiful focus. Your nervous awareness is securely tied down to the safety of reality.';
+        playSuccessSound();
+      } else {
+        callout.classList.remove('all-done');
+        calloutText.textContent = 'Steps remaining to establish presence. Focus on your surroundings one sensory layer at a time.';
+      }
+    }
+
+    document.getElementById('groundingResetBtn').addEventListener('click', () => {
+      document.querySelectorAll('.g-checkbox').forEach(cb => cb.checked = false);
+      document.querySelectorAll('.g-step').forEach(st => st.classList.remove('completed'));
+      document.querySelectorAll('.g-input').forEach(inp => inp.value = '');
+      
+      const callout = document.getElementById('gCallout');
+      callout.classList.remove('all-done');
+      document.getElementById('gProgressCount').textContent = '5';
+      document.getElementById('gCalloutText').textContent = 'Steps remaining to establish presence. Focus on your surroundings one step at a time.';
+      playResetSound();
+    });
+
+
+    // ─── GRATITUDE JAR MANAGEMENT ───
+    let gratitudeNotes = JSON.parse(localStorage.getItem('gratitudeNotes')) || [];
+
+    function renderGratitudeJar() {
+      const jar = document.getElementById('glassJar');
+      const placeholder = document.getElementById('jarPlaceholder');
+      jar.querySelectorAll('.jar-note').forEach(n => n.remove());
+      
+      if (gratitudeNotes.length === 0) {
+        placeholder.style.display = 'block';
+      } else {
+        placeholder.style.display = 'none';
+        gratitudeNotes.forEach(text => {
+          const noteEl = document.createElement('div');
+          noteEl.className = 'jar-note';
+          noteEl.textContent = text;
+          noteEl.title = text;
+          const randomTilt = Math.floor(Math.random() * 24) - 12;
+          noteEl.style.transform = `rotate(${randomTilt}deg)`;
+          jar.appendChild(noteEl);
+        });
+      }
+    }
+
+    function addGratitudeNote() {
+      const input = document.getElementById('jarInput');
+      const text = input.value.trim();
+      if (!text) return;
+      
+      gratitudeNotes.push(text);
+      localStorage.setItem('gratitudeNotes', JSON.stringify(gratitudeNotes));
+      input.value = '';
+      
+      renderGratitudeJar();
+      playSuccessSound();
+    }
+
+    function resetGratitudeJar() {
+      if (gratitudeNotes.length === 0) return;
+      if (confirm("Are you sure you want to clean out your gratitude jar logs?")) {
+        gratitudeNotes = [];
+        localStorage.removeItem('gratitudeNotes');
+        renderGratitudeJar();
+        playResetSound();
+      }
+    }
+    renderGratitudeJar();
+
+
+    // ─── PROGRESSIVE MUSCLE RELAXATION (PMR) ───
+    const pmrSteps = [
+      { target: '1. Forehead & Brow', act: 'Raise your eyebrows up as high as possible. Hold firmly to aggregate tension lines across the scalp...' },
+      { target: '2. Eyes & Jaw', act: 'Squeeze your eyelids locked shut and bite down firmly. Feel the hard pressure locking up your facial muscles...' },
+      { target: '3. Shoulders & Neck', act: 'Shrug your shoulders high up to squeeze your neck. Gather all your protective armor stress tightly here...' },
+      { target: '4. Fists & Arms', act: 'Clench your fists hard and lock out your arm segments. Feel the structural tension coil through your forearms...' },
+      { target: '5. Stomach & Core', act: 'Suck your abdominal muscles tightly in towards your spine. Hold hard, condensing all core physical worry...' },
+      { target: '6. Legs & Feet', act: 'Curl your toes down inside your shoes and lock out your calf muscles. Anchor all structural strain down into the floor...' }
+    ];
+
+    let pmrActive = false;
+    let pmrIndex = 0;
+    let pmrStage = 'tense'; // 'tense' or 'release'
+    let pmrTimer = null;
+    let pmrSeconds = 5;
+
+    function togglePMR() {
+      initAudio();
+      if (pmrActive) {
+        clearInterval(pmrTimer);
+        pmrActive = false;
+        document.getElementById('pmrBtn').textContent = 'Resume PMR Guide';
+      } else {
+        pmrActive = true;
+        document.getElementById('pmrBtn').textContent = 'Pause PMR Guide';
+        runPMRCycle();
+      }
+    }
+
+    function runPMRCycle() {
+      // Call once instantly to skip delay
+      handlePMRTick();
+      pmrTimer = setInterval(handlePMRTick, 1000);
+    }
+
+    function handlePMRTick() {
+      pmrSeconds--;
+      
+      const totalStages = pmrSteps.length * 2;
+      const currentStageOffset = (pmrIndex * 2) + (pmrStage === 'tense' ? 0 : 1);
+      const totalProgress = ((currentStageOffset / totalStages) * 100) + ((5 - pmrSeconds) / 5 * (100 / totalStages));
+      document.getElementById('pmrProgressFill').style.width = totalProgress + '%';
+
+      if (pmrSeconds <= 0) {
+        if (pmrStage === 'tense') {
+          pmrStage = 'release';
+          pmrSeconds = 5;
+          playTone(523.25, 0.4, 0.08, 'sine'); // C5 tone for relaxation release
+        } else {
+          pmrStage = 'tense';
+          pmrSeconds = 5;
+          pmrIndex++;
+          
+          if (pmrIndex >= pmrSteps.length) {
+            clearInterval(pmrTimer);
+            pmrActive = false;
+            pmrIndex = 0;
+            document.getElementById('pmrMuscle').textContent = '✨ Physical Reset Complete';
+            document.getElementById('pmrInstruction').textContent = 'Your somatic body is unburdened. Rest completely heavy in this lightweight soft release.';
+            document.getElementById('pmrIndicatorTense').style.display = 'none';
+            document.getElementById('pmrIndicatorRelease').style.display = 'none';
+            document.getElementById('pmrBtn').textContent = 'Restart PMR Guide';
+            document.getElementById('pmrProgressFill').style.width = '100%';
+            playSuccessSound();
+            return;
+          }
+          playTone(293.66, 0.3, 0.06, 'triangle'); // Mild alerting tone for next muscle
+        }
+      }
+
+      const current = pmrSteps[pmrIndex];
+      document.getElementById('pmrMuscle').textContent = current.target;
+      
+      if (pmrStage === 'tense') {
+        document.getElementById('pmrInstruction').textContent = current.act + ` [${pmrSeconds}s remaining]`;
+        document.getElementById('pmrIndicatorTense').style.display = 'inline-block';
+        document.getElementById('pmrIndicatorRelease').style.display = 'none';
+      } else {
+        document.getElementById('pmrInstruction').textContent = 'Drop the armor. Throw away the grip completely. Notice the warm, clean blood rush back into soft circulation... ' + ` [${pmrSeconds}s remaining]`;
+        document.getElementById('pmrIndicatorTense').style.display = 'none';
+        document.getElementById('pmrIndicatorRelease').style.display = 'inline-block';
+      }
+    }
+
+    function resetPMR() {
+      clearInterval(pmrTimer);
+      pmrActive = false;
+      pmrIndex = 0;
+      pmrStage = 'tense';
+      pmrSeconds = 5;
+      document.getElementById('pmrMuscle').textContent = 'Ready to Begin';
+      document.getElementById('pmrInstruction').textContent = 'Click Start to walk through a full head-to-toe tension release.';
+      document.getElementById('pmrIndicatorTense').style.display = 'none';
+      document.getElementById('pmrIndicatorRelease').style.display = 'none';
+      document.getElementById('pmrBtn').textContent = 'Start PMR Guide';
+      document.getElementById('pmrProgressFill').style.width = '0%';
+      playResetSound();
+    }
+
+
+    // ─── AFFIRMATIONS ───
+    const affirmations = [
+      "You don't have to carry it all perfectly. Doing your best looks completely different every day, and that is enough.",
+      "Your current internal storm is just a chapter in your biography, not your whole final book. This wave will break.",
+      "You are thoroughly allowed to occupy physical space, state absolute boundaries, and rest without feeling guilty.",
+      "Nothing about your worth alters based on productivity markers, performance metrics, or what others require of you.",
+      "Be remarkably gentle with yourself today. You are doing a profound job growing through complicated seasons.",
+      "You belong here, your micro presence structures reality, and you are inherently loved exactly as you stand."
+    ];
+
+    function generateAffirmation() {
+      const textEl = document.getElementById('affirmText');
+      let currentIdx = affirmations.indexOf(textEl.textContent);
+      let nextIdx;
+      do {
+        nextIdx = Math.floor(Math.random() * affirmations.length);
+      } while (nextIdx === currentIdx);
+      
+      textEl.textContent = affirmations[nextIdx];
+      playTone(587.33, 0.25, 0.05, 'sine'); // Soft chime frequency
+    }
+
+
+    // ─── MOOD TRACKER ENGINE ───
+    let selectedMoodData = null;
+    let moodHistory = JSON.parse(localStorage.getItem('moodHistory')) || [];
+
+    function selectMood(btn, emoji, label) {
+      document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      selectedMoodData = { emoji, label };
+      playTone(440, 0.08, 0.06);
+    }
+
+    function renderMoodHistory() {
+      const container = document.getElementById('moodHistoryContainer');
+      if (moodHistory.length === 0) {
+        container.innerHTML = '<div class="mood-empty">No mood history logged yet. Your timeline will build here.</div>';
+        return;
+      }
+      
+      container.innerHTML = moodHistory.slice().reverse().map(e => `
+        <div class="mood-entry">
+          <span class="time">${e.time}</span>
+          <span style="font-size:1.3rem; margin-right: 0.2rem;">${e.emoji}</span>
+          <span style="font-weight:500; font-size:0.88rem; color:var(--text); min-width:60px;">${e.label}</span>
+          ${e.note ? `<span style="color:var(--text-muted); font-size:0.82rem; flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; margin-left:0.5rem;" title="${e.note}">"${e.note}"</span>` : ''}
+        </div>
+      `).join('');
+    }
+
+    function saveMoodEntry() {
+      if (!selectedMoodData) {
+        const msg = document.getElementById('moodMessage');
+        msg.style.color = '#b05848';
+        msg.textContent = 'Please tap an emoji first to classify your current feeling.';
+        return;
+      }
+      
+      const noteInp = document.getElementById('moodNote');
+      const timeStamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + ' - ' + new Date().toLocaleDateString([], {month: 'short', day: 'numeric'});
+      
+      const entry = {
+        time: timeStamp,
+        emoji: selectedMoodData.emoji,
+        label: selectedMoodData.label,
+        note: noteInp.value.trim()
+      };
+      
+      moodHistory.push(entry);
+      localStorage.setItem('moodHistory', JSON.stringify(moodHistory));
+      
+      noteInp.value = '';
+      document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('selected'));
+      selectedMoodData = null;
+      
+      const msg = document.getElementById('moodMessage');
+      msg.style.color = 'var(--sage)';
+      msg.textContent = 'Feeling captured securely inside your history logs.';
+      
+      renderMoodHistory();
+      playSuccessSound();
+      
+      setTimeout(() => { msg.textContent = ''; }, 3000);
+    }
+
+    function clearMoodHistory() {
+      if (moodHistory.length === 0) return;
+      if (confirm("Completely wipe your local browser mood timeline records?")) {
+        moodHistory = [];
+        localStorage.removeItem('moodHistory');
+        renderMoodHistory();
+        playResetSound();
+      }
+    }
+    renderMoodHistory();
+
+
+    // ─── MIND MINDFUL JOURNAL ───
+    const journalPrompts = [
+      "What's one thing that's been weighing on your mind lately? What would it feel like to let that go?",
+      "Describe a moment this week when you felt genuinely okay. What was happening?",
+      "What would you say to a friend who was feeling exactly the way you feel right now?",
+      "What are three things that you're grateful for today — no matter how small?",
+      "Is there something you've been avoiding thinking about? What's one small step you could take?"
+    ];
+    let lastPromptIdx = 0;
+
+    function newPrompt() {
+      let idx;
+      do { 
+        idx = Math.floor(Math.random() * journalPrompts.length); 
+      } while (idx === lastPromptIdx);
+      lastPromptIdx = idx;
+      document.getElementById('promptText').textContent = journalPrompts[idx];
+      playTone(523.25, 0.15, 0.05);
+    }
+
+    function saveJournalLocal() {
+      const txt = document.getElementById('journalTextarea').value.trim();
+      const feedback = document.getElementById('journalFeedback');
+      if (!txt) {
+        feedback.style.color = '#b05848';
+        feedback.textContent = 'The workspace text is currently completely empty.';
+        return;
+      }
+      
+      let journals = JSON.parse(localStorage.getItem('journalEntries')) || [];
+      journals.push({
+        date: new Date().toLocaleString(),
+        text: txt,
+        prompt: document.getElementById('promptText').textContent
+      });
+      localStorage.setItem('journalEntries', JSON.stringify(journals));
+      
+      feedback.style.color = 'var(--sage)';
+      feedback.textContent = 'Reflections cataloged safely inside local privacy architecture.';
+      playSuccessSound();
+      
+      setTimeout(() => { feedback.textContent = ''; }, 3000);
+    }
+
+    function clearJournal() {
+      const txtarea = document.getElementById('journalTextarea');
+      if (!txtarea.value) return;
+      if (confirm("Are you sure you want to discard your current un-saved writing composition?")) {
+        txtarea.value = '';
+        document.getElementById('journalFeedback').textContent = '';
+        playResetSound();
+      }
+    }
+  </script>
 </body>
 </html>
