@@ -1891,7 +1891,7 @@
       setTimeout(() => { feedback.textContent = ''; }, 3000);
     }
 
-    function clearJournal() {
+  function clearJournal() {
       const txtarea = document.getElementById('journalTextarea');
       if (!txtarea.value) return;
       if (confirm("Are you sure you want to discard your current un-saved writing composition?")) {
@@ -1899,24 +1899,28 @@
         document.getElementById('journalFeedback').textContent = '';
         playResetSound();
       }
-    }const ambientMusic = new Audio('assets/ambient-river.mp3');
-ambientMusic.loop = true;
-ambientMusic.volume = 0.15;
+    }
 
-// Function to start the music
-function startMusic() {
-    ambientMusic.play().then(() => {
-        // Once successfully playing, remove the listeners so it doesn't trigger again
-        document.removeEventListener('click', startMusic);
-        document.removeEventListener('keydown', startMusic);
-    }).catch(error => {
-        console.log("Playback blocked by browser until user interacts.");
-    });
-}
+    // ==========================================
+    // AMBIENT BACKGROUND MUSIC
+    // ==========================================
+    const ambientMusic = new Audio('ambient-river.mp3'); 
+    ambientMusic.loop = true;
+    ambientMusic.volume = 0.15; 
 
-// Listen for the very first click or keypress on the page
-document.addEventListener('click', startMusic);
-document.addEventListener('keydown', startMusic);
+    function startMusic() {
+        ambientMusic.play().then(() => {
+            // Remove listeners immediately so the track doesn't restart
+            document.removeEventListener('click', startMusic);
+            document.removeEventListener('keydown', startMusic);
+        }).catch(error => {
+            console.log("Audio playback browser safeguard active. Awaiting user interaction sequence.");
+        });
+    }
+
+    // Global triggers for the very first interaction on the page
+    document.addEventListener('click', startMusic);
+    document.addEventListener('keydown', startMusic);
   </script>
 </body>
 </html>
