@@ -1899,7 +1899,24 @@
         document.getElementById('journalFeedback').textContent = '';
         playResetSound();
       }
-    }
+    }const ambientMusic = new Audio('assets/ambient-river.mp3');
+ambientMusic.loop = true;
+ambientMusic.volume = 0.15;
+
+// Function to start the music
+function startMusic() {
+    ambientMusic.play().then(() => {
+        // Once successfully playing, remove the listeners so it doesn't trigger again
+        document.removeEventListener('click', startMusic);
+        document.removeEventListener('keydown', startMusic);
+    }).catch(error => {
+        console.log("Playback blocked by browser until user interacts.");
+    });
+}
+
+// Listen for the very first click or keypress on the page
+document.addEventListener('click', startMusic);
+document.addEventListener('keydown', startMusic);
   </script>
 </body>
 </html>
