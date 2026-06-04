@@ -2558,127 +2558,111 @@
       setTimeout(() => el.classList.remove('visible'), 2200);
     }
 
-    // =========================================================================
-    // ENHANCED SCAVENGER HUNT LOGIC — 8 QUESTIONS → WAVELENGTH
-    // =========================================================================
-    let scavAttempts = 0;
-    let hintsVisible = false;
+// =========================================================================
+// ENHANCED SCAVENGER HUNT LOGIC — 8 QUESTIONS → WAVELENGTH
+// =========================================================================
+let scavAttempts = 0;
+let hintsVisible = false;
 
-    function updateScavengerLetterBoxes() {
-      const vals = [];
-      for(let i=1; i<=8; i++) {
-        const sel = document.getElementById('scavQ' + i);
-        vals.push(sel ? sel.value : '');
-      }
-      const boxes = [];
-      for(let i=1; i<=8; i++) {
-        boxes.push(document.getElementById('codeBox' + i));
-      }
-      vals.forEach((v, idx) => {
-        const box = boxes[idx];
-        if(!box) return;
-        if(v) {
-          box.textContent = v;
-          box.classList.add('revealed');
-          playClickSound();
-          // Mark correct/wrong on the item if answer known
-          const item = document.getElementById('scavItem' + (idx+1));
-          if(item) {
-            item.classList.remove('scav-correct-glow','scav-wrong-flash');
-            const correct = ['W','A','V','E','L','E','N','H'];
-            if(v === correct[idx]) {
-              item.classList.add('scav-correct-glow');
-            }
-          }
-        } else {
-          box.textContent = '-';
-          box.classList.remove('revealed');
-          const item = document.getElementById('scavItem' + (idx+1));
-          if(item) item.classList.remove('scav-correct-glow','scav-wrong-flash');
-        }
-      });
-    }
-
-    function checkScavengerHuntAnswer() {
-      const correct = ['W','A','V','E','L','E','N','H'];
-      let allCorrect = true;
-      for(let i=1; i<=8; i++) {
-        const val = document.getElementById('scavQ' + i).value;
-        if(val !== correct[i-1]) { allCorrect = false; break; }
-      }
-
-      if(allCorrect) {
-        playSuccessSound();
-        spawnConfetti();
-        document.getElementById('certificateModal').classList.add('open');
-        document.getElementById('scavAttempts').textContent = '';
-      } else {
-        scavAttempts++;
-        playResetSound();
-        // Flash wrong items
-        for(let i=1; i<=8; i++) {
-          const val = document.getElementById('scavQ' + i).value;
-          const item = document.getElementById('scavItem' + i);
-          if(val !== correct[i-1] && item) {
-            item.classList.remove('scav-wrong-flash');
-            void item.offsetWidth;
-            item.classList.add('scav-wrong-flash');
-          }
-        }
-        const attemptsEl = document.getElementById('scavAttempts');
-        let msg = `Attempt ${scavAttempts}: Not quite right. Look more carefully at the highlighted questions.`;
-        if(scavAttempts >= 3) msg += ' Try using the hint buttons!';
-        attemptsEl.textContent = msg;
-      }
-    }
-
-    function resetScavengerHunt() {
-      playResetSound();
-      scavAttempts = 0;
-      for(let i=1; i<=8; i++) {
-        const sel = document.getElementById('scavQ' + i);
-        if(sel) sel.value = "";
-        const item = document.getElementById('scavItem' + i);
-        if(item) item.classList.remove('scav-correct-glow','scav-wrong-flash');
-      }
-      document.getElementById('scavAttempts').textContent = '';
-      updateScavengerLetterBoxes();
-    }
-
-    function toggleAllHints() {
-      hintsVisible = !hintsVisible;
-      for(let i=1; i<=8; i++) {
-        const h = document.getElementById('hint' + i);
-        if(h) h.style.display = hintsVisible ? 'block' : 'none';
-      }
+function updateScavengerLetterBoxes() {
+  const vals = [];
+  for(let i=1; i<=8; i++) {
+    const sel = document.getElementById('scavQ' + i);
+    vals.push(sel ? sel.value : '');
+  }
+  const boxes = [];
+  for(let i=1; i<=8; i++) {
+    const boxesPush = document.getElementById('codeBox' + i);
+    boxes.push(boxesPush);
+  }
+  vals.forEach((v, idx) => {
+    const box = boxes[idx];
+    if(!box) return;
+    if(v) {
+      box.textContent = v;
+      box.classList.add('revealed');
       playClickSound();
+      // Color changing logic removed
+    } else {
+      box.textContent = '-';
+      box.classList.remove('revealed');
+      // Color changing logic removed
     }
+  });
+}
 
-    function closeCertificateModal() {
-      playResetSound();
-      document.getElementById('certificateModal').classList.remove('open');
-    }
+function checkScavengerHuntAnswer() {
+  // Validates the 8-letter version "WAVELENG" to match your 8 questions
+  const correct = ['W','A','V','E','L','E','N','G'];
+  let allCorrect = true;
+  for(let i=1; i<=8; i++) {
+    const val = document.getElementById('scavQ' + i).value;
+    if(val !== correct[i-1]) { allCorrect = false; break; }
+  }
 
-    // =========================================================================
-    // CONFETTI ON CERTIFICATE
-    // =========================================================================
-    function spawnConfetti() {
-      const modal = document.querySelector('.cert-container');
-      const colors = ['#7aab8a','#e8a89c','#7ab3d4','#d4a46a','#9a8ec0','#fff'];
-      for(let i=0; i<30; i++) {
-        setTimeout(() => {
-          const dot = document.createElement('div');
-          dot.className = 'confetti-dot';
-          dot.style.background = colors[Math.floor(Math.random() * colors.length)];
-          dot.style.left = Math.random() * 100 + '%';
-          dot.style.top = '0';
-          dot.style.animationDelay = (Math.random() * 0.5) + 's';
-          dot.style.animationDuration = (1.2 + Math.random() * 0.8) + 's';
-          modal.appendChild(dot);
-          setTimeout(() => dot.remove(), 2500);
-        }, i * 40);
-      }
-    }
+  if(allCorrect) {
+    playSuccessSound();
+    spawnConfetti();
+    document.getElementById('certificateModal').classList.add('open');
+    document.getElementById('scavAttempts').textContent = '';
+  } else {
+    scavAttempts++;
+    playResetSound();
+    // Color flashing logic removed to keep the game completely color-neutral
+    
+    const attemptsEl = document.getElementById('scavAttempts');
+    let msg = `Attempt ${scavAttempts}: Not quite right. Look more carefully at the questions.`;
+    if(scavAttempts >= 3) msg += ' Try using the hint buttons!';
+    attemptsEl.textContent = msg;
+  }
+}
+
+function resetScavengerHunt() {
+  playResetSound();
+  scavAttempts = 0;
+  for(let i=1; i<=8; i++) {
+    const sel = document.getElementById('scavQ' + i);
+    if(sel) sel.value = "";
+    // Color changing logic removed
+  }
+  document.getElementById('scavAttempts').textContent = '';
+  updateScavengerLetterBoxes();
+}
+
+function toggleAllHints() {
+  hintsVisible = !hintsVisible;
+  for(let i=1; i<=8; i++) {
+    const h = document.getElementById('hint' + i);
+    if(h) h.style.display = hintsVisible ? 'block' : 'none';
+  }
+  playClickSound();
+}
+
+function closeCertificateModal() {
+  playResetSound();
+  document.getElementById('certificateModal').classList.remove('open');
+}
+
+// =========================================================================
+// CONFETTI ON CERTIFICATE
+// =========================================================================
+function spawnConfetti() {
+  const modal = document.querySelector('.cert-container');
+  const colors = ['#7aab8a','#e8a89c','#7ab3d4','#d4a46a','#9a8ec0','#fff'];
+  for(let i=0; i<30; i++) {
+    setTimeout(() => {
+      const dot = document.createElement('div');
+      dot.className = 'confetti-dot';
+      dot.style.background = colors[Math.floor(Math.random() * colors.length)];
+      dot.style.left = Math.random() * 100 + '%';
+      dot.style.top = '0';
+      dot.style.animationDelay = (Math.random() * 0.5) + 's';
+      dot.style.animationDuration = (1.2 + Math.random() * 0.8) + 's';
+      modal.appendChild(dot);
+      setTimeout(() => dot.remove(), 2500);
+    }, i * 40);
+  }
+}
 
     // =========================================================================
     // ON PAGE LOAD: RESTORE ALL LOCALSTORAGE DATA
