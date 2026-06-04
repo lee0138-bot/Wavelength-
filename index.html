@@ -9,255 +9,66 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --sage: #7aab8a;
-    --sage-light: #b8d4c0;
-    --sage-pale: #e8f2ec;
-    --blush: #e8a89c;
-    --blush-light: #f5d5cf;
-    --blush-pale: #fdf0ee;
-    --sky: #7ab3d4;
-    --sky-light: #b8d8ea;
-    --sky-pale: #eaf4f9;
-    --amber: #d4a46a;
-    --amber-pale: #fdf5e8;
-    --lavender: #9a8ec0;
-    --lavender-pale: #f0eef8;
-    --text: #2c3e35;
-    --text-muted: #6b7f74;
-    --bg: #fafcfb;
-    --white: #ffffff;
-    --radius: 20px;
-    --radius-sm: 12px;
+    --sage: #7aab8a; --sage-light: #b8d4c0; --sage-pale: #e8f2ec;
+    --blush: #e8a89c; --blush-light: #f5d5cf; --blush-pale: #fdf0ee;
+    --sky: #7ab3d4; --sky-light: #b8d8ea; --sky-pale: #eaf4f9;
+    --amber: #d4a46a; --amber-pale: #fdf5e8;
+    --lavender: #9a8ec0; --lavender-pale: #f0eef8;
+    --text: #2c3e35; --text-muted: #6b7f74;
+    --bg: #fafcfb; --white: #ffffff;
+    --radius: 20px; --radius-sm: 12px;
   }
 
   html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
 
   /* NAV */
   nav {
-    position: fixed; top: 0; left: 0; right: 0;
-    z-index: 100;
-    padding: 1rem 2rem;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 2rem;
     display: flex; align-items: center; justify-content: space-between;
-    background: rgba(250,252,251,0.9);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(122,171,138,0.15);
+    background: rgba(250,252,251,0.9); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(122,171,138,0.15);
   }
-  .nav-logo {
-    font-family: 'Fraunces', serif;
-    font-size: 1.4rem;
-    font-weight: 500;
-    color: var(--sage);
-    letter-spacing: -0.02em;
-  }
+  .nav-logo { font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 500; color: var(--sage); letter-spacing: -0.02em; }
   .nav-logo span { color: var(--blush); }
-  .nav-links {
-    display: flex; gap: 1.5rem;
-    list-style: none;
-  }
-  .nav-links a {
-    text-decoration: none;
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    font-weight: 400;
-    transition: color 0.2s;
-  }
+  .nav-links { display: flex; gap: 1.2rem; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.9rem; transition: color 0.2s; }
   .nav-links a:hover { color: var(--sage); }
-  .nav-crisis {
-    background: var(--blush);
-    color: white;
-    text-decoration: none;
-    padding: 0.5rem 1.2rem;
-    border-radius: 50px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    transition: background 0.2s, transform 0.1s;
-  }
-  .nav-crisis:hover { background: #d4897a; transform: scale(1.02); }
+  .nav-crisis { background: var(--blush); color: white; text-decoration: none; padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 500; transition: transform 0.1s; }
+  .nav-crisis:hover { transform: scale(1.02); }
 
   /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: flex; align-items: center;
-    padding: 6rem 2rem 4rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero-blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.35;
-    pointer-events: none;
-  }
+  .hero { min-height: 100vh; display: flex; align-items: center; padding: 6rem 2rem 4rem; position: relative; overflow: hidden; }
+  .hero-blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.35; pointer-events: none; }
   .blob-1 { width: 500px; height: 500px; background: var(--sage-light); top: -100px; right: -100px; }
   .blob-2 { width: 350px; height: 350px; background: var(--blush-light); bottom: 50px; left: -80px; }
   .blob-3 { width: 280px; height: 280px; background: var(--sky-light); top: 40%; right: 15%; }
 
-  .hero-inner {
-    max-width: 1100px; margin: 0 auto; width: 100%;
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 4rem; align-items: center;
-    position: relative; z-index: 1;
-  }
-  .hero-tag {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    background: var(--sage-pale);
-    color: var(--sage);
-    font-size: 0.8rem;
-    font-weight: 500;
-    padding: 0.4rem 1rem;
-    border-radius: 50px;
-    margin-bottom: 1.5rem;
-    border: 1px solid var(--sage-light);
-  }
+  .hero-inner { max-width: 1100px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 1; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--sage-pale); color: var(--sage); font-size: 0.8rem; font-weight: 500; padding: 0.4rem 1rem; border-radius: 50px; margin-bottom: 1.5rem; border: 1px solid var(--sage-light); }
   .hero-dot { width: 7px; height: 7px; background: var(--sage); border-radius: 50%; animation: pulse 2s infinite; }
   @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
 
-  h1 {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(2.5rem, 5vw, 3.8rem);
-    font-weight: 400;
-    line-height: 1.1;
-    letter-spacing: -0.03em;
-    margin-bottom: 1.5rem;
-  }
+  h1 { font-family: 'Fraunces', serif; font-size: clamp(2.5rem, 5vw, 3.8rem); line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1.5rem; }
   h1 em { font-style: italic; color: var(--sage); }
-  .hero-sub {
-    font-size: 1.1rem;
-    color: var(--text-muted);
-    line-height: 1.7;
-    margin-bottom: 2.5rem;
-    font-weight: 300;
-  }
+  .hero-sub { font-size: 1.1rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 2.5rem; font-weight: 300; }
   .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .btn-primary {
-    background: var(--sage);
-    color: white;
-    padding: 0.85rem 2rem;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.95rem;
-    transition: background 0.2s, transform 0.1s;
-    display: inline-block;
-  }
-  .btn-primary:hover { background: #6a9a7a; transform: translateY(-2px); }
-  .btn-ghost {
-    color: var(--text);
-    padding: 0.85rem 2rem;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 400;
-    font-size: 0.95rem;
-    border: 1.5px solid rgba(44,62,53,0.2);
-    transition: border-color 0.2s, transform 0.1s;
-    display: inline-block;
-  }
+  .btn-primary { background: var(--sage); color: white; padding: 0.85rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: transform 0.1s; display: inline-block; }
+  .btn-primary:hover { transform: translateY(-2px); }
+  .btn-ghost { color: var(--text); padding: 0.85rem 2rem; border-radius: 50px; text-decoration: none; font-size: 0.95rem; border: 1.5px solid rgba(44,62,53,0.2); transition: transform 0.1s; display: inline-block; }
   .btn-ghost:hover { border-color: var(--sage); color: var(--sage); transform: translateY(-2px); }
-
-  .hero-visual {
-    display: flex; flex-direction: column; gap: 1rem;
-  }
-  .mood-card {
-    background: white;
-    border-radius: var(--radius);
-    padding: 1.5rem;
-    border: 1px solid rgba(122,171,138,0.15);
-    box-shadow: 0 4px 24px rgba(44,62,53,0.06);
-  }
-  .mood-header {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-  }
-  .mood-row {
-    display: flex; gap: 0.6rem; flex-wrap: wrap;
-  }
-  .mood-pill {
-    padding: 0.45rem 1rem;
-    border-radius: 50px;
-    font-size: 0.85rem;
-    font-weight: 400;
-    cursor: pointer;
-    transition: transform 0.15s;
-    border: 1.5px solid transparent;
-  }
-  .mood-pill:hover { transform: scale(1.05); }
-  .mood-pill.sage { background: var(--sage-pale); color: var(--sage); border-color: var(--sage-light); }
-  .mood-pill.blush { background: var(--blush-pale); color: #c0736a; border-color: var(--blush-light); }
-  .mood-pill.sky { background: var(--sky-pale); color: #4a8fb0; border-color: var(--sky-light); }
-  .mood-pill.amber { background: var(--amber-pale); color: #a07840; border-color: #e8cfa0; }
-  .mood-pill.lavender { background: var(--lavender-pale); color: #6a5fa0; border-color: #ccc7e4; }
-  .quote-card {
-    background: var(--sage);
-    border-radius: var(--radius);
-    padding: 1.5rem 2rem;
-    color: white;
-  }
-  .quote-text {
-    font-family: 'Fraunces', serif;
-    font-size: 1.05rem;
-    font-weight: 300;
-    font-style: italic;
-    line-height: 1.6;
-    margin-bottom: 0.8rem;
-  }
-  .quote-attr { font-size: 0.8rem; opacity: 0.8; }
 
   /* SECTION WRAPPER */
   section { padding: 5rem 2rem; }
   .section-inner { max-width: 1100px; margin: 0 auto; }
-  .section-tag {
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--sage);
-    margin-bottom: 0.8rem;
-    display: block;
-  }
-  h2 {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-    font-weight: 400;
-    letter-spacing: -0.025em;
-    line-height: 1.2;
-    margin-bottom: 1.2rem;
-  }
+  .section-tag { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage); margin-bottom: 0.8rem; display: block; }
+  h2 { font-family: 'Fraunces', serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); line-height: 1.2; margin-bottom: 1.2rem; }
   h2 em { font-style: italic; color: var(--sage); }
-  .section-lead {
-    font-size: 1.05rem;
-    color: var(--text-muted);
-    font-weight: 300;
-    max-width: 520px;
-    line-height: 1.8;
-  }
+  .section-lead { font-size: 1.05rem; color: var(--text-muted); font-weight: 300; max-width: 520px; line-height: 1.8; }
 
-  /* FEELINGS SECTION */
+  /* FEELINGS GRID */
   .feelings-section { background: var(--white); }
-  .feelings-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.2rem;
-    margin-top: 3rem;
-  }
-  .feeling-card {
-    border-radius: var(--radius);
-    padding: 1.8rem;
-    transition: transform 0.2s;
-    cursor: default;
-  }
+  .feelings-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; margin-top: 3rem; }
+  .feeling-card { border-radius: var(--radius); padding: 1.8rem; transition: transform 0.2s; cursor: default; }
   .feeling-card:hover { transform: translateY(-4px); }
   .feeling-card.anxiety { background: var(--lavender-pale); border: 1px solid #ccc7e4; }
   .feeling-card.sadness { background: var(--sky-pale); border: 1px solid var(--sky-light); }
@@ -265,827 +76,207 @@
   .feeling-card.anger { background: var(--blush-pale); border: 1px solid var(--blush-light); }
   .feeling-card.loneliness { background: var(--sage-pale); border: 1px solid var(--sage-light); }
   .feeling-card.overwhelm { background: #fdf5f8; border: 1px solid #f0c8d8; }
-  .feeling-icon {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    display: block;
-  }
-  .feeling-card h3 {
-    font-family: 'Fraunces', serif;
-    font-size: 1.2rem;
-    font-weight: 400;
-    margin-bottom: 0.6rem;
-  }
-  .feeling-card.anxiety h3 { color: #5a4fa0; }
-  .feeling-card.sadness h3 { color: #2a7090; }
-  .feeling-card.stress h3 { color: #8a6030; }
-  .feeling-card.anger h3 { color: #b05848; }
-  .feeling-card.loneliness h3 { color: #4a7a5a; }
-  .feeling-card.overwhelm h3 { color: #a04870; }
-  .feeling-card p {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    line-height: 1.7;
-  }
+  .feeling-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+  .feeling-card h3 { font-family: 'Fraunces', serif; font-size: 1.2rem; margin-bottom: 0.6rem; }
+  .feeling-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; }
 
-  /* TOOLS SECTION */
+  /* TOOLS DIRECTORY */
   .tools-section { background: var(--sage-pale); }
-  .tools-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.2rem;
-    margin-top: 3rem;
-  }
-  .tool-card {
-    background: white;
-    border-radius: var(--radius);
-    padding: 1.8rem;
-    border: 1px solid rgba(122,171,138,0.2);
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
+  .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-top: 3rem; }
+  .tool-card { background: white; border-radius: var(--radius); padding: 1.8rem; border: 1px solid rgba(122,171,138,0.2); transition: transform 0.2s; }
   .tool-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(122,171,138,0.15); }
-  .tool-icon {
-    width: 48px; height: 48px;
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.4rem;
-    margin-bottom: 1.2rem;
-  }
-  .tool-icon.breathing { background: var(--sky-pale); }
-  .tool-icon.journal { background: var(--blush-pale); }
-  .tool-icon.grounding { background: var(--sage-pale); }
-  .tool-icon.affirmation { background: var(--lavender-pale); }
-  .tool-icon.jar { background: var(--amber-pale); }
-  .tool-icon.pmr { background: #fdf5f8; }
-  .tool-card h3 {
-    font-family: 'Fraunces', serif;
-    font-size: 1.1rem;
-    font-weight: 400;
-    margin-bottom: 0.5rem;
-  }
-  .tool-card p {
-    font-size: 0.88rem;
-    color: var(--text-muted);
-    line-height: 1.7;
-    margin-bottom: 1.2rem;
-  }
-  .tool-link {
-    font-size: 0.85rem;
-    color: var(--sage);
-    text-decoration: none;
-    font-weight: 500;
-    display: inline-flex; align-items: center; gap: 0.3rem;
-    transition: gap 0.2s;
-  }
-  .tool-link:hover { gap: 0.6rem; }
+  .tool-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 1.2rem; }
+  .tool-icon.breathing { background: var(--sky-pale); } .tool-icon.grounding { background: var(--sage-pale); } .tool-icon.jar { background: var(--amber-pale); }
+  .tool-icon.pmr { background: #fdf5f8; } .tool-icon.affirmation { background: var(--lavender-pale); } .tool-icon.journal { background: var(--blush-pale); }
+  .tool-card h3 { font-family: 'Fraunces', serif; font-size: 1.1rem; margin-bottom: 0.5rem; }
+  .tool-card p { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.2rem; }
+  .tool-link { font-size: 0.85rem; color: var(--sage); text-decoration: none; font-weight: 500; }
 
-  /* INTERACTIVE BREATHING */
-  .breathing-section {
-    background: linear-gradient(135deg, #2c3e35 0%, #1a2d24 100%);
-    color: white;
-  }
-  .breathing-inner {
-    max-width: 700px; margin: 0 auto; text-align: center;
-  }
+  /* ANIMATED BREATHING */
+  .breathing-section { background: linear-gradient(135deg, #2c3e35 0%, #1a2d24 100%); color: white; }
+  .breathing-inner { max-width: 700px; margin: 0 auto; text-align: center; }
   .breathing-inner .section-tag { color: var(--sage-light); }
-  .breathing-inner h2 { color: white; }
-  .breathing-inner h2 em { color: var(--sage-light); }
+  .breathing-inner h2 { color: white; } .breathing-inner h2 em { color: var(--sage-light); }
   .breathing-inner .section-lead { color: rgba(255,255,255,0.65); max-width: 100%; margin: 0 auto 2rem; }
   
-  .sound-toggle-wrap {
-    display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 1.5rem;
-  }
-  .sound-toggle-wrap label { font-size: 0.88rem; color: rgba(255,255,255,0.7); cursor: pointer; user-select: none; }
+  .breath-circle-wrap { display: flex; justify-content: center; margin: 2rem 0; }
+  .breath-circle { width: 200px; height: 200px; border-radius: 50%; background: rgba(122,171,138,0.1); border: 2px solid rgba(122,171,138,0.4); display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; }
+  .breath-ring { position: absolute; width: 100%; height: 100%; border-radius: 50%; border: 2px solid rgba(122,171,138,0.3); transition: transform 4s linear, background-color 4s linear; transform: scale(1); background: transparent; }
+  .breath-content { z-index: 2; display: flex; flex-direction: column; align-items: center; }
+  .breath-timer { font-family: 'Fraunces', serif; font-size: 3.5rem; font-weight: 300; line-height: 1; color: white; margin-bottom: 0.2rem; }
+  .breath-label { font-family: 'DM Sans', sans-serif; font-size: 1rem; color: var(--sage-light); font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; }
   
-  .breath-circle-wrap {
-    display: flex; justify-content: center; margin: 2rem 0;
-  }
-  .breath-circle {
-    width: 180px; height: 180px;
-    border-radius: 50%;
-    background: rgba(122,171,138,0.2);
-    border: 2px solid rgba(122,171,138,0.4);
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s;
-    position: relative;
-  }
-  .breath-ring {
-    position: absolute;
-    width: 100%; height: 100%;
-    border-radius: 50%;
-    border: 2px solid rgba(122,171,138,0.2);
-    transform: scale(1);
-  }
-  .breath-label {
-    font-family: 'Fraunces', serif;
-    font-size: 1.1rem;
-    font-weight: 300;
-    color: white;
-    text-align: center;
-    pointer-events: none;
-    z-index: 2;
-  }
-  .breath-sub { font-size: 0.75rem; opacity: 0.7; margin-top: 0.3rem; }
-  .breathing-steps {
-    display: flex; justify-content: center; gap: 2rem;
-    margin: 2rem 0;
-    flex-wrap: wrap;
-  }
-  .bstep {
-    text-align: center; padding: 0.4rem 1rem; border-radius: 8px; border: 1px solid transparent; transition: all 0.3s;
-  }
-  .bstep-num {
-    font-family: 'Fraunces', serif;
-    font-size: 2rem;
-    color: var(--sage-light);
-    display: block;
-    line-height: 1;
-  }
+  .breathing-steps { display: flex; justify-content: center; gap: 2rem; margin: 2rem 0; flex-wrap: wrap; }
+  .bstep { text-align: center; padding: 0.4rem 1rem; border-radius: 8px; border: 1px solid transparent; transition: all 0.3s; }
+  .bstep-num { font-family: 'Fraunces', serif; font-size: 2rem; color: var(--sage-light); display: block; line-height: 1; }
   .bstep-label { font-size: 0.8rem; opacity: 0.65; margin-top: 0.3rem; }
   
-  #breathBtn {
-    background: var(--sage);
-    color: white;
-    border: none;
-    padding: 0.85rem 2.5rem;
-    border-radius: 50px;
-    font-size: 0.95rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.2s;
-    font-family: 'DM Sans', sans-serif;
-  }
-  #breathBtn:hover { background: #6a9a7a; }
-  
-  .breathing-inner .btn-reset { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.3); margin-left: 10px; }
-  .breathing-inner .btn-reset:hover { border-color: var(--blush); color: white; background: var(--blush); }
+  #breathBtn { background: var(--sage); color: white; border: none; padding: 0.85rem 2.5rem; border-radius: 50px; font-size: 0.95rem; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+  .btn-reset { background: transparent; color: var(--text-muted); border: 1.5px solid rgba(44,62,53,0.15); padding: 0.6rem 1.5rem; border-radius: 50px; font-size: 0.88rem; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; margin-left:10px; transition: 0.2s; }
+  .btn-reset:hover { border-color: #b05848; color: #b05848; background: #fdf0ee; }
+  .breathing-inner .btn-reset { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.3); }
 
-  #breathStatus {
-    font-size: 0.9rem;
-    opacity: 0.65;
-    margin-top: 1.5rem;
-    min-height: 1.5rem;
-  }
-
-  /* INTERACTIVE GROUNDING 5-4-3-2-1 */
+  /* GROUNDING 5-4-3-2-1 */
   .grounding-section { background: var(--blush-pale); }
-  .grounding-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 2.5rem;
-    align-items: start;
-    margin-top: 2rem;
-  }
-  .grounding-steps {
-    display: flex; flex-direction: column; gap: 1rem;
-  }
-  .g-step {
-    display: flex; gap: 1.2rem; align-items: center;
-    padding: 1.2rem;
-    background: white;
-    border-radius: var(--radius-sm);
-    border: 1px solid rgba(232,168,156,0.3);
-    transition: all 0.3s ease;
-  }
-  .g-step.completed {
-    background: rgba(122,171,138,0.1);
-    border-color: var(--sage-light);
-    opacity: 0.85;
-  }
-  .g-checkbox {
-    width: 22px; height: 22px;
-    cursor: pointer;
-    accent-color: var(--sage);
-  }
-  .g-num {
-    width: 36px; height: 36px; min-width: 36px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Fraunces', serif;
-    font-size: 1rem;
-    font-weight: 400;
-  }
+  .grounding-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2.5rem; align-items: start; margin-top: 2rem; }
+  .grounding-steps { display: flex; flex-direction: column; gap: 1rem; }
+  .g-step { display: flex; gap: 1.2rem; align-items: center; padding: 1.2rem; background: white; border-radius: var(--radius-sm); border: 1px solid rgba(232,168,156,0.3); transition: all 0.3s ease; }
+  .g-step.completed { background: rgba(122,171,138,0.1); border-color: var(--sage-light); opacity: 0.85; }
+  .g-checkbox { width: 22px; height: 22px; cursor: pointer; accent-color: var(--sage); }
+  .g-num { width: 36px; height: 36px; min-width: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-size: 1rem; }
   .g-num.n5 { background: var(--blush-pale); color: #b05848; border: 1.5px solid var(--blush-light); }
   .g-num.n4 { background: var(--sage-pale); color: var(--sage); border: 1.5px solid var(--sage-light); }
   .g-num.n3 { background: var(--sky-pale); color: #4a8fb0; border: 1.5px solid var(--sky-light); }
   .g-num.n2 { background: var(--amber-pale); color: #8a6030; border: 1.5px solid #e8cfa0; }
   .g-num.n1 { background: var(--lavender-pale); color: #6a5fa0; border: 1.5px solid #ccc7e4; }
-  
   .g-content { flex: 1; }
   .g-content h4 { font-weight: 500; font-size: 0.95rem; margin-bottom: 0.2rem; }
   .g-content p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem; }
-  .g-input {
-    width: 100%;
-    padding: 0.4rem 0.8rem;
-    font-size: 0.85rem;
-    border: 1px solid rgba(44,62,53,0.15);
-    border-radius: 6px;
-    font-family: 'DM Sans', sans-serif;
-    outline: none;
-    transition: border-color 0.2s;
-  }
+  .g-input { width: 100%; padding: 0.4rem 0.8rem; font-size: 0.85rem; border: 1px solid rgba(44,62,53,0.15); border-radius: 6px; font-family: 'DM Sans', sans-serif; outline: none; }
   .g-input:focus { border-color: var(--sage); }
-  .g-step.completed .g-input {
-    text-decoration: line-through;
-    background: rgba(255,255,255,0.5);
-    color: var(--text-muted);
-  }
+  .g-step.completed .g-input { text-decoration: line-through; background: rgba(255,255,255,0.5); color: var(--text-muted); }
+  .grounding-callout { background: var(--blush); color: white; border-radius: var(--radius); padding: 2.5rem; text-align: center; position: sticky; top: 100px; transition: 0.4s; }
+  .grounding-callout.all-done { background: var(--sage); }
+  .grounding-callout .big-num { font-family: 'Fraunces', serif; font-size: 4rem; line-height: 1.1; opacity: 0.9; display: block; }
+  .grounding-callout p { font-size: 0.95rem; opacity: 0.85; line-height: 1.7; margin-top: 1rem; }
 
-  .grounding-callout {
-    background: var(--blush);
-    color: white;
-    border-radius: var(--radius);
-    padding: 2.5rem;
-    text-align: center;
-    position: sticky; top: 100px;
-    transition: background-color 0.4s;
-  }
-  .grounding-callout.all-done {
-    background: var(--sage);
-  }
-  .grounding-callout .big-num {
-    font-family: 'Fraunces', serif;
-    font-size: 4rem;
-    font-weight: 300;
-    line-height: 1.1;
-    opacity: 0.9;
-    display: block;
-  }
-  .grounding-callout p {
-    font-size: 0.95rem;
-    opacity: 0.85;
-    line-height: 1.7;
-    margin-top: 1rem;
-  }
-
-  /* NEW ACTIVITY 1: GRATITUDE JAR */
-  .jar-section { background: var(--white); }
-  .jar-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
-    margin-top: 2rem;
-  }
-  .jar-form {
-    background: var(--amber-pale);
-    padding: 2rem;
-    border-radius: var(--radius);
-    border: 1px solid #e8cfa0;
-  }
-  .jar-input {
-    width: 100%;
-    padding: 0.8rem 1rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
-    border: 1.5px solid rgba(138,96,48,0.2);
-    border-radius: var(--radius-sm);
-    margin-bottom: 1rem;
-    resize: none;
-    outline: none;
-  }
+  /* GRATITUDE JAR (Local Saves) */
+  .jar-section { background: var(--white); border-top: 1px solid var(--sage-pale); }
+  .jar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-top: 2rem; }
+  .jar-form { background: var(--amber-pale); padding: 2rem; border-radius: var(--radius); border: 1px solid #e8cfa0; }
+  .jar-input { width: 100%; padding: 0.8rem 1rem; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; border: 1.5px solid rgba(138,96,48,0.2); border-radius: var(--radius-sm); margin-bottom: 1rem; resize: none; outline: none; }
   .jar-input:focus { border-color: var(--amber); }
-  .jar-btn {
-    background: var(--amber);
-    color: white;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 50px;
-    font-weight: 500;
-    cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-    transition: background 0.2s;
-  }
-  .jar-btn:hover { background: #b88a50; }
-  
-  .jar-visual-container {
-    display: flex; flex-direction: column; align-items: center; gap: 1rem;
-  }
-  .glass-jar {
-    width: 240px; height: 320px;
-    border: 4px solid var(--text-muted);
-    border-radius: 30px 30px 60px 60px;
-    position: relative;
-    background: rgba(255,255,255,0.6);
-    box-shadow: inset 0 0 20px rgba(0,0,0,0.05), 0 10px 30px rgba(0,0,0,0.05);
-    display: flex; flex-wrap: wrap; align-content: flex-end;
-    padding: 1.5rem; gap: 0.5rem;
-    overflow: hidden;
-  }
-  .glass-jar::before {
-    content: '';
-    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
-    width: 120px; height: 16px;
-    background: var(--text-muted);
-    border-radius: 6px;
-  }
-  .jar-note {
-    background: #fff5cc;
-    border: 1px solid #ffe680;
-    font-size: 0.75rem;
-    padding: 0.3rem 0.6rem;
-    border-radius: 8px;
-    animation: dropIn 0.4s ease-out forwards;
-    max-width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
-    color: #735300;
-  }
-  @keyframes dropIn {
-    0% { transform: translateY(-150px) scale(0.5); opacity: 0; }
-    100% { transform: translateY(0) scale(1); opacity: 1; }
-  }
-  .jar-placeholder {
-    position: absolute; top: 45%; left: 5%; right: 5%;
-    text-align: center; font-style: italic; font-size: 0.85rem;
-    color: var(--text-muted); pointer-events: none;
-  }
+  .jar-btn { background: var(--amber); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 50px; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+  .glass-jar { width: 240px; height: 320px; border: 4px solid var(--text-muted); border-radius: 30px 30px 60px 60px; position: relative; background: rgba(255,255,255,0.6); box-shadow: inset 0 0 20px rgba(0,0,0,0.05), 0 10px 30px rgba(0,0,0,0.05); display: flex; flex-wrap: wrap; align-content: flex-end; padding: 1.5rem; gap: 0.5rem; overflow: hidden; margin: 0 auto; }
+  .glass-jar::before { content: ''; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); width: 120px; height: 16px; background: var(--text-muted); border-radius: 6px; }
+  .jar-note { background: #fff5cc; border: 1px solid #ffe680; font-size: 0.75rem; padding: 0.3rem 0.6rem; border-radius: 8px; animation: dropIn 0.4s ease-out forwards; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #735300; }
+  @keyframes dropIn { 0% { transform: translateY(-150px) scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+  .jar-placeholder { position: absolute; top: 45%; left: 0; right: 0; text-align: center; font-style: italic; font-size: 0.85rem; color: var(--text-muted); }
 
-  /* NEW ACTIVITY 2: PROGRESSIVE MUSCLE RELAXATION */
+  /* PMR ENGINE */
   .pmr-section { background: var(--sky-pale); }
-  .pmr-container {
-    max-width: 750px; margin: 2rem auto 0;
-    background: white;
-    border-radius: var(--radius);
-    padding: 2.5rem;
-    border: 1px solid var(--sky-light);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.02);
-    text-align: center;
-  }
-  .pmr-window {
-    min-height: 160px;
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    margin-bottom: 2rem;
-  }
-  #pmrMuscle {
-    font-family: 'Fraunces', serif;
-    font-size: 1.6rem;
-    color: #2a7090;
-    margin-bottom: 0.5rem;
-  }
-  #pmrInstruction {
-    font-size: 1.05rem;
-    color: var(--text);
-    max-width: 550px;
-    margin-bottom: 1rem;
-  }
-  .pmr-pulse-box {
-    height: 30px; display: flex; align-items: center; justify-content: center;
-  }
-  .pmr-indicator {
-    padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500;
-    text-transform: uppercase; letter-spacing: 0.05em; display: none;
-  }
+  .pmr-container { max-width: 750px; margin: 2rem auto 0; background: white; border-radius: var(--radius); padding: 2.5rem; border: 1px solid var(--sky-light); box-shadow: 0 4px 20px rgba(0,0,0,0.02); text-align: center; }
+  .pmr-window { min-height: 160px; display: flex; flex-direction: column; justify-content: center; align-items: center; margin-bottom: 2rem; }
+  #pmrMuscle { font-family: 'Fraunces', serif; font-size: 1.6rem; color: #2a7090; margin-bottom: 0.5rem; }
+  #pmrInstruction { font-size: 1.05rem; color: var(--text); max-width: 550px; margin-bottom: 1rem; }
+  .pmr-pulse-box { height: 30px; display: flex; align-items: center; justify-content: center; }
+  .pmr-indicator { padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; display: none; }
   .pmr-indicator.tense { background: #fdf0ee; color: #b05848; animation: tensionPulse 1s infinite alternate; }
   .pmr-indicator.release { background: var(--sage-pale); color: var(--sage); }
   @keyframes tensionPulse { 0% { opacity: 0.6; } 100% { opacity: 1; } }
-  
-  .pmr-progress-bar {
-    width: 100%; height: 6px; background: #eaf4f9; border-radius: 3px; overflow: hidden; margin-bottom: 1.5rem;
-  }
-  #pmrProgressFill {
-    width: 0%; height: 100%; background: var(--sky); transition: width 0.3s ease;
-  }
-  .pmr-controls button {
-    background: var(--sky); color: white; border: none; padding: 0.8rem 2rem;
-    border-radius: 50px; font-size: 0.95rem; font-weight: 500; cursor: pointer;
-    font-family: 'DM Sans', sans-serif; transition: background 0.2s; margin: 5px;
-  }
-  .pmr-controls button:hover { background: #5a9cb8; }
+  .pmr-progress-bar { width: 100%; height: 6px; background: #eaf4f9; border-radius: 3px; overflow: hidden; margin-bottom: 1.5rem; }
+  #pmrProgressFill { width: 0%; height: 100%; background: var(--sky); transition: width 0.3s ease; }
+  .pmr-controls button { background: var(--sky); color: white; border: none; padding: 0.8rem 2rem; border-radius: 50px; font-size: 0.95rem; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.2s; margin: 5px; }
 
   /* AFFIRMATIONS */
   .affirmations-section { background: var(--white); }
   .affirmations-inner { text-align: center; max-width: 700px; margin: 0 auto; }
-  .affirmations-inner .section-lead { margin: 0 auto 3rem; }
-  .affirmation-display {
-    background: var(--lavender-pale);
-    border: 1px solid #ccc7e4;
-    border-radius: var(--radius);
-    padding: 3rem 2rem;
-    margin: 2rem 0;
-    min-height: 140px;
-    display: flex; align-items: center; justify-content: center;
-    transition: opacity 0.3s;
-  }
-  #affirmText {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
-    font-weight: 300;
-    font-style: italic;
-    color: #4a3d80;
-    line-height: 1.5;
-  }
-  #newAffirmBtn {
-    background: #9a8ec0;
-    color: white;
-    border: none;
-    padding: 0.85rem 2rem;
-    border-radius: 50px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.2s;
-    font-family: 'DM Sans', sans-serif;
-  }
-  #newAffirmBtn:hover { background: #7a6ea0; }
+  .affirmation-display { background: var(--lavender-pale); border: 1px solid #ccc7e4; border-radius: var(--radius); padding: 3rem 2rem; margin: 2rem 0; min-height: 140px; display: flex; align-items: center; justify-content: center; }
+  #affirmText { font-family: 'Fraunces', serif; font-size: clamp(1.2rem, 2.5vw, 1.6rem); font-weight: 300; font-style: italic; color: #4a3d80; line-height: 1.5; }
+  #newAffirmBtn { background: #9a8ec0; color: white; border: none; padding: 0.85rem 2rem; border-radius: 50px; font-size: 0.9rem; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; margin-right: 10px; }
 
-  /* MOOD TRACKER INTERACTIVE */
+  /* MOOD TRACKER (Local Saves) */
   .mood-section { background: var(--sage-pale); }
-  .mood-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: start;
-    margin-top: 2rem;
-  }
-  .mood-tracker-widget {
-    background: white;
-    border-radius: var(--radius);
-    padding: 2rem;
-    border: 1px solid rgba(122,171,138,0.2);
-  }
-  .mood-tracker-label {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin-bottom: 1.2rem;
-  }
-  .mood-options {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 0.6rem;
-    margin-bottom: 1.5rem;
-  }
-  .mood-btn {
-    aspect-ratio: 1;
-    border-radius: 12px;
-    border: 1.5px solid transparent;
-    background: var(--sage-pale);
-    cursor: pointer;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: 0.2rem;
-    transition: transform 0.15s, border-color 0.15s;
-    font-family: 'DM Sans', sans-serif;
-  }
+  .mood-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; margin-top: 2rem; }
+  .mood-tracker-widget { background: white; border-radius: var(--radius); padding: 2rem; border: 1px solid rgba(122,171,138,0.2); }
+  .mood-options { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.6rem; margin-bottom: 1.5rem; }
+  .mood-btn { aspect-ratio: 1; border-radius: 12px; border: 1.5px solid transparent; background: var(--sage-pale); cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: transform 0.15s; }
   .mood-btn:hover { transform: scale(1.08); }
   .mood-btn.selected { border-color: var(--sage); background: white; box-shadow: 0 2px 12px rgba(122,171,138,0.2); }
   .mood-btn .emoji { font-size: 1.5rem; }
-  .mood-btn .label { font-size: 0.6rem; color: var(--text-muted); font-weight: 500; letter-spacing: 0.02em; }
-  .mood-note {
-    width: 100%;
-    border: 1.5px solid rgba(122,171,138,0.25);
-    border-radius: var(--radius-sm);
-    padding: 0.8rem 1rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    color: var(--text);
-    resize: none;
-    height: 80px;
-    transition: border-color 0.2s;
-    margin-bottom: 1rem;
-    background: var(--bg);
-  }
-  .mood-note:focus { outline: none; border-color: var(--sage); background: white; }
-  .mood-note::placeholder { color: var(--text-muted); }
-  .save-mood-btn {
-    width: 100%;
-    background: var(--sage);
-    color: white;
-    border: none;
-    padding: 0.75rem;
-    border-radius: 50px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.2s;
-    font-family: 'DM Sans', sans-serif;
-    margin-bottom: 10px;
-  }
-  .save-mood-btn:hover { background: #6a9a7a; }
-  #moodMessage {
-    font-size: 0.85rem;
-    color: var(--sage);
-    text-align: center;
-    margin-top: 0.8rem;
-    min-height: 1.2rem;
-    font-weight: 500;
-  }
-  .mood-history {
-    display: flex; flex-direction: column; gap: 0.8rem;
-    max-height: 300px; overflow-y: auto;
-  }
-  .mood-entry {
-    display: flex; align-items: center; gap: 1rem;
-    background: white;
-    border-radius: var(--radius-sm);
-    padding: 0.8rem 1.2rem;
-    border: 1px solid rgba(122,171,138,0.15);
-    font-size: 0.88rem;
-  }
+  .mood-btn .label { font-size: 0.6rem; color: var(--text-muted); font-weight: 500; }
+  .mood-note { width: 100%; border: 1.5px solid rgba(122,171,138,0.25); border-radius: var(--radius-sm); padding: 0.8rem 1rem; font-family: 'DM Sans', sans-serif; resize: none; height: 80px; margin-bottom: 1rem; background: var(--bg); outline: none; }
+  .save-mood-btn { width: 100%; background: var(--sage); color: white; border: none; padding: 0.75rem; border-radius: 50px; font-weight: 500; cursor: pointer; margin-bottom: 10px; font-family: 'DM Sans', sans-serif;}
+  .mood-history { display: flex; flex-direction: column; gap: 0.8rem; max-height: 300px; overflow-y: auto; padding-right: 10px;}
+  .mood-entry { display: flex; align-items: center; gap: 1rem; background: white; border-radius: var(--radius-sm); padding: 0.8rem 1.2rem; border: 1px solid rgba(122,171,138,0.15); font-size: 0.88rem; }
   .mood-entry .time { font-size: 0.75rem; color: var(--text-muted); min-width: 75px; }
-  .mood-empty {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    font-style: italic;
-    padding: 2rem;
-    text-align: center;
-    background: white;
-    border-radius: var(--radius-sm);
-    border: 1px dashed rgba(122,171,138,0.3);
-  }
 
-  /* JOURNAL */
+  /* JOURNAL (Auto Local Saves) */
   .journal-section { background: var(--white); }
   .journal-inner { max-width: 750px; margin: 0 auto; }
-  .prompt-display {
-    background: var(--sage-pale);
-    border: 1px solid var(--sage-light);
-    border-radius: var(--radius);
-    padding: 2rem;
-    margin: 2rem 0;
-  }
-  .prompt-label {
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--sage);
-    margin-bottom: 0.8rem;
-  }
-  #promptText {
-    font-family: 'Fraunces', serif;
-    font-size: 1.2rem;
-    font-weight: 300;
-    font-style: italic;
-    color: var(--text);
-    line-height: 1.6;
-  }
-  #journalTextarea {
-    width: 100%;
-    border: 1.5px solid rgba(122,171,138,0.25);
-    border-radius: var(--radius-sm);
-    padding: 1.2rem 1.4rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
-    color: var(--text);
-    resize: vertical;
-    min-height: 150px;
-    background: var(--bg);
-    transition: border-color 0.2s;
-    line-height: 1.7;
-  }
-  #journalTextarea:focus { outline: none; border-color: var(--sage); background: white; }
-  .journal-actions { display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
-  .journal-btn {
-    padding: 0.7rem 1.5rem;
-    border-radius: 50px;
-    font-size: 0.88rem;
-    font-weight: 500;
-    cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-    transition: all 0.2s;
-    border: none;
-  }
+  .prompt-display { background: var(--sage-pale); border-radius: var(--radius); padding: 2rem; margin: 2rem 0; border: 1px solid var(--sage-light); }
+  #promptText { font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 300; font-style: italic; }
+  #journalTextarea { width: 100%; border: 1.5px solid rgba(122,171,138,0.25); border-radius: var(--radius-sm); padding: 1.2rem; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; resize: vertical; min-height: 150px; outline:none; background: var(--bg); transition: border-color 0.2s; }
+  #journalTextarea:focus { border-color: var(--sage); background: white; }
+  .journal-btn { padding: 0.7rem 1.5rem; border-radius: 50px; font-size: 0.88rem; font-weight: 500; cursor: pointer; border: none; font-family: 'DM Sans', sans-serif; margin-right: 10px;}
   .journal-btn.primary { background: var(--sage); color: white; }
-  .journal-btn.primary:hover { background: #6a9a7a; }
-  .journal-btn.secondary { background: var(--sage-pale); color: var(--sage); border: 1.5px solid var(--sage-light); }
-  .journal-btn.secondary:hover { background: var(--sage); color: white; }
-  #journalFeedback { font-size: 0.85rem; color: var(--sage); font-weight: 500; margin-top: 0.5rem; min-height: 1.2rem; }
 
-  /* EXPANDED CRISIS RESOURCES (10 LINKS) */
+  /* HARD SCAVENGER HUNT (5 Options) */
+  .scavenger-section { background: var(--lavender-pale); border-top: 2px dashed var(--lavender); }
+  .scavenger-box { background: white; border-radius: var(--radius); padding: 2.5rem; max-width: 800px; margin: 2rem auto 0; border: 1px solid #ccc7e4; box-shadow: 0 8px 32px rgba(154,142,192,0.1); }
+  .scavenger-questions { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
+  .scav-item { background: var(--bg); padding: 1.2rem; border-radius: var(--radius-sm); border: 1px solid rgba(44,62,53,0.08); }
+  .scav-item label { font-size: 0.95rem; font-weight: 500; display: block; margin-bottom: 0.6rem; }
+  .scav-select { width: 100%; padding: 0.6rem; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; border-radius: 6px; border: 1px solid rgba(44,62,53,0.2); outline: none; background: white; }
+  .scav-select:focus { border-color: var(--lavender); }
+  .code-display-row { display: flex; justify-content: center; gap: 1rem; margin: 2rem 0; }
+  .code-letter-box { width: 50px; height: 60px; border: 2px dashed rgba(44,62,53,0.3); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-size: 1.8rem; font-weight: 500; background: var(--bg); color: var(--text-muted); transition: all 0.3s ease; }
+  .code-letter-box.revealed { border-style: solid; border-color: var(--sage); background: var(--sage-pale); color: var(--text); box-shadow: 0 4px 12px rgba(122,171,138,0.2); }
+  .scav-submit-btn { background: var(--lavender); color: white; border: none; padding: 0.85rem 2.5rem; border-radius: 50px; font-size: 1rem; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+
+  /* CRISIS DIRECTORY */
   .crisis-section { background: #1a2d24; color: white; }
   .crisis-inner { max-width: 1100px; margin: 0 auto; }
   .crisis-inner .section-tag { color: var(--blush-light); }
   .crisis-inner h2 { color: white; margin-bottom: 0.8rem; }
   .crisis-inner h2 em { color: var(--blush); }
   .crisis-inner .section-lead { color: rgba(255,255,255,0.65); max-width: 600px; }
-  .crisis-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.2rem;
-    margin-top: 2.5rem;
-  }
-  .crisis-card {
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: var(--radius);
-    padding: 1.8rem;
-    display: flex; flex-direction: column;
-    justify-content: space-between;
-    transition: background 0.2s, transform 0.2s;
-  }
+  .crisis-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; margin-top: 2.5rem; }
+  .crisis-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius); padding: 1.8rem; display: flex; flex-direction: column; justify-content: space-between; transition: background 0.2s, transform 0.2s; }
   .crisis-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
   .crisis-card-top { margin-bottom: 1.5rem; }
-  .crisis-card h3 {
-    font-family: 'Fraunces', serif;
-    font-size: 1.1rem;
-    font-weight: 400;
-    margin-bottom: 0.5rem;
-    color: var(--blush-light);
-  }
+  .crisis-card h3 { font-family: 'Fraunces', serif; font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--blush-light); }
   .crisis-card p { font-size: 0.88rem; opacity: 0.65; line-height: 1.6; margin-bottom: 1rem; }
   .crisis-contact { font-size: 1.1rem; font-weight: 500; color: white; text-decoration: none; margin-top: auto; word-break: break-all; }
   .crisis-contact:hover { text-decoration: underline; color: var(--blush-light); }
-  .crisis-badge {
-    display: inline-block; background: var(--blush); color: white;
-    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.05em;
-    text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 50px;
-    margin-bottom: 0.8rem;
-  }
-  .crisis-note {
-    margin-top: 2.5rem; padding: 1.5rem 2rem;
-    border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-sm);
-    font-size: 0.88rem; opacity: 0.7; line-height: 1.8;
-  }
+  .crisis-badge { display: inline-block; background: var(--blush); color: white; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 50px; margin-bottom: 0.8rem; }
 
-  /* SCAVENGER HUNT GRAPHICS */
-  .scavenger-section {
-    background: var(--lavender-pale);
-    border-top: 2px dashed var(--lavender);
-  }
-  .scavenger-box {
-    background: white;
-    border-radius: var(--radius);
-    padding: 2.5rem;
-    max-width: 800px;
-    margin: 2rem auto 0;
-    border: 1px solid #ccc7e4;
-    box-shadow: 0 8px 32px rgba(154,142,192,0.1);
-  }
-  .scavenger-questions {
-    display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem;
-  }
-  .scav-item {
-    background: var(--bg);
-    padding: 1.2rem;
-    border-radius: var(--radius-sm);
-    border: 1px solid rgba(44,62,53,0.08);
-  }
-  .scav-item label {
-    font-size: 0.95rem; font-weight: 500; display: block; margin-bottom: 0.6rem;
-  }
-  .scav-select {
-    width: 100%; padding: 0.6rem; font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem; border-radius: 6px; border: 1px solid rgba(44,62,53,0.2);
-    outline: none; background: white;
-  }
-  .scav-select:focus { border-color: var(--lavender); }
-  
-  /* Live Code Tracker Display Boxes */
-  .code-display-row {
-    display: flex; justify-content: center; gap: 1rem; margin: 2rem 0;
-  }
-  .code-letter-box {
-    width: 50px; height: 60px;
-    border: 2px dashed rgba(44,62,53,0.3);
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Fraunces', serif; font-size: 1.8rem; font-weight: 500;
-    background: var(--bg); color: var(--text-muted);
-    transition: all 0.3s ease;
-  }
-  .code-letter-box.revealed {
-    border-style: solid; border-color: var(--sage);
-    background: var(--sage-pale); color: var(--text);
-    box-shadow: 0 4px 12px rgba(122,171,138,0.2);
-  }
-
-  .scav-btn-row {
-    display: flex; justify-content: center; gap: 1rem; margin-top: 1.5rem;
-  }
-  .scav-submit-btn {
-    background: var(--lavender); color: white; border: none; padding: 0.85rem 2.5rem;
-    border-radius: 50px; font-size: 1rem; font-weight: 500; cursor: pointer;
-    font-family: 'DM Sans', sans-serif; transition: background 0.2s;
-  }
-  .scav-submit-btn:hover { background: #7a6ea0; }
-
-  /* Certificate Floating Modal Overlay */
-  .cert-modal {
-    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(44,62,53,0.6); backdrop-filter: blur(8px);
-    z-index: 1000; display: flex; align-items: center; justify-content: center;
-    opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
-  }
-  .cert-modal.open { opacity: 1; pointer-events: auto; }
-  .cert-container {
-    background: #fffdf9; border: 12px double var(--amber); border-radius: 4px;
-    padding: 3rem; max-width: 600px; width: 90%; text-align: center;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.3); position: relative;
-    animation: certPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-  }
-  @keyframes certPop { 0% { transform: scale(0.8); } 100% { transform: scale(1); } }
-  
-  .cert-badge-art { font-size: 3.5rem; margin-bottom: 1rem; }
-  .cert-title { font-family: 'Fraunces', serif; font-size: 2.2rem; color: #8a6030; margin-bottom: 0.5rem; }
-  .cert-subtitle { font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; }
-  .cert-statement { font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem; font-style: italic; }
-  .cert-seal { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 500; color: var(--sage); }
-  .cert-close {
-    position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; color: var(--text-muted); transition: color 0.2s;
-  }
-  .cert-close:hover { color: #b05848; }
-
-  /* GENERAL RESET STYLING */
-  .btn-reset {
-    background: transparent;
-    color: var(--text-muted);
-    border: 1.5px solid rgba(44,62,53,0.15);
-    padding: 0.6rem 1.5rem;
-    border-radius: 50px;
-    font-size: 0.88rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
-    font-family: 'DM Sans', sans-serif;
-  }
-  .btn-reset:hover { border-color: #b05848; color: #b05848; background: #fdf0ee; }
-
-  /* FLOATING MUSIC CONTROLLER WIDGET */
-  .audio-controller {
-    position: fixed; bottom: 25px; right: 25px; z-index: 999;
-    background: white; border: 1px solid rgba(122,171,138,0.3);
-    padding: 0.6rem 1.2rem; border-radius: 50px;
-    box-shadow: 0 4px 20px rgba(44,62,53,0.12);
-    display: flex; align-items: center; gap: 0.6rem;
-  }
-  .audio-btn {
-    background: var(--sage); color: white; border: none; width: 32px; height: 32px;
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    cursor: pointer; font-size: 0.9rem; transition: background 0.2s;
-  }
-  .audio-btn:hover { background: #6a9a7a; }
+  /* FLOATING AUDIO WIDGET & CERTIFICATE */
+  .audio-controller { position: fixed; bottom: 25px; right: 25px; z-index: 999; background: white; border: 1px solid rgba(122,171,138,0.3); padding: 0.6rem 1.2rem; border-radius: 50px; box-shadow: 0 4px 20px rgba(44,62,53,0.12); display: flex; align-items: center; gap: 0.6rem; }
+  .audio-btn { background: var(--sage); color: white; border: none; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 0.9rem; }
   .audio-text { font-size: 0.8rem; font-weight: 500; color: var(--text); }
+  
+  .cert-modal { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(44,62,53,0.6); backdrop-filter: blur(8px); z-index: 1000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
+  .cert-modal.open { opacity: 1; pointer-events: auto; }
+  .cert-container { background: #fffdf9; border: 12px double var(--amber); border-radius: 4px; padding: 3rem; max-width: 600px; width: 90%; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.3); position: relative; }
+  .cert-close { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; color: var(--text-muted); }
 
   /* FOOTER */
-  footer {
-    background: var(--text); color: rgba(255,255,255,0.65);
-    padding: 3rem 2rem; text-align: center; font-size: 0.88rem; line-height: 1.8;
-  }
-  footer a { color: var(--sage-light); text-decoration: none; }
+  footer { background: var(--text); color: rgba(255,255,255,0.65); padding: 3rem 2rem; text-align: center; font-size: 0.88rem; line-height: 1.8; }
   .footer-logo { font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 400; color: white; margin-bottom: 1rem; display: block; }
   .footer-logo span { color: var(--blush-light); }
 
-  @media (max-width: 768px) {
-    .hero-inner, .grounding-grid, .mood-inner, .jar-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .nav-links { display: none; }
-    .hero { padding-top: 5rem; }
-    .breathing-steps { gap: 1rem; }
-    .grounding-callout { position: static; }
-  }
+  @media (max-width: 768px) { .hero-inner, .mood-inner, .jar-grid, .grounding-grid { grid-template-columns: 1fr; } .nav-links { display: none; } .grounding-callout { position: static; } }
 </style>
 </head>
 <body>
 
   <div class="audio-controller">
     <button class="audio-btn" id="globalMusicBtn" onclick="toggleGlobalMusic()">🎵</button>
-    <span class="audio-text" id="globalMusicTxt">Play Relaxing Ambient Track</span>
+    <span class="audio-text" id="globalMusicTxt">Play Background Music</span>
   </div>
 
   <nav>
     <div class="nav-logo">Wave<span>length</span></div>
     <ul class="nav-links">
-      <li><a href="#feelings">How I Feel</a></li>
+      <li><a href="#feelings">Feelings</a></li>
       <li><a href="#tools">Tools</a></li>
-      <li><a href="#grounding">Grounding</a></li>
-      <li><a href="#gratitudejar">Gratitude Jar</a></li>
-      <li><a href="#pmr">Muscle Relief</a></li>
-      <li><a href="#scavenger">Scavenger Game</a></li>
-      <li><a href="#crisis">Get Help</a></li>
+      <li><a href="#moodtracker">Tracker</a></li>
+      <li><a href="#scavenger">Challenge</a></li>
     </ul>
-    <a href="#crisis" class="nav-crisis">Need Help Now?</a>
+    <a href="#crisis" class="nav-crisis">Get Help Now</a>
   </nav>
 
   <section class="hero">
-    <div class="blob-1 hero-blob"></div>
-    <div class="blob-2 hero-blob"></div>
-    <div class="blob-3 hero-blob"></div>
+    <div class="blob-1 hero-blob"></div><div class="blob-2 hero-blob"></div><div class="blob-3 hero-blob"></div>
     <div class="hero-inner">
       <div>
         <div class="hero-tag"><div class="hero-dot"></div> You are not alone </div>
         <h1>Your feelings<br><em>are valid.</em><br>We're here.</h1>
-        <p class="hero-sub">A safe space for teens to understand emotions, practice self-care, and find support — whenever you need it.</p>
+        <p class="hero-sub">A safe, interactive space for teens to understand emotions, practice self-care, and safely track daily variables.</p>
         <div class="hero-actions">
           <a href="#tools" class="btn-primary" onclick="playClickSound()">Explore Tools</a>
-          <a href="#crisis" class="btn-ghost" onclick="playClickSound()">Get Help Now</a>
-        </div>
-      </div>
-      <div class="hero-visual">
-        <div class="mood-card">
-          <div class="mood-header">How are you feeling right now?</div>
-          <div class="mood-row">
-            <div class="mood-pill sage" onclick="document.getElementById('moodtracker').scrollIntoView({behavior:'smooth'}); playClickSound();">Peaceful</div>
-            <div class="mood-pill blush" onclick="document.getElementById('moodtracker').scrollIntoView({behavior:'smooth'}); playClickSound();">Overwhelmed</div>
-            <div class="mood-pill sky" onclick="document.getElementById('moodtracker').scrollIntoView({behavior:'smooth'}); playClickSound();">Sad</div>
-            <div class="mood-pill amber" onclick="document.getElementById('moodtracker').scrollIntoView({behavior:'smooth'}); playClickSound();">Anxious</div>
-            <div class="mood-pill lavender" onclick="document.getElementById('moodtracker').scrollIntoView({behavior:'smooth'}); playClickSound();">Lonely</div>
-          </div>
-        </div>
-        <div class="quote-card">
-          <div class="quote-text">"Courage doesn't always roar. Sometimes courage is the quiet voice at the end of the day saying, 'I will try again tomorrow.'"</div>
-          <div class="quote-attr">— Mary Anne Radmacher</div>
+          <a href="#scavenger" class="btn-ghost" onclick="playClickSound()">Play Challenge</a>
         </div>
       </div>
     </div>
@@ -1095,38 +286,18 @@
     <div class="section-inner">
       <span class="section-tag">Self-Awareness Hub</span>
       <h2>Decoding <em>what you feel.</em></h2>
-      <p class="section-lead">Emotions are biological weather patterns. Identifying your current status helps you manage it safely.</p>
-      
       <div class="feelings-grid">
-        <div class="feeling-card anxiety">
-          <span class="feeling-icon">⛈️</span>
-          <h3>Anxiety & Panic</h3>
-          <p>Feels like a racing heartbeat, shallow breathing, circular thoughts, or a knotting sensation inside your stomach.</p>
-        </div>
         <div class="feeling-card sadness">
-          <span class="feeling-icon">🌧️</span>
-          <h3>Heavy Sadness</h3>
-          <p>Feels like heavy limbs, low mental or physical battery power, an urge to isolate, or crying without an obvious reason.</p>
+          <span class="feeling-icon">🌧️</span><h3>Heavy Sadness</h3>
+          <p>Feels like heavy limbs, low physical battery power, an urge to isolate, or crying without an obvious reason.</p>
         </div>
         <div class="feeling-card stress">
-          <span class="feeling-icon">⚡</span>
-          <h3>High Stress</h3>
-          <p>Feels like physical tension, irritability over tiny things, jaw clenching, and feeling completely pulled in ten directions at once.</p>
+          <span class="feeling-icon">⚡</span><h3>High Stress</h3>
+          <p>Feels like physical tension, irritability over tiny things, jaw clenching, and feeling pulled in ten directions at once.</p>
         </div>
-        <div class="feeling-card anger">
-          <span class="feeling-icon">🌋</span>
-          <h3>Hot Anger</h3>
-          <p>Feels like flushing heat, a sudden burst of extreme energy, defensive reactions, or a strong urge to snap or smash things.</p>
-        </div>
-        <div class="feeling-card loneliness">
-          <span class="feeling-icon">🌌</span>
-          <h3>Loneliness</h3>
-          <p>Feels like an empty distance in your chest, thinking that nobody around relates to you, or feeling isolated even inside crowds.</p>
-        </div>
-        <div class="feeling-card overwhelm">
-          <span class="feeling-icon">🌊</span>
-          <h3>Burnout & Overwhelm</h3>
-          <p>Feels like an emotional blackout where your brain feels frozen and completely unable to process any more assignments or input.</p>
+        <div class="feeling-card anxiety">
+          <span class="feeling-icon">🌪️</span><h3>Anxiety & Panic</h3>
+          <p>Feels like a racing heartbeat, shallow breathing, circular thoughts, or a knotting sensation inside your stomach.</p>
         </div>
       </div>
     </div>
@@ -1136,45 +307,13 @@
     <div class="section-inner">
       <span class="section-tag">Evidence-Based Kits</span>
       <h2>Choose your <em>mindfulness exercise.</em></h2>
-      <p class="section-lead">Interactive routines designed to down-regulate nervous system distress and ground cognitive anxiety loops instantly.</p>
-      
       <div class="tools-grid">
-        <div class="tool-card">
-          <div class="tool-icon breathing">🧘‍♂️</div>
-          <h3>Box Breathing Clock</h3>
-          <p>Regulate erratic physical symptoms through matching paced cyclical respiratory patterns.</p>
-          <a href="#breathing" class="tool-link" onclick="playClickSound()">Start Breathing →</a>
-        </div>
-        <div class="tool-card">
-          <div class="tool-icon grounding">🖐️</div>
-          <h3>5-4-3-2-1 Sensory Grid</h3>
-          <p>Disengage cyclical brain anxiety panic by checking back into physical environments.</p>
-          <a href="#grounding" class="tool-link" onclick="playClickSound()">Start Grounding →</a>
-        </div>
-        <div class="tool-card">
-          <div class="tool-icon jar">🏺</div>
-          <h3>Digital Gratitude Jar</h3>
-          <p>Reprogram structural negative bias loops by recording positive memories safely.</p>
-          <a href="#gratitudejar" class="tool-link" onclick="playClickSound()">Fill Your Jar →</a>
-        </div>
-        <div class="tool-card">
-          <div class="tool-icon pmr">💪</div>
-          <h3>Muscle Relaxation Engine</h3>
-          <p>Physically clear embedded survival response muscle tension step by step.</p>
-          <a href="#pmr" class="tool-link" onclick="playClickSound()">Release Tension →</a>
-        </div>
-        <div class="tool-card">
-          <div class="tool-icon affirmation">✨</div>
-          <h3>Affirmation Spark</h3>
-          <p>Interrupt harmful internal self-criticism patterns with logical validating logic prompts.</p>
-          <a href="#affirmations" class="tool-link" onclick="playClickSound()">Get Inspired →</a>
-        </div>
-        <div class="tool-card">
-          <div class="tool-icon journal">📝</div>
-          <h3>Private Reflection Desk</h3>
-          <p>Release confusing cognitive blocks through unguided therapeutic journaling writing.</p>
-          <a href="#journal" class="tool-link" onclick="playClickSound()">Open Journal →</a>
-        </div>
+        <div class="tool-card"><div class="tool-icon breathing">🧘‍♂️</div><h3>Box Breathing</h3><p>Regulate erratic physical symptoms through paced cyclical patterns.</p><a href="#breathing" class="tool-link" onclick="playClickSound()">Start Breathing →</a></div>
+        <div class="tool-card"><div class="tool-icon grounding">🖐️</div><h3>5-4-3-2-1 Grounding</h3><p>Disengage cyclical panic by checking back into physical environments.</p><a href="#grounding" class="tool-link" onclick="playClickSound()">Start Grounding →</a></div>
+        <div class="tool-card"><div class="tool-icon jar">🏺</div><h3>Gratitude Jar</h3><p>Reprogram structural negative bias loops by recording positive memories safely.</p><a href="#gratitudejar" class="tool-link" onclick="playClickSound()">Fill Your Jar →</a></div>
+        <div class="tool-card"><div class="tool-icon pmr">💪</div><h3>Muscle Relaxation</h3><p>Physically clear embedded survival response muscle tension step by step.</p><a href="#pmr" class="tool-link" onclick="playClickSound()">Release Tension →</a></div>
+        <div class="tool-card"><div class="tool-icon affirmation">✨</div><h3>Affirmation Spark</h3><p>Interrupt harmful internal self-criticism patterns with logical validating prompts.</p><a href="#affirmations" class="tool-link" onclick="playClickSound()">Get Inspired →</a></div>
+        <div class="tool-card"><div class="tool-icon journal">📝</div><h3>Reflection Desk</h3><p>Release confusing cognitive blocks through unguided therapeutic writing.</p><a href="#journal" class="tool-link" onclick="playClickSound()">Open Journal →</a></div>
       </div>
     </div>
   </section>
@@ -1182,26 +321,22 @@
   <section id="breathing" class="breathing-section">
     <div class="breathing-inner">
       <span class="section-tag">Respiratory Control</span>
-      <h2>The Paced <em>Box Breathing Loop</em></h2>
-      <p class="section-lead">Click the button below to synchronize your breathing cycle. This resets nervous systems by simulating total physical safety.</p>
-      
+      <h2>The Animated <em>Box Breathing Loop</em></h2>
+      <p class="section-lead">Click below to start. Follow the expanding ring and the live 4-second counter to down-regulate internal nervous system distress signs.</p>
       <div class="breath-circle-wrap">
-        <div class="breath-circle" id="bCircle">
+        <div class="breath-circle">
           <div class="breath-ring" id="bRing"></div>
-          <div class="breath-label" id="bLabel">Ready<div class="breath-sub">Click Start Below</div></div>
+          <div class="breath-content"><div class="breath-timer" id="breathTimer">--</div><div class="breath-label" id="bLabel">Ready</div></div>
         </div>
       </div>
-
       <div class="breathing-steps">
         <div class="bstep" id="stepIn"><span class="bstep-num">4s</span><span class="bstep-label">Breathe In</span></div>
         <div class="bstep" id="stepHold1"><span class="bstep-num">4s</span><span class="bstep-label">Hold Core</span></div>
         <div class="bstep" id="stepOut"><span class="bstep-num">4s</span><span class="bstep-label">Exhale Soft</span></div>
         <div class="bstep" id="stepHold2"><span class="bstep-num">4s</span><span class="bstep-label">Hold Empty</span></div>
       </div>
-
-      <button id="breathBtn" onclick="toggleBreathing()">Begin Routine</button>
+      <button id="breathBtn" onclick="toggleBreathing()">Begin Loop</button>
       <button class="btn-reset" onclick="resetBreathing()">Reset Engine</button>
-      <div id="breathStatus">Cycle inactive. System awaiting calibration.</div>
     </div>
   </section>
 
@@ -1210,56 +345,14 @@
       <span class="section-tag">Cognitive Anchor</span>
       <h2>The 5-4-3-2-1 <em>Sensory Alignment Grid</em></h2>
       <p class="section-lead">When physical panic spikes, look around you and log things in your immediate area to quiet down internal loops.</p>
-      
       <div class="grounding-grid">
         <div class="grounding-steps">
-          <div class="g-step" id="gBox5">
-            <input type="checkbox" class="g-checkbox" onchange="toggleGStep(5)">
-            <div class="g-num n5">5</div>
-            <div class="g-content">
-              <h4>Things you can see clearly</h4>
-              <p>Type out 5 visible details nearby (e.g., a ceiling tile line, lamp stem, rug grain):</p>
-              <input type="text" class="g-input" placeholder="List items here..." id="gIn5">
-            </div>
-          </div>
-          <div class="g-step" id="gBox4">
-            <input type="checkbox" class="g-checkbox" onchange="toggleGStep(4)">
-            <div class="g-num n4">4</div>
-            <div class="g-content">
-              <h4>Things you can physically feel</h4>
-              <p>Type out 4 sensations (e.g., clothing weights, chair support plates, floor textures):</p>
-              <input type="text" class="g-input" placeholder="List items here..." id="gIn4">
-            </div>
-          </div>
-          <div class="g-step" id="gBox3">
-            <input type="checkbox" class="g-checkbox" onchange="toggleGStep(3)">
-            <div class="g-num n3">3</div>
-            <div class="g-content">
-              <h4>Distinct sounds you hear</h4>
-              <p>Type out 3 audio details (e.g., wind rustles, distant tires, clock clicks):</p>
-              <input type="text" class="g-input" placeholder="List items here..." id="gIn3">
-            </div>
-          </div>
-          <div class="g-step" id="gBox2">
-            <input type="checkbox" class="g-checkbox" onchange="toggleGStep(2)">
-            <div class="g-num n2">2</div>
-            <div class="g-content">
-              <h4>Things you can smell</h4>
-              <p>Type out 2 ambient scents (e.g., old books, laundry soap, kitchen spices):</p>
-              <input type="text" class="g-input" placeholder="List items here..." id="gIn2">
-            </div>
-          </div>
-          <div class="g-step" id="gBox1">
-            <input type="checkbox" class="g-checkbox" onchange="toggleGStep(1)">
-            <div class="g-num n1">1</div>
-            <div class="g-content">
-              <h4>Good things about yourself</h4>
-              <p>Type out 1 true statement regarding your inner capacity or identity value:</p>
-              <input type="text" class="g-input" placeholder="List items here..." id="gIn1">
-            </div>
-          </div>
+          <div class="g-step" id="gBox5"><input type="checkbox" class="g-checkbox" onchange="toggleGStep(5)"><div class="g-num n5">5</div><div class="g-content"><h4>Things you can see clearly</h4><input type="text" class="g-input" placeholder="List items here..." id="gIn5"></div></div>
+          <div class="g-step" id="gBox4"><input type="checkbox" class="g-checkbox" onchange="toggleGStep(4)"><div class="g-num n4">4</div><div class="g-content"><h4>Things you can physically feel</h4><input type="text" class="g-input" placeholder="List items here..." id="gIn4"></div></div>
+          <div class="g-step" id="gBox3"><input type="checkbox" class="g-checkbox" onchange="toggleGStep(3)"><div class="g-num n3">3</div><div class="g-content"><h4>Distinct sounds you hear</h4><input type="text" class="g-input" placeholder="List items here..." id="gIn3"></div></div>
+          <div class="g-step" id="gBox2"><input type="checkbox" class="g-checkbox" onchange="toggleGStep(2)"><div class="g-num n2">2</div><div class="g-content"><h4>Things you can smell</h4><input type="text" class="g-input" placeholder="List items here..." id="gIn2"></div></div>
+          <div class="g-step" id="gBox1"><input type="checkbox" class="g-checkbox" onchange="toggleGStep(1)"><div class="g-num n1">1</div><div class="g-content"><h4>Good things about yourself</h4><input type="text" class="g-input" placeholder="List items here..." id="gIn1"></div></div>
         </div>
-
         <div class="grounding-callout" id="gCallout">
           <span class="big-num" id="gCountLabel">5</span>
           <h3 id="gTitleLabel" style="font-family:'Fraunces', serif; margin-top: 0.5rem;">Steps Remaining</h3>
@@ -1273,23 +366,19 @@
   <section id="gratitudejar" class="jar-section">
     <div class="section-inner">
       <span class="section-tag">Cognitive Bias Adjustment</span>
-      <h2>Your Secure <em>Gratitude Vault</em></h2>
-      <p class="section-lead">Drop moments of appreciation, simple pleasures, or small daily victories into this interactive collector jar to visually map out good events.</p>
-      
+      <h2>Your Local <em>Gratitude Vault</em></h2>
+      <p class="section-lead">Drop moments of appreciation into this jar to break up negative bias loops. (Your notes are saved locally to your device!)</p>
       <div class="jar-grid">
         <div class="jar-form">
-          <h3 style="font-family:'Fraunces', serif; font-weight:400; margin-bottom:1rem;">Document a Good Element</h3>
-          <textarea class="jar-input" id="jarText" rows="3" placeholder="What tiny detail went well today? (e.g., hot coffee, a funny video, a pet sitting nearby...)"></textarea>
+          <h3 style="font-family:'Fraunces', serif; margin-bottom:1rem;">Document a Good Element</h3>
+          <textarea class="jar-input" id="jarText" rows="3" placeholder="What tiny detail went well today?"></textarea>
           <div style="display:flex; gap:10px;">
             <button class="jar-btn" onclick="addJarNote()">Drop Inside Jar</button>
-            <button class="btn-reset" onclick="resetJar()">Clear Glass Jar</button>
+            <button class="btn-reset" onclick="clearJarHistory()">Empty Glass</button>
           </div>
         </div>
-        
-        <div class="jar-visual-container">
-          <div class="glass-jar" id="jarContainer">
-            <div class="jar-placeholder" id="jarPlaceholder">Jar is currently empty.<br>Add your memories on the left!</div>
-          </div>
+        <div class="glass-jar" id="jarContainer">
+          <div class="jar-placeholder" id="jarPlaceholder">Jar is currently empty.<br>Add memories on the left!</div>
         </div>
       </div>
     </div>
@@ -1298,23 +387,18 @@
   <section id="pmr" class="pmr-section">
     <div class="section-inner">
       <span class="section-tag">Somatic Stress Clearing</span>
-      <h2>Progressive <em>Muscle Tensing Cycle</em></h2>
+      <h2>Progressive <em>Muscle Tensing</em></h2>
       <p class="section-lead">Clear stress chemicals by manually engaging and subsequently fully releasing target muscular regions.</p>
-      
       <div class="pmr-container">
         <div class="pmr-window">
           <div id="pmrMuscle">Muscle Engine Ready</div>
-          <div id="pmrInstruction">Click 'Begin PMR System' to initiate full physical release steps.</div>
+          <div id="pmrInstruction">Click 'Begin PMR System' to initiate physical release steps.</div>
           <div class="pmr-pulse-box">
             <div class="pmr-indicator tense" id="pmrTenseBadge">TENSE REGION NOW</div>
             <div class="pmr-indicator release" id="pmrReleaseBadge">LET GO COMPLETELY</div>
           </div>
         </div>
-        
-        <div class="pmr-progress-bar">
-          <div id="pmrProgressFill"></div>
-        </div>
-        
+        <div class="pmr-progress-bar"><div id="pmrProgressFill"></div></div>
         <div class="pmr-controls">
           <button id="pmrMainBtn" onclick="advancePMR()">Begin PMR System</button>
           <button class="btn-reset" onclick="resetPMR()">Reset Engine</button>
@@ -1328,11 +412,9 @@
       <span class="section-tag">Internal Core Dialogue</span>
       <h2>Your <em>Affirmation Engine</em></h2>
       <p class="section-lead">When critical thoughts cloud logic, load supportive, realistic affirmations to regain cognitive ground.</p>
-      
       <div class="affirmation-display">
         <div id="affirmText">"I am allowed to experience boundaries, and I am completely equipped to handle whatever emotion arrives today."</div>
       </div>
-      
       <div style="display:flex; justify-content:center; gap:10px;">
         <button id="newAffirmBtn" onclick="generateAffirmation()">Load Alternate Statement</button>
         <button class="btn-reset" onclick="resetAffirmations()">Reset Deck</button>
@@ -1343,42 +425,25 @@
   <section id="moodtracker" class="mood-section">
     <div class="section-inner">
       <span class="section-tag">Trend Archiving Dashboard</span>
-      <h2>Secure <em>Daily Mood Logs</em></h2>
-      <p class="section-lead">Log trends without risking surveillance architecture. All history tags remain strictly inside your private local storage architecture.</p>
-      
+      <h2>Persistent <em>Mood Logs</em></h2>
+      <p class="section-lead">Refresh the page! Your logs remain strictly inside your local browser privacy architecture, safe from public servers.</p>
       <div class="mood-inner">
         <div class="mood-tracker-widget">
-          <div class="mood-tracker-label">Select matching primary core state:</div>
+          <div style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1rem;">Select your core state:</div>
           <div class="mood-options">
-            <button class="mood-btn" id="mBtn1" onclick="selectMoodWidget(1, '😊', 'Peaceful')">
-              <span class="emoji">😊</span><span class="label">Peaceful</span>
-            </button>
-            <button class="mood-btn" id="mBtn2" onclick="selectMoodWidget(2, '⚡', 'Anxious')">
-              <span class="emoji">⚡</span><span class="label">Anxious</span>
-            </button>
-            <button class="mood-btn" id="mBtn3" onclick="selectMoodWidget(3, '🌧️', 'Low Power')">
-              <span class="emoji">🌧️</span><span class="label">Sad</span>
-            </button>
-            <button class="mood-btn" id="mBtn4" onclick="selectMoodWidget(4, '🌋', 'Agitated')">
-              <span class="emoji">🌋</span><span class="label">Agitated</span>
-            </button>
-            <button class="mood-btn" id="mBtn5" onclick="selectMoodWidget(5, '🌊', 'Overwhelmed')">
-              <span class="emoji">🌊</span><span class="label">Frozen</span>
-            </button>
+            <button class="mood-btn" id="mBtn1" onclick="selectMoodWidget(1, '😊', 'Peaceful')"><span class="emoji">😊</span><span class="label">Peaceful</span></button>
+            <button class="mood-btn" id="mBtn2" onclick="selectMoodWidget(2, '⚡', 'Anxious')"><span class="emoji">⚡</span><span class="label">Anxious</span></button>
+            <button class="mood-btn" id="mBtn3" onclick="selectMoodWidget(3, '🌧️', 'Sad')"><span class="emoji">🌧️</span><span class="label">Sad</span></button>
+            <button class="mood-btn" id="mBtn4" onclick="selectMoodWidget(4, '🌋', 'Agitated')"><span class="emoji">🌋</span><span class="label">Agitated</span></button>
+            <button class="mood-btn" id="mBtn5" onclick="selectMoodWidget(5, '🌊', 'Frozen')"><span class="emoji">🌊</span><span class="label">Frozen</span></button>
           </div>
-          <div class="mood-tracker-label">Optional descriptive baseline details:</div>
-          <textarea class="mood-note" id="moodNoteInput" placeholder="What core variables influenced this condition?"></textarea>
-          
-          <button class="save-mood-btn" onclick="saveMoodEntry()">Commit Logs Locally</button>
-          <button class="btn-reset" style="width:100%;" onclick="clearMoodHistory()">Wipe Architecture History</button>
-          <div id="moodMessage"></div>
+          <textarea class="mood-note" id="moodNoteInput" placeholder="Optional context..."></textarea>
+          <button class="save-mood-btn" onclick="saveMoodEntry()">Save Locally</button>
+          <button class="btn-reset" style="width:100%; margin:0;" onclick="clearMoodHistory()">Wipe Local Tracker</button>
         </div>
-
         <div>
-          <div class="mood-header" style="margin-bottom:1rem;">Your Appended Record History</div>
-          <div id="moodHistoryContainer" class="mood-history">
-            <div class="mood-empty">No locally saved elements found inside history architecture blocks.</div>
-          </div>
+          <div style="font-family:'Fraunces', serif; font-size:1.2rem; margin-bottom:1rem;">Your Appended Record History</div>
+          <div id="moodHistoryContainer" class="mood-history"></div>
         </div>
       </div>
     </div>
@@ -1388,87 +453,81 @@
     <div class="journal-inner">
       <span class="section-tag">Catharsis Suite</span>
       <h2>Private <em>Reflection Desk</em></h2>
-      <p class="section-lead">Process confusing blocks via open-ended logs. This output is processed locally and never leaves your computing device.</p>
-      
-      <div class="prompt-display">
-        <div class="prompt-label">Current Conceptual Focus Pivot</div>
-        <div id="promptText">"What is a boundary you would like to comfortably communicate this week, and why does establishing it preserve your energy?"</div>
-      </div>
-
-      <textarea id="journalTextarea" placeholder="Begin typing your unfiltered thoughts here... Feel completely free to write as much as you need."></textarea>
-      
-      <div class="journal-actions">
-        <button class="journal-btn primary" onclick="saveJournal()">Catalog Writing Logs</button>
-        <button class="journal-btn secondary" onclick="nextJournalPrompt()">Alternate Prompt</button>
+      <p class="section-lead">Your thoughts automatically save as you type using local browser memory.</p>
+      <div class="prompt-display"><div id="promptText">"What boundary preserves your energy this week?"</div></div>
+      <textarea id="journalTextarea" placeholder="Begin typing... your thoughts are saved automatically." oninput="autoSaveJournal()"></textarea>
+      <div style="margin-top:1rem;">
+        <button class="journal-btn primary" onclick="manualJournalSaveFeedback()">Confirm Save</button>
+        <button class="journal-btn" style="background:var(--sage-pale); color:var(--sage);" onclick="nextJournalPrompt()">New Prompt</button>
         <button class="btn-reset" onclick="clearJournal()">Discard Composition</button>
+        <span id="journalFeedback" style="color:var(--sage); font-size:0.85rem; margin-left:10px;"></span>
       </div>
-      <div id="journalFeedback"></div>
     </div>
   </section>
 
   <section id="scavenger" class="scavenger-section">
     <div class="section-inner">
-      <span class="section-tag" style="color:#6a5fa0;">Interactive Check-In Challenge</span>
-      <h2 style="color:#4a3d80;">The Mental Health <em>Scavenger Hunt</em></h2>
-      <p class="section-lead" style="color:var(--text-muted);">Review the lessons on the website above to choose the right answers. Uncover all correct drop-down items to reveal the secret password boxes below and open your diploma!</p>
+      <span class="section-tag" style="color:#6a5fa0;">Interactive Challenge</span>
+      <h2 style="color:#4a3d80;">The Advanced <em>Scavenger Hunt</em></h2>
+      <p class="section-lead" style="color:var(--text-muted);">Read the sections above carefully to pass this 5-option multiple-choice challenge. Find the right answers to unlock the code!</p>
       
       <div class="scavenger-box">
         <div class="scavenger-questions">
           <div class="scav-item">
-            <label>1. According to the <strong>Decoders Hub</strong> section, what psychological condition or emotion makes your physical energy system feel like "heavy limbs or low physical battery power"?</label>
-            <select class="scav-select" id="scavQ1" onchange="updateScavengerLetterBoxes()">
+            <label>1. Under the <strong>Decoding</strong> section, what psychological emotion makes your body feel like it has "heavy limbs or low physical battery power"?</label>
+            <select class="scav-select" id="scavQ1" onchange="updateScavengerBoxes()">
               <option value="">-- Choose matching answer --</option>
-              <option value="X">Hot Anger & Flushing Spikes</option>
+              <option value="X">Craving intense social crowds</option>
+              <option value="M">Hot Anger & Flushing Spikes</option>
               <option value="S">Heavy Sadness Loop</option>
+              <option value="Y">Extreme Hyperactivity & Shaking</option>
               <option value="W">High Burnout Blockages</option>
             </select>
           </div>
-
           <div class="scav-item">
-            <label>2. According to the <strong>Tools Grid</strong>, what is the core chemical objective of running paced exercises like the Box Breathing Loop or Muscle Tensing Cycles?</label>
-            <select class="scav-select" id="scavQ2" onchange="updateScavengerLetterBoxes()">
+            <label>2. What is the core biological objective of running the Animated <strong>Box Breathing Loop</strong>?</label>
+            <select class="scav-select" id="scavQ2" onchange="updateScavengerBoxes()">
               <option value="">-- Choose matching answer --</option>
-              <option value="K">To mask or hide uncomfortable environmental issues completely</option>
-              <option value="A">To down-regulate internal nervous system distress signs</option>
               <option value="P">To pass time whenever you feel a little bored</option>
+              <option value="K">To mask or hide uncomfortable environmental issues</option>
+              <option value="M">To physically prepare for an intense gym workout</option>
+              <option value="T">To stay awake during late-night studying</option>
+              <option value="A">To down-regulate internal nervous system distress signs</option>
             </select>
           </div>
-
           <div class="scav-item">
-            <label>3. According to the <strong>Gratitude Vault</strong> instructions, why do we actively list tiny daily memories like coffee scents or funny videos?</label>
-            <select class="scav-select" id="scavQ3" onchange="updateScavengerLetterBoxes()">
+            <label>3. According to the <strong>Gratitude Vault</strong> instructions, why do we actively drop tiny daily memories into the jar?</label>
+            <select class="scav-select" id="scavQ3" onchange="updateScavengerBoxes()">
               <option value="">-- Choose matching answer --</option>
               <option value="F">To break up structural cognitive negative bias loops</option>
-              <option value="V">To force ourselves to feel completely happy all the time</option>
+              <option value="V">To force ourselves to feel happy all the time</option>
               <option value="Z">To skip writing longer personal journals</option>
+              <option value="H">To memorize facts for a school history test</option>
+              <option value="B">To practice improving digital typing skills</option>
             </select>
           </div>
-
           <div class="scav-item">
-            <label>4. According to the <strong>Trend Dashboard</strong> and Journal alerts, where are your emotional logs and text entries stored to keep your details safe?</label>
-            <select class="scav-select" id="scavQ4" onchange="updateScavengerLetterBoxes()">
+            <label>4. Where are your Mood Tracker logs and Journal entries safely stored on this website?</label>
+            <select class="scav-select" id="scavQ4" onchange="updateScavengerBoxes()">
               <option value="">-- Choose matching answer --</option>
               <option value="L">Uploaded directly onto internet cloud servers</option>
-              <option value="M">Shared instantly with public tracking data</option>
+              <option value="M">Shared instantly with public tracking databases</option>
+              <option value="C">Emailed automatically to your school teachers</option>
               <option value="E">Strictly inside your local browser privacy architecture</option>
+              <option value="R">Saved permanently onto social media platforms</option>
             </select>
           </div>
         </div>
 
-        <div style="text-align:center; margin-top:2rem;">
-          <span class="mood-header" style="letter-spacing:0.05em;">UNLOCKED SYSTEM CODE WORD</span>
-        </div>
-        
         <div class="code-display-row">
           <div class="code-letter-box" id="codeBox1">-</div>
           <div class="code-letter-box" id="codeBox2">-</div>
           <div class="code-letter-box" id="codeBox3">-</div>
           <div class="code-letter-box" id="codeBox4">-</div>
         </div>
-
-        <div class="scav-btn-row">
-          <button class="scav-submit-btn" onclick="checkScavengerHuntAnswer()">Validate Answers & Claim Award</button>
-          <button class="btn-reset" onclick="resetScavengerHunt()">Reset Puzzle</button>
+        <div style="text-align:center; margin-top: 1.5rem;">
+          <button class="scav-submit-btn" onclick="checkScavengerAnswer()">Validate Answers</button>
+          <button class="btn-reset" onclick="resetScavenger()">Reset Puzzle</button>
         </div>
       </div>
     </div>
@@ -1476,12 +535,11 @@
 
   <div class="cert-modal" id="certificateModal">
     <div class="cert-container">
-      <div class="cert-close" onclick="closeCertificateModal()">×</div>
-      <div class="cert-badge-art">🎓</div>
-      <div class="cert-title">Certificate of Completion</div>
-      <div class="cert-subtitle">Wavelength Mental Health Explorer</div>
-      <p class="cert-statement">This document certifies that a brilliant explorer has successfully navigated through the therapeutic tools of Wavelength, demonstrated clear emotional self-awareness, and mastered stress down-regulation architectures.</p>
-      <div class="cert-seal">🛡️ Safe Space Certified</div>
+      <div class="cert-close" onclick="closeCert()">×</div>
+      <div style="font-size: 3.5rem; margin-bottom: 1rem;">🎓</div>
+      <h2 style="color: #8a6030; margin-bottom: 0.5rem;">Certificate of Mastery</h2>
+      <p style="font-size: 1.1rem; line-height: 1.8; font-style: italic;">You successfully solved the advanced 5-option puzzle! Show this screen to your teacher for your reward.</p>
+      <div style="color: var(--sage); font-weight: 500; margin-top:2rem;">🛡️ Code Word Verified: SAFE</div>
     </div>
   </div>
 
@@ -1490,13 +548,12 @@
       <span class="section-tag">Urgent Architecture Support</span>
       <h2>Connect with <em>immediate professionals.</em></h2>
       <p class="section-lead">If your current system requires urgent protective handling, please contact these direct, completely free networks immediately.</p>
-      
       <div class="crisis-cards">
         <div class="crisis-card">
           <div class="crisis-card-top">
-            <span class="crisis-badge">988 Suicide & Crisis Lifeline</span>
-            <h3>988 Lifeline</h3>
-            <p>Provides completely free, 24/7 confidential safety care for anyone enduring severe emotional distress or deep despair.</p>
+            <span class="crisis-badge">988 Lifeline</span>
+            <h3>Suicide & Crisis Lifeline</h3>
+            <p>Provides completely free, 24/7 confidential safety care for anyone enduring severe emotional distress.</p>
           </div>
           <a href="tel:988" class="crisis-contact">Call or Text 988</a>
         </div>
@@ -1504,14 +561,14 @@
           <div class="crisis-card-top">
             <span class="crisis-badge">Crisis Text Line</span>
             <h3>The Crisis Text Suite</h3>
-            <p>Connect with a trained, volunteer crisis counselor 24 hours a day for immediate digital text guidance.</p>
+            <p>Connect with a trained volunteer crisis counselor 24 hours a day for immediate digital text guidance.</p>
           </div>
           <a href="sms:741741?&body=HOME" class="crisis-contact">Text HOME to 741741</a>
         </div>
         <div class="crisis-card">
           <div class="crisis-card-top">
             <span class="crisis-badge">The Trevor Project</span>
-            <h3>Trevor LGBTQ Lifeline</h3>
+            <h3>LGBTQ Lifeline</h3>
             <p>Specialized protective network resources and validation support loops for LGBTQ youth communities.</p>
           </div>
           <a href="tel:18664887386" class="crisis-contact">Call 1-866-488-7386</a>
@@ -1519,18 +576,10 @@
         <div class="crisis-card">
           <div class="crisis-card-top">
             <span class="crisis-badge">SAMHSA Helpline</span>
-            <h3>SAMHSA Treatment Locator</h3>
+            <h3>Treatment Locator</h3>
             <p>Confidential treatment referral routing services for families handling behavioral health problems.</p>
           </div>
           <a href="tel:18006624357" class="crisis-contact">Call 1-800-662-4357</a>
-        </div>
-        <div class="crisis-card">
-          <div class="crisis-card-top">
-            <span class="crisis-badge">National Eating Disorders</span>
-            <h3>NEDA Support Loop</h3>
-            <p>Treatment guidance and structural recovery indicators for individuals handling eating disorders.</p>
-          </div>
-          <a href="tel:18009312237" class="crisis-contact">Call 1-800-931-2237</a>
         </div>
         <div class="crisis-card">
           <div class="crisis-card-top">
@@ -1542,40 +591,12 @@
         </div>
         <div class="crisis-card">
           <div class="crisis-card-top">
-            <span class="crisis-badge">National Domestic Violence</span>
-            <h3>NDV Protective Deck</h3>
-            <p>Comprehensive emergency logistics routing for individuals facing household safety issues.</p>
-          </div>
-          <a href="tel:18007997233" class="crisis-contact">Call 1-800-799-7233</a>
-        </div>
-        <div class="crisis-card">
-          <div class="crisis-card-top">
-            <span class="crisis-badge">RAINN Network</span>
-            <h3>Sexual Assault Helpline</h3>
-            <p>Secure, confidential professional routing for individuals navigating assault trauma metrics.</p>
-          </div>
-          <a href="tel:18006564673" class="crisis-contact">Call 1-800-656-4673</a>
-        </div>
-        <div class="crisis-card">
-          <div class="crisis-card-top">
-            <span class="crisis-badge">Childhelp National Helpline</span>
-            <h3>Child Abuse Prevention</h3>
+            <span class="crisis-badge">Childhelp Helpline</span>
+            <h3>Abuse Prevention</h3>
             <p>Professional counselors offering legal advice and emergency intervention mapping logs.</p>
           </div>
           <a href="tel:18004224453" class="crisis-contact">Call 1-800-422-4453</a>
         </div>
-        <div class="crisis-card">
-          <div class="crisis-card-top">
-            <span class="crisis-badge">Youth Law Center</span>
-            <h3>Juvenile Rights Center</h3>
-            <p>Provides critical resource routing answering structural legal safety questions for teenagers.</p>
-          </div>
-          <a href="tel:14155433379" class="crisis-contact">Call 1-415-543-3379</a>
-        </div>
-      </div>
-      
-      <div class="crisis-note">
-        <strong>Important Educational Note:</strong> Wavelength is an interactive mock training prototype application tool designed purely for education and self-awareness exploration. It does not replace clinical healthcare, medical intervention, or diagnostic therapy protocols. If you are experiencing a severe mental health crisis, please reach out directly to the professional responders listed above.
       </div>
     </div>
   </section>
@@ -1584,500 +605,199 @@
     <div class="section-inner">
       <span class="footer-logo">Wave<span>length</span></span>
       <p>Built with care. Empowering students to manage their cognitive wellbeing safely and confidently.</p>
-      <p style="margin-top: 1rem; font-size: 0.75rem; opacity: 0.5;">&copy; 2026 Wavelength Sandbox Initiative. Privacy protected via local application configuration.</p>
     </div>
   </footer>
 
   <script>
-    // =========================================================================
-    // ROBUST EMBEDDED HIGH-QUALITY WEB AUDIO ARCHITECTURE (No Missing Local Files)
-    // =========================================================================
-    const bgMusic = new Audio('https://assets.mixkit.co/active_storage/sfx/123/123-200.wav'); // Fallback trigger
-    // Real relaxing nature audio track stream url:
-    bgMusic.src = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'; 
-    bgMusic.loop = true;
-    bgMusic.volume = 0.12;
-
+    // ==========================================
+    // GLOBAL AUDIO ENGINE
+    // ==========================================
+    const bgMusic = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'); 
+    bgMusic.loop = true; bgMusic.volume = 0.12;
     let isMusicPlaying = false;
 
-    // Trigger ambient sound loop safely using a widget click or global touch
     function toggleGlobalMusic() {
-      const btn = document.getElementById('globalMusicBtn');
-      const txt = document.getElementById('globalMusicTxt');
-      
+      const btn = document.getElementById('globalMusicBtn'); const txt = document.getElementById('globalMusicTxt');
       if(!isMusicPlaying) {
-        bgMusic.play().then(() => {
-          isMusicPlaying = true;
-          btn.textContent = '⏸️';
-          txt.textContent = 'Ambient Stream Active';
-          playSuccessSound();
-        }).catch(err => {
-          console.log("Audio trigger pending user page selection gesture.");
-        });
+        bgMusic.play().then(() => { isMusicPlaying = true; btn.textContent = '⏸️'; txt.textContent = 'Streaming Music'; playSuccessSound(); }).catch(err => console.log("Awaiting click."));
       } else {
-        bgMusic.pause();
-        isMusicPlaying = false;
-        btn.textContent = '🎵';
-        txt.textContent = 'Play Relaxing Ambient Track';
-        playResetSound();
+        bgMusic.pause(); isMusicPlaying = false; btn.textContent = '🎵'; txt.textContent = 'Play Background Music'; playResetSound();
       }
     }
+    document.addEventListener('click', function autoPlay() { if(!isMusicPlaying) toggleGlobalMusic(); document.removeEventListener('click', autoPlay); });
 
-    // Auto trigger audio track safely upon the student's very first user click on the body canvas
-    document.addEventListener('click', function autoMusicTrigger() {
-      if(!isMusicPlaying) {
-        toggleGlobalMusic();
-      }
-      document.removeEventListener('click', autoMusicTrigger);
-    });
-
-    // Custom Web Audio API Oscillators for Interactive FX Sound Effects
     function playClickSound() {
-      try {
-        const ctx = new (window.AudioContext || window.webkitAudioContext)();
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(440, ctx.currentTime); // Standard high comfort tone
-        gain.gain.setValueAtTime(0.05, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.1);
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start();
-        osc.stop(ctx.currentTime + 0.1);
-      } catch(e) { console.log("Audio Context awaiting gesture map."); }
+      try { const ctx = new (window.AudioContext || window.webkitAudioContext)(); const osc = ctx.createOscillator(); const gain = ctx.createGain(); osc.frequency.value = 440; gain.gain.setValueAtTime(0.05, ctx.currentTime); gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.1); osc.connect(gain); gain.connect(ctx.destination); osc.start(); osc.stop(ctx.currentTime + 0.1); } catch(e) {}
     }
-
     function playSuccessSound() {
-      try {
-        const ctx = new (window.AudioContext || window.webkitAudioContext)();
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = 'triangle';
-        osc.frequency.setValueAtTime(587.33, ctx.currentTime); // High pleasant chime note (D5)
-        osc.frequency.setValueAtTime(880, ctx.currentTime + 0.12); // Higher target note (A5)
-        gain.gain.setValueAtTime(0.08, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.3);
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start();
-        osc.stop(ctx.currentTime + 0.3);
-      } catch(e) {}
+      try { const ctx = new (window.AudioContext || window.webkitAudioContext)(); const osc = ctx.createOscillator(); const gain = ctx.createGain(); osc.type = 'triangle'; osc.frequency.setValueAtTime(587.33, ctx.currentTime); osc.frequency.setValueAtTime(880, ctx.currentTime + 0.12); gain.gain.setValueAtTime(0.08, ctx.currentTime); gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.3); osc.connect(gain); gain.connect(ctx.destination); osc.start(); osc.stop(ctx.currentTime + 0.3); } catch(e) {}
     }
-
     function playResetSound() {
-      try {
-        const ctx = new (window.AudioContext || window.webkitAudioContext)();
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(330, ctx.currentTime); // Low soft grounding tone
-        osc.frequency.exponentialRampToValueAtTime(220, ctx.currentTime + 0.15);
-        gain.gain.setValueAtTime(0.06, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.2);
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start();
-        osc.stop(ctx.currentTime + 0.2);
-      } catch(e) {}
+      try { const ctx = new (window.AudioContext || window.webkitAudioContext)(); const osc = ctx.createOscillator(); const gain = ctx.createGain(); osc.frequency.setValueAtTime(330, ctx.currentTime); osc.frequency.exponentialRampToValueAtTime(220, ctx.currentTime + 0.15); gain.gain.setValueAtTime(0.06, ctx.currentTime); gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.2); osc.connect(gain); gain.connect(ctx.destination); osc.start(); osc.stop(ctx.currentTime + 0.2); } catch(e) {}
     }
 
-    // =========================================================================
-    // BOX BREATHING LOGIC
-    // =========================================================================
-    let breathInterval = null;
-    let breathCycleCount = 0;
-    
+    // ==========================================
+    // ANIMATED 4-SECOND BREATHING ENGINE
+    // ==========================================
+    let breathInterval = null; let phase = 0; let secondsLeft = 4; let isBreathingActive = false;
     function toggleBreathing() {
       playClickSound();
-      if (breathInterval) {
-        clearInterval(breathInterval);
-        breathInterval = null;
-        document.getElementById('breathBtn').textContent = "Resume Routine";
-        document.getElementById('breathStatus').textContent = "Routine paused mid-cycle.";
-        return;
-      }
-      
-      document.getElementById('breathBtn').textContent = "Pause Cycle";
-      runBreathingTick();
-      breathInterval = setInterval(runBreathingTick, 4000);
+      if(isBreathingActive) { resetBreathing(); return; }
+      isBreathingActive = true; document.getElementById('breathBtn').textContent = "Stop Routine";
+      secondsLeft = 4; phase = 0; applyBreathingVisuals();
+      breathInterval = setInterval(() => {
+        secondsLeft--;
+        if(secondsLeft <= 0) { secondsLeft = 4; phase = (phase + 1) % 4; applyBreathingVisuals(); }
+        document.getElementById('breathTimer').textContent = secondsLeft;
+      }, 1000);
     }
-    
-    function runBreathingTick() {
-      const ring = document.getElementById('bRing');
-      const label = document.getElementById('bLabel');
+    function applyBreathingVisuals() {
+      document.getElementById('breathTimer').textContent = secondsLeft;
+      const ring = document.getElementById('bRing'); const label = document.getElementById('bLabel');
       const statuses = ['stepIn', 'stepHold1', 'stepOut', 'stepHold2'];
-      
-      statuses.forEach(id => document.getElementById(id).style.borderColor = 'transparent');
-      statuses.forEach(id => document.getElementById(id).style.background = 'transparent');
-      
-      const step = breathCycleCount % 4;
-      
-      if (step === 0) {
-        ring.style.transform = 'scale(1.4)';
-        ring.style.background = 'rgba(122,171,138,0.4)';
-        label.innerHTML = "Breathe In<div class='breath-sub'>Fill your lungs</div>";
-        document.getElementById('stepIn').style.borderColor = 'var(--sage)';
-        document.getElementById('stepIn').style.background = 'rgba(122,171,138,0.1)';
-        playClickSound();
-      } else if (step === 1) {
-        label.innerHTML = "Hold Core<div class='breath-sub'>Stay suspended</div>";
-        document.getElementById('stepHold1').style.borderColor = 'var(--amber)';
-        document.getElementById('stepHold1').style.background = 'rgba(212,164,106,0.1)';
-      } else if (step === 2) {
-        ring.style.transform = 'scale(1)';
-        ring.style.background = 'rgba(122,171,138,0.2)';
-        label.innerHTML = "Exhale Soft<div class='breath-sub'>Release tension</div>";
-        document.getElementById('stepOut').style.borderColor = 'var(--sky)';
-        document.getElementById('stepOut').style.background = 'rgba(122,171,138,0.1)';
-        playClickSound();
-      } else if (step === 3) {
-        label.innerHTML = "Hold Empty<div class='breath-sub'>Rest quietly</div>";
-        document.getElementById('stepHold2').style.borderColor = 'var(--lavender)';
-        document.getElementById('stepHold2').style.background = 'rgba(154,142,192,0.1)';
-      }
-      
-      breathCycleCount++;
-      document.getElementById('breathStatus').textContent = "Box Breathing process running dynamically. Cycle step index: " + breathCycleCount;
+      statuses.forEach(id => { document.getElementById(id).style.borderColor = 'transparent'; document.getElementById(id).style.background = 'transparent'; });
+      if (phase === 0) { playClickSound(); ring.style.transform = 'scale(1.5)'; ring.style.background = 'rgba(122,171,138,0.4)'; label.textContent = "IN"; document.getElementById('stepIn').style.borderColor = 'var(--sage)'; document.getElementById('stepIn').style.background = 'rgba(122,171,138,0.1)'; }
+      else if (phase === 1) { label.textContent = "HOLD"; document.getElementById('stepHold1').style.borderColor = 'var(--amber)'; document.getElementById('stepHold1').style.background = 'rgba(212,164,106,0.1)'; }
+      else if (phase === 2) { playClickSound(); ring.style.transform = 'scale(1)'; ring.style.background = 'rgba(122,171,138,0.1)'; label.textContent = "OUT"; document.getElementById('stepOut').style.borderColor = 'var(--sky)'; document.getElementById('stepOut').style.background = 'rgba(122,171,138,0.1)'; }
+      else if (phase === 3) { label.textContent = "HOLD"; document.getElementById('stepHold2').style.borderColor = 'var(--lavender)'; document.getElementById('stepHold2').style.background = 'rgba(154,142,192,0.1)'; }
     }
-    
     function resetBreathing() {
-      clearInterval(breathInterval);
-      breathInterval = null;
-      breathCycleCount = 0;
-      playResetSound();
-      
-      document.getElementById('bRing').style.transform = 'scale(1)';
-      document.getElementById('bRing').style.background = 'rgba(122,171,138,0.2)';
-      document.getElementById('bLabel').innerHTML = "Ready<div class='breath-sub'>Click Start Below</div>";
-      document.getElementById('breathBtn').textContent = "Begin Routine";
-      document.getElementById('breathStatus').textContent = "System calibrated back to initial values.";
-      
-      ['stepIn', 'stepHold1', 'stepOut', 'stepHold2'].forEach(id => {
-        document.getElementById(id).style.borderColor = 'transparent';
-        document.getElementById(id).style.background = 'transparent';
-      });
+      playResetSound(); clearInterval(breathInterval); isBreathingActive = false; document.getElementById('breathBtn').textContent = "Begin Loop"; document.getElementById('breathTimer').textContent = "--"; document.getElementById('bLabel').textContent = "Ready";
+      const ring = document.getElementById('bRing'); ring.style.transition = 'none'; ring.style.transform = 'scale(1)'; ring.style.background = 'transparent';
+      setTimeout(() => { ring.style.transition = 'transform 4s linear, background-color 4s linear'; }, 50);
+      ['stepIn', 'stepHold1', 'stepOut', 'stepHold2'].forEach(id => { document.getElementById(id).style.borderColor = 'transparent'; document.getElementById(id).style.background = 'transparent'; });
     }
 
-    // =========================================================================
-    // 5-4-3-2-1 GROUNDING MATRIX LOGIC
-    // =========================================================================
+    // ==========================================
+    // 5-4-3-2-1 GROUNDING MATRIX
+    // ==========================================
     function toggleGStep(num) {
-      const box = document.getElementById('gBox' + num);
-      box.classList.toggle('completed');
-      playClickSound();
-      
-      // Calculate remaining unchecked steps
-      const allCheckboxes = document.querySelectorAll('.g-checkbox');
-      let remaining = 5;
-      allCheckboxes.forEach(cb => { if(cb.checked) remaining--; });
-      
-      const countLabel = document.getElementById('gCountLabel');
-      const titleLabel = document.getElementById('gTitleLabel');
-      const descLabel = document.getElementById('gDescLabel');
+      document.getElementById('gBox' + num).classList.toggle('completed'); playClickSound();
+      let remaining = 5; document.querySelectorAll('.g-checkbox').forEach(cb => { if(cb.checked) remaining--; });
       const callout = document.getElementById('gCallout');
-      
-      countLabel.textContent = remaining;
-      
-      if(remaining === 0) {
-        countLabel.textContent = "✨";
-        titleLabel.textContent = "System Aligned";
-        descLabel.textContent = "Sensory alignment complete. Your mind is fully anchored inside the physical room environment context.";
-        callout.classList.add('all-done');
-        playSuccessSound();
-      } else {
-        titleLabel.textContent = "Steps Remaining";
-        descLabel.textContent = "Check and fill out each row sequentially to reconnect with reality.";
-        callout.classList.remove('all-done');
-      }
+      document.getElementById('gCountLabel').textContent = remaining === 0 ? "✨" : remaining;
+      document.getElementById('gTitleLabel').textContent = remaining === 0 ? "System Aligned" : "Steps Remaining";
+      document.getElementById('gDescLabel').textContent = remaining === 0 ? "Your mind is fully anchored inside the physical room environment context." : "Check and fill out each row sequentially to reconnect with reality.";
+      if(remaining === 0) { callout.classList.add('all-done'); playSuccessSound(); } else { callout.classList.remove('all-done'); }
     }
-    
     function resetGrounding() {
-      playResetSound();
-      const allCheckboxes = document.querySelectorAll('.g-checkbox');
-      allCheckboxes.forEach(cb => cb.checked = false);
-      
-      for(let i=1; i<=5; i++) {
-        document.getElementById('gBox' + i).classList.remove('completed');
-        document.getElementById('gIn' + i).value = '';
-      }
-      
-      const callout = document.getElementById('gCallout');
-      callout.classList.remove('all-done');
-      document.getElementById('gCountLabel').textContent = "5";
-      document.getElementById('gTitleLabel').textContent = "Steps Remaining";
-      document.getElementById('gDescLabel').textContent = "Check and fill out each row sequentially to reconnect with reality.";
+      playResetSound(); document.querySelectorAll('.g-checkbox').forEach(cb => cb.checked = false);
+      for(let i=1; i<=5; i++) { document.getElementById('gBox'+i).classList.remove('completed'); document.getElementById('gIn'+i).value = ''; }
+      document.getElementById('gCallout').classList.remove('all-done'); document.getElementById('gCountLabel').textContent = "5"; document.getElementById('gTitleLabel').textContent = "Steps Remaining"; document.getElementById('gDescLabel').textContent = "Check and fill out each row sequentially to reconnect with reality.";
     }
 
-    // =========================================================================
-    // GRATITUDE JAR VISUAL CONTROLLER
-    // =========================================================================
-    function addJarNote() {
-      const txt = document.getElementById('jarText');
-      if(!txt.value.trim()) return;
-      
-      playSuccessSound();
-      const placeholder = document.getElementById('jarPlaceholder');
-      if(placeholder) placeholder.style.display = 'none';
-      
-      const note = document.createElement('div');
-      note.className = 'jar-note';
-      note.textContent = txt.value;
-      
-      // Give random small visual skew details for realistic paper pile layering look
-      const rot = (Math.random() * 14 - 7);
-      note.style.transform = `rotate(${rot}deg)`;
-      
-      document.getElementById('jarContainer').appendChild(note);
-      txt.value = '';
-    }
-    
-    function resetJar() {
-      playResetSound();
-      const container = document.getElementById('jarContainer');
-      container.innerHTML = `<div class="jar-placeholder" id="jarPlaceholder">Jar is currently empty.<br>Add your memories on the left!</div>`;
-    }
-
-    // =========================================================================
-    // PROGRESSIVE MUSCLE RELAXATION SYSTEM
-    // =========================================================================
+    // ==========================================
+    // PROGRESSIVE MUSCLE RELAXATION (PMR)
+    // ==========================================
     const pmrStages = [
-      { muscle: "Your Feet & Calves", inst: "Curl your toes tightly downward, tightening your calves. Notice the hard pulling strain." },
-      { muscle: "Thighs & Core Glutes", inst: "Squeeze your upper leg muscles and seat plates firmly. Hold yourself rigid." },
-      { muscle: "Hands, Wrists & Forearms", inst: "Clench both hands tightly into solid fists. Imagine squeezing water from leather stones." },
-      { muscle: "Shoulders, Neck & Jaw", inst: "Shrug your shoulder points upward toward your ears, clenching your back jaw plates tightly." },
-      { muscle: "Full Face & Forehead Expressions", inst: "Squeeze your eyes completely shut and wrinkle your forehead up. Hold the full mask." }
+      { muscle: "Your Feet & Calves", inst: "Curl your toes tightly downward, tightening your calves." },
+      { muscle: "Thighs & Core Glutes", inst: "Squeeze your upper leg muscles and seat plates firmly." },
+      { muscle: "Hands & Forearms", inst: "Clench both hands tightly into solid fists." },
+      { muscle: "Shoulders & Jaw", inst: "Shrug shoulders upward toward your ears, clenching your jaw." },
+      { muscle: "Full Face Expressions", inst: "Squeeze your eyes completely shut and wrinkle your forehead up." }
     ];
-    let pmrStep = 0;
-    let pmrTensePhase = true;
-
+    let pmrStep = 0; let pmrTensePhase = true;
     function advancePMR() {
-      const mainBtn = document.getElementById('pmrMainBtn');
-      const muscleDisplay = document.getElementById('pmrMuscle');
-      const instDisplay = document.getElementById('pmrInstruction');
-      const tBadge = document.getElementById('pmrTenseBadge');
-      const rBadge = document.getElementById('pmrReleaseBadge');
-      const progressFill = document.getElementById('pmrProgressFill');
-      
-      if(pmrStep >= pmrStages.length) {
-        resetPMR();
-        return;
-      }
-
-      playClickSound();
-      const activeStage = pmrStages[pmrStep];
-      const overallProgress = ((pmrStep) / pmrStages.length) * 100;
-
+      if(pmrStep >= pmrStages.length) { resetPMR(); return; }
+      playClickSound(); const activeStage = pmrStages[pmrStep]; const progressFill = document.getElementById('pmrProgressFill');
       if(pmrTensePhase) {
-        muscleDisplay.textContent = activeStage.muscle;
-        instDisplay.textContent = activeStage.inst + " Take a deep breath and hold the energy.";
-        tBadge.style.display = 'inline-block';
-        rBadge.style.display = 'none';
-        mainBtn.textContent = "Release Target Area";
-        pmrTensePhase = false;
-        progressFill.style.width = (overallProgress + 10) + "%";
+        document.getElementById('pmrMuscle').textContent = activeStage.muscle; document.getElementById('pmrInstruction').textContent = activeStage.inst + " Take a deep breath and hold.";
+        document.getElementById('pmrTenseBadge').style.display = 'inline-block'; document.getElementById('pmrReleaseBadge').style.display = 'none';
+        document.getElementById('pmrMainBtn').textContent = "Release Target Area"; pmrTensePhase = false;
+        progressFill.style.width = (((pmrStep) / pmrStages.length) * 100 + 10) + "%";
       } else {
-        instDisplay.textContent = "Drop all effort instantly. Let the muscles melt loose like soft string. Breathe out slowly.";
-        tBadge.style.display = 'none';
-        rBadge.style.display = 'inline-block';
-        mainBtn.textContent = "Proceed to Next Stage";
-        pmrTensePhase = true;
-        pmrStep++;
+        document.getElementById('pmrInstruction').textContent = "Drop all effort instantly. Let the muscles melt loose. Breathe out slowly.";
+        document.getElementById('pmrTenseBadge').style.display = 'none'; document.getElementById('pmrReleaseBadge').style.display = 'inline-block';
+        document.getElementById('pmrMainBtn').textContent = "Proceed to Next Stage"; pmrTensePhase = true; pmrStep++; playSuccessSound();
         progressFill.style.width = ((pmrStep / pmrStages.length) * 100) + "%";
-        playSuccessSound();
-
         if(pmrStep >= pmrStages.length) {
-          muscleDisplay.textContent = "Somatic Clear Complete";
-          instDisplay.textContent = "Your entire muscular framework has been flushed of residual survival pressure waves. Great work.";
-          mainBtn.textContent = "Restart Somatic System";
-          tBadge.style.display = 'none';
-          rBadge.style.display = 'none';
+          document.getElementById('pmrMuscle').textContent = "Clear Complete"; document.getElementById('pmrInstruction').textContent = "Your entire muscular framework has been flushed. Great work.";
+          document.getElementById('pmrMainBtn').textContent = "Restart System"; document.getElementById('pmrTenseBadge').style.display = 'none'; document.getElementById('pmrReleaseBadge').style.display = 'none';
         }
       }
     }
-
     function resetPMR() {
-      playResetSound();
-      pmrStep = 0;
-      pmrTensePhase = true;
-      document.getElementById('pmrProgressFill').style.width = '0%';
-      document.getElementById('pmrMuscle').textContent = "Muscle Engine Ready";
-      document.getElementById('pmrInstruction').textContent = "Click 'Begin PMR System' to initiate full physical release steps.";
-      document.getElementById('pmrTenseBadge').style.display = 'none';
-      document.getElementById('pmrReleaseBadge').style.display = 'none';
-      document.getElementById('pmrMainBtn').textContent = "Begin PMR System";
+      playResetSound(); pmrStep = 0; pmrTensePhase = true; document.getElementById('pmrProgressFill').style.width = '0%';
+      document.getElementById('pmrMuscle').textContent = "Muscle Engine Ready"; document.getElementById('pmrInstruction').textContent = "Click 'Begin PMR System' to initiate physical release steps.";
+      document.getElementById('pmrTenseBadge').style.display = 'none'; document.getElementById('pmrReleaseBadge').style.display = 'none'; document.getElementById('pmrMainBtn').textContent = "Begin PMR System";
     }
 
-    // =========================================================================
-    // AFFIRMATIONS DECK LOGIC
-    // =========================================================================
+    // ==========================================
+    // AFFIRMATIONS DECK
+    // ==========================================
     const affirmationPool = [
       "I am allowed to experience boundaries, and I am completely equipped to handle whatever emotion arrives today.",
       "My performance metrics do not define my human value. I am completely allowed to pause and rest without guilt.",
       "I do not have to fix everything right now. Taking care of this immediate, single minute is more than enough.",
-      "This intense anxiety is a chemical alert signal, not a permanent physical truth. It will peak and pass away.",
-      "I choose to be soft, compassionate, and incredibly patient with my mind while navigating confusing changes.",
-      "I have survived hard days before, and I own an innate capacity to safely process this challenge too."
+      "This intense anxiety is a chemical alert signal, not a permanent physical truth. It will peak and pass away."
     ];
     let affirmIndex = 0;
-    
-    function generateAffirmation() {
-      playClickSound();
-      affirmIndex = (affirmIndex + 1) % affirmationPool.length;
-      document.getElementById('affirmText').textContent = `"${affirmationPool[affirmIndex]}"`;
+    function generateAffirmation() { playClickSound(); affirmIndex = (affirmIndex + 1) % affirmationPool.length; document.getElementById('affirmText').textContent = `"${affirmationPool[affirmIndex]}"`; }
+    function resetAffirmations() { playResetSound(); affirmIndex = 0; document.getElementById('affirmText').textContent = `"${affirmationPool[0]}"`; }
+
+    // ==========================================
+    // PERSISTENT LOCAL STORAGE (Jar, Mood, Journal)
+    // ==========================================
+    window.addEventListener('DOMContentLoaded', () => { loadJar(); loadMoods(); loadJournal(); });
+
+    function addJarNote() {
+      const txt = document.getElementById('jarText').value.trim(); if(!txt) return; playSuccessSound();
+      let jarArr = JSON.parse(localStorage.getItem('wave_jar') || '[]'); jarArr.push(txt); localStorage.setItem('wave_jar', JSON.stringify(jarArr));
+      document.getElementById('jarText').value = ''; renderJarNote(txt);
     }
-
-    function resetAffirmations() {
-      playResetSound();
-      affirmIndex = 0;
-      document.getElementById('affirmText').textContent = `"${affirmationPool[0]}"`;
+    function loadJar() {
+      let jarArr = JSON.parse(localStorage.getItem('wave_jar') || '[]');
+      if(jarArr.length > 0) document.getElementById('jarPlaceholder').style.display = 'none';
+      jarArr.forEach(noteText => renderJarNote(noteText));
     }
+    function renderJarNote(text) {
+      document.getElementById('jarPlaceholder').style.display = 'none';
+      const note = document.createElement('div'); note.className = 'jar-note'; note.textContent = text; note.style.transform = `rotate(${Math.random() * 14 - 7}deg)`;
+      document.getElementById('jarContainer').appendChild(note);
+    }
+    function clearJarHistory() { playResetSound(); localStorage.removeItem('wave_jar'); document.getElementById('jarContainer').innerHTML = `<div class="jar-placeholder" id="jarPlaceholder">Jar is currently empty.<br>Add memories on the left!</div>`; }
 
-    // =========================================================================
-    // LOCAL PRIVACY ARCHITECTURE MOOD TRACKER LOGIC
-    // =========================================================================
-    let selectedMoodScore = null;
-    let selectedMoodEmoji = "";
-    let selectedMoodString = "";
-
+    let selectedMoodScore = null, selectedMoodEmoji = "", selectedMoodString = "";
     function selectMoodWidget(score, emoji, text) {
-      playClickSound();
-      for(let i=1; i<=5; i++) {
-        document.getElementById('mBtn' + i).classList.remove('selected');
-      }
-      document.getElementById('mBtn' + score).classList.add('selected');
-      selectedMoodScore = score;
-      selectedMoodEmoji = emoji;
-      selectedMoodString = text;
+      playClickSound(); for(let i=1; i<=5; i++) document.getElementById('mBtn' + i).classList.remove('selected');
+      document.getElementById('mBtn' + score).classList.add('selected'); selectedMoodScore = score; selectedMoodEmoji = emoji; selectedMoodString = text;
     }
-
     function saveMoodEntry() {
-      if(!selectedMoodScore) {
-        document.getElementById('moodMessage').textContent = "Please select an emoji icon before logging.";
-        return;
-      }
-      playSuccessSound();
-      const textNote = document.getElementById('moodNoteInput').value.trim();
-      const stamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-
-      // Build safe entry element object
-      const historyRow = document.createElement('div');
-      historyRow.className = 'mood-entry';
-      historyRow.innerHTML = `<span class='time'>[${stamp}]</span> <strong>${selectedMoodEmoji} ${selectedMoodString}</strong> — ${textNote ? textNote : 'No appended notes context provided.'}`;
-
-      const box = document.getElementById('moodHistoryContainer');
-      const emptyTag = box.querySelector('.mood-empty');
-      if(emptyTag) emptyTag.remove();
-
-      box.insertBefore(historyRow, box.firstChild);
-
-      // Clean widgets
-      document.getElementById('moodNoteInput').value = '';
-      for(let i=1; i<=5; i++) { document.getElementById('mBtn' + i).classList.remove('selected'); }
-      selectedMoodScore = null;
-
-      const msg = document.getElementById('moodMessage');
-      msg.textContent = "Data logged inside localized sandboxed runtime variables.";
-      setTimeout(() => { msg.textContent = ''; }, 3000);
+      if(!selectedMoodScore) return alert("Select an emoji first!"); playSuccessSound();
+      const note = document.getElementById('moodNoteInput').value.trim(); const stamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      const entryHtml = `<span class='time'>[${stamp}]</span> <strong>${selectedMoodEmoji} ${selectedMoodString}</strong> — ${note ? note : 'No context provided.'}`;
+      let moodsArr = JSON.parse(localStorage.getItem('wave_moods') || '[]'); moodsArr.unshift(entryHtml); localStorage.setItem('wave_moods', JSON.stringify(moodsArr));
+      document.getElementById('moodNoteInput').value = ''; for(let i=1; i<=5; i++) document.getElementById('mBtn' + i).classList.remove('selected'); selectedMoodScore = null; renderMoods();
     }
-
-    function clearMoodHistory() {
-      playResetSound();
-      document.getElementById('moodHistoryContainer').innerHTML = `<div class="mood-empty">No locally saved elements found inside history architecture blocks.</div>`;
-      document.getElementById('moodMessage').textContent = "Localized runtime tracker history erased completely.";
-      setTimeout(() => { document.getElementById('moodMessage').textContent = ''; }, 3000);
+    function loadMoods() { renderMoods(); }
+    function renderMoods() {
+      const box = document.getElementById('moodHistoryContainer'); let moodsArr = JSON.parse(localStorage.getItem('wave_moods') || '[]');
+      if(moodsArr.length === 0) { box.innerHTML = `<div style="font-size:0.9rem; color:var(--text-muted); font-style:italic; padding:2rem; text-align:center; background:white; border-radius:12px; border:1px dashed rgba(122,171,138,0.3);">No locally saved records found yet.</div>`; return; }
+      box.innerHTML = ""; moodsArr.forEach(html => { const row = document.createElement('div'); row.className = 'mood-entry'; row.innerHTML = html; box.appendChild(row); });
     }
+    function clearMoodHistory() { playResetSound(); localStorage.removeItem('wave_moods'); renderMoods(); }
 
-    // =========================================================================
-    // CATHARSIS SUITE JOURNALING DESK
-    // =========================================================================
-    const promptPool = [
-      "What is a boundary you would like to comfortably communicate this week, and why does establishing it preserve your energy?",
-      "List 3 things you are doing remarkably well lately, even if they feel small or completely ordinary to outsiders.",
-      "Describe what an ideal completely safe rest day looks like. What elements need to be removed to let your mind feel free?",
-      "If your current heavy feeling was an animal or weather system, what would it look like, and how can you accommodate it?"
-    ];
-    let promptIdx = 0;
+    const promptPool = ["What boundary preserves your energy this week?", "List 3 things you are doing remarkably well lately.", "Describe what an ideal completely safe rest day looks like.", "If your current heavy feeling was an animal, what would it look like?"]; let promptIdx = 0;
+    function nextJournalPrompt() { playClickSound(); promptIdx = (promptIdx + 1) % promptPool.length; document.getElementById('promptText').textContent = `"${promptPool[promptIdx]}"`; }
+    function autoSaveJournal() { localStorage.setItem('wave_journal', document.getElementById('journalTextarea').value); }
+    function loadJournal() { const savedText = localStorage.getItem('wave_journal'); if(savedText) document.getElementById('journalTextarea').value = savedText; }
+    function manualJournalSaveFeedback() { playSuccessSound(); const fb = document.getElementById('journalFeedback'); fb.textContent = "Saved securely to local browser storage!"; setTimeout(() => fb.textContent = '', 3000); }
+    function clearJournal() { if(confirm("Permanently delete your journal writing?")) { playResetSound(); document.getElementById('journalTextarea').value = ''; localStorage.removeItem('wave_journal'); } }
 
-    function nextJournalPrompt() {
-      playClickSound();
-      promptIdx = (promptIdx + 1) % promptPool.length;
-      document.getElementById('promptText').textContent = `"${promptPool[promptIdx]}"`;
+    // ==========================================
+    // HARDER SCAVENGER HUNT (5 Options)
+    // ==========================================
+    function updateScavengerBoxes() {
+      const updateBox = (id, val) => { const box = document.getElementById(id); if(val) { box.textContent = val; box.classList.add('revealed'); playClickSound(); } else { box.textContent = '-'; box.classList.remove('revealed'); } };
+      updateBox('codeBox1', document.getElementById('scavQ1').value); updateBox('codeBox2', document.getElementById('scavQ2').value); updateBox('codeBox3', document.getElementById('scavQ3').value); updateBox('codeBox4', document.getElementById('scavQ4').value);
     }
-
-    function saveJournal() {
-      const feedback = document.getElementById('journalFeedback');
-      if(!document.getElementById('journalTextarea').value.trim()) {
-        feedback.textContent = "Journal workspace is blank. Write text before compiling logs.";
-        return;
-      }
-      feedback.style.color = 'var(--sage)';
-      feedback.textContent = "Reflections cataloged safely inside localized temporary privacy variable architecture loops.";
-      playSuccessSound();
-      setTimeout(() => { feedback.textContent = ''; }, 4000);
+    function checkScavengerAnswer() {
+      if(document.getElementById('scavQ1').value === "S" && document.getElementById('scavQ2').value === "A" && document.getElementById('scavQ3').value === "F" && document.getElementById('scavQ4').value === "E") {
+        playSuccessSound(); document.getElementById('certificateModal').classList.add('open');
+      } else { playResetSound(); alert("The current code is incorrect! Review the 5 choices in the dropdowns carefully and try again."); }
     }
-
-    function clearJournal() {
-      const txt = document.getElementById('journalTextarea');
-      if(!txt.value) return;
-      if(confirm("Are you entirely sure you want to completely discard your current unedited journal writing composition?")) {
-        txt.value = '';
-        document.getElementById('journalFeedback').textContent = '';
-        playResetSound();
-      }
-    }
-
-    // =========================================================================
-    // LIVE SCAVENGER HUNT LOGIC (EDUCATIONAL CHALLENGE)
-    // =========================================================================
-    function updateScavengerLetterBoxes() {
-      // Pull live selected value tokens from drop-down elements
-      const val1 = document.getElementById('scavQ1').value;
-      const val2 = document.getElementById('scavQ2').value;
-      const val3 = document.getElementById('scavQ3').value;
-      const val4 = document.getElementById('scavQ4').value;
-
-      const box1 = document.getElementById('codeBox1');
-      const box2 = document.getElementById('codeBox2');
-      const box3 = document.getElementById('codeBox3');
-      const box4 = document.getElementById('codeBox4');
-
-      // Update text values and add active glowing color if option selected
-      if(val1) { box1.textContent = val1; box1.classList.add('revealed'); playClickSound(); } else { box1.textContent = '-'; box1.classList.remove('revealed'); }
-      if(val2) { box2.textContent = val2; box2.classList.add('revealed'); playClickSound(); } else { box2.textContent = '-'; box2.classList.remove('revealed'); }
-      if(val3) { box3.textContent = val3; box3.classList.add('revealed'); playClickSound(); } else { box3.textContent = '-'; box3.classList.remove('revealed'); }
-      if(val4) { box4.textContent = val4; box4.classList.add('revealed'); box4.classList.add('revealed'); playClickSound(); } else { box4.textContent = '-'; box4.classList.remove('revealed'); }
-    }
-
-    function checkScavengerHuntAnswer() {
-      const val1 = document.getElementById('scavQ1').value;
-      const val2 = document.getElementById('scavQ2').value;
-      const val3 = document.getElementById('scavQ3').value;
-      const val4 = document.getElementById('scavQ4').value;
-
-      // Correct validation answer string forms the word: S A F E
-      if(val1 === "S" && val2 === "A" && val3 === "F" && val4 === "E") {
-        playSuccessSound();
-        document.getElementById('certificateModal').classList.add('open');
-      } else {
-        playResetSound();
-        alert("The current letters do not puzzle out into the correct security code word. Look closely over the descriptive texts above and update your selected values!");
-      }
-    }
-
-    function resetScavengerHunt() {
-      playResetSound();
-      document.getElementById('scavQ1').value = "";
-      document.getElementById('scavQ2').value = "";
-      document.getElementById('scavQ3').value = "";
-      document.getElementById('scavQ4').value = "";
-      updateScavengerLetterBoxes();
-    }
-
-    function closeCertificateModal() {
-      playResetSound();
-      document.getElementById('certificateModal').classList.remove('open');
-    }
+    function resetScavenger() { playResetSound(); ['scavQ1','scavQ2','scavQ3','scavQ4'].forEach(id => document.getElementById(id).value = ""); updateScavengerBoxes(); }
+    function closeCert() { playResetSound(); document.getElementById('certificateModal').classList.remove('open'); }
   </script>
 </body>
 </html>
