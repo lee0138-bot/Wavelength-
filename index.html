@@ -2559,7 +2559,7 @@
     }
 
 // =========================================================================
-// ENHANCED SCAVENGER HUNT LOGIC — 8 QUESTIONS → WAVELENGTH
+// ENHANCED SCAVENGER HUNT LOGIC — 8 QUESTIONS → MINDFULL
 // =========================================================================
 let scavAttempts = 0;
 let hintsVisible = false;
@@ -2573,7 +2573,7 @@ function updateScavengerLetterBoxes() {
   const boxes = [];
   for(let i=1; i<=8; i++) {
     const boxesPush = document.getElementById('codeBox' + i);
-    boxes.push(boxesPush);
+    if (boxesPush) boxes.push(boxesPush);
   }
   vals.forEach((v, idx) => {
     const box = boxes[idx];
@@ -2592,28 +2592,40 @@ function updateScavengerLetterBoxes() {
 }
 
 function checkScavengerHuntAnswer() {
-  // Validates the 8-letter version "WAVELENG" to match your 8 questions
+  // Set the correct sequence to spell M-I-N-D-F-U-L-L
   const correct = ['M','I','N','D','F','U','L','L'];
   let allCorrect = true;
+  
   for(let i=1; i<=8; i++) {
-    const val = document.getElementById('scavQ' + i).value;
-    if(val !== correct[i-1]) { allCorrect = false; break; }
+    const sel = document.getElementById('scavQ' + i);
+    const val = sel ? sel.value : ''; // Safety fallback if element is missing
+    
+    if(val !== correct[i-1]) { 
+      allCorrect = false; 
+      break; 
+    }
   }
 
   if(allCorrect) {
     playSuccessSound();
-    spawnConfetti();
-    document.getElementById('certificateModal').classList.add('open');
-    document.getElementById('scavAttempts').textContent = '';
+    if(typeof spawnConfetti === 'function') spawnConfetti();
+    
+    const modal = document.getElementById('certificateModal');
+    if(modal) modal.classList.add('open');
+    
+    const attemptsEl = document.getElementById('scavAttempts');
+    if(attemptsEl) attemptsEl.textContent = '';
   } else {
     scavAttempts++;
     playResetSound();
     // Color flashing logic removed to keep the game completely color-neutral
     
     const attemptsEl = document.getElementById('scavAttempts');
-    let msg = `Attempt ${scavAttempts}: Not quite right. Look more carefully at the questions.`;
-    if(scavAttempts >= 3) msg += ' Try using the hint buttons!';
-    attemptsEl.textContent = msg;
+    if(attemptsEl) {
+      let msg = `Attempt ${scavAttempts}: Not quite right. Look more carefully at the questions.`;
+      if(scavAttempts >= 3) msg += ' Try using the hint buttons!';
+      attemptsEl.textContent = msg;
+    }
   }
 }
 
@@ -2625,7 +2637,8 @@ function resetScavengerHunt() {
     if(sel) sel.value = "";
     // Color changing logic removed
   }
-  document.getElementById('scavAttempts').textContent = '';
+  const attemptsEl = document.getElementById('scavAttempts');
+  if(attemptsEl) attemptsEl.textContent = '';
   updateScavengerLetterBoxes();
 }
 
@@ -2640,7 +2653,8 @@ function toggleAllHints() {
 
 function closeCertificateModal() {
   playResetSound();
-  document.getElementById('certificateModal').classList.remove('open');
+  const modal = document.getElementById('certificateModal');
+  if(modal) modal.classList.remove('open');
 }
 
 // =========================================================================
@@ -2648,6 +2662,8 @@ function closeCertificateModal() {
 // =========================================================================
 function spawnConfetti() {
   const modal = document.querySelector('.cert-container');
+  if(!modal) return;
+  
   const colors = ['#7aab8a','#e8a89c','#7ab3d4','#d4a46a','#9a8ec0','#fff'];
   for(let i=0; i<30; i++) {
     setTimeout(() => {
