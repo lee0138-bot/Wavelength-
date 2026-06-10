@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wavelength - Under Maintenance</title>
+    <style>
+        /* This styles the background of the whole page */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        /* This styles the white box in the middle */
+        .container {
+            background-color: white;
+            padding: 50px 60px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 450px;
+        }
+
+        /* Styles the tools emoji */
+        .icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+
+        /* Styles the main header text */
+        h1 {
+            color: #d9534f; /* A soft red to indicate an error/broken state */
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        /* Styles the subtext */
+        p {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
+
+        /* Creates a little spinning circle animation */
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #764ba2;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        /* The animation logic for the spinner */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="icon">🛠️</div>
+        <h1>Wavelength is broken.</h1>
+        <p>Our team is fixing it ASAP. Thank you for your patience!</p>
+        <div class="loader"></div>
+    </div>
+
+</body>
+</html>
